@@ -96,7 +96,29 @@ extension SSAlertPresentAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     func slideDownAnimateTransition(context transitionContext:UIViewControllerContextTransitioning) -> Void {
+        let destinationVC:SSAlertController = transitionContext.viewController(forKey: .to) as! SSAlertController
+        let containerView = transitionContext.containerView
+        containerView.addSubview(destinationVC.view)
         
+        let duration = transitionDuration(using: transitionContext)
+        for view in destinationVC.view.subviews {
+            if view.isEqual(destinationVC.backgroundView) {
+                view.alpha = 0
+                continue
+            }
+            view.center = CGPoint.init(x: view.center.x, y: view.center.y-ScreenSize.height)
+        }
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            for view in destinationVC.view.subviews {
+                if view.isEqual(destinationVC.backgroundView) {
+                    view.alpha = 0.4
+                    continue
+                }
+                view.center = CGPoint.init(x: view.center.x, y: view.center.y+ScreenSize.height)
+            }
+        }){ finished in
+            transitionContext.completeTransition(true)
+        }
     }
     
     func slideUpAnimateTransition(context transitionContext:UIViewControllerContextTransitioning) -> Void {

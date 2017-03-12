@@ -21,7 +21,7 @@ class SSAlertController: UIViewController {
     //MARK:-
     //MARK:properties
     
-    var dismissStyle:SSAlertDismissAnimatorType = .fadeOut
+    var dismissStyle:SSAlertDismissAnimatorType = .slideDown
     var presentStyle:SSAlertPresentAnimatorType = .system
     
     var alertView:SSAlertView!
@@ -29,7 +29,7 @@ class SSAlertController: UIViewController {
         let view:UIView = UIView.init(frame: self.view.bounds)
         view.backgroundColor = UIColor.black
         view.alpha = 0.4
-        let gesture:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(SSAlertController.dismiss as (SSAlertController) -> () -> Void))
+        let gesture:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapToDismiss(_:)))
         view.addGestureRecognizer(gesture)
         return view
     }()
@@ -42,6 +42,9 @@ class SSAlertController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        let subview = UIView.init(frame: CGRect.init(x: 200.0, y: 200.0, width: 100.0, height: 100.0))
+        subview.backgroundColor = UIColor.gray
+        self.view.addSubview(subview)
         print("\(alertView.frame)---\(backgroundView.frame)")
     }
     convenience init(_ title:String, message:String) {
@@ -67,8 +70,8 @@ class SSAlertController: UIViewController {
     
     func setupViews() {
         view.addSubview(backgroundView)
-        view.addSubview(alertView)
-        setupAlertViewContraints()
+//        view.addSubview(alertView)
+//        setupAlertViewContraints()
     }
     
     func setupAlertViewContraints() -> Void {
@@ -102,7 +105,7 @@ class SSAlertController: UIViewController {
 }
 
 extension SSAlertController {
-    func dismiss() -> Void {
+    func tapToDismiss(_ tap:UITapGestureRecognizer) -> Void {
         self.dismiss(animated: true, completion: nil)
     }
 }

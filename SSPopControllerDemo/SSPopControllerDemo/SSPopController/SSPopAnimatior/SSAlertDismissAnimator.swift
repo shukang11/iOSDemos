@@ -69,16 +69,73 @@ extension SSAlertDismissAnimator:UIViewControllerAnimatedTransitioning {
         
     }
     func slideDownAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            
+            for view in fromVC.view.subviews {
+                if view.isEqual(fromVC.backgroundView) {
+                    view.alpha = 0.0
+                    continue
+                }
+                view.center = CGPoint.init(x: view.center.x, y: view.center.y+ScreenSize.height)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
+
     }
     func slideUpAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            
+            for view in fromVC.view.subviews {
+                if view.isEqual(fromVC.backgroundView) {
+                    view.alpha = 0.0
+                    continue
+                }
+                view.center = CGPoint.init(x: view.center.x, y: view.center.y-ScreenSize.height)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
     }
     func slideLeftAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            
+            for view in fromVC.view.subviews {
+                if view.isEqual(fromVC.backgroundView) {
+                    view.alpha = 0.0
+                    continue
+                }
+                view.center = CGPoint.init(x: view.center.x, y: view.center.y-ScreenSize.width)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
     }
     func slideRightAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            
+            for view in fromVC.view.subviews {
+                if view.isEqual(fromVC.backgroundView) {
+                    view.alpha = 0.0
+                    continue
+                }
+                view.center = CGPoint.init(x: view.center.x, y: view.center.y+ScreenSize.width)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
     }
 
 }
