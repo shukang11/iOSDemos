@@ -57,16 +57,49 @@ extension SSAlertDismissAnimator:UIViewControllerAnimatedTransitioning {
         let duration = transitionDuration(using: transitionContext)
         
         UIView.animate(withDuration: duration, animations: {
-            fromVC.backgroundView.alpha = 0.0
+            for subview in fromVC.view.subviews {
+                if subview == fromVC.backgroundView {
+                    fromVC.backgroundView.alpha = 0.0
+                    continue
+                }
+                subview.alpha = 0.0
+            }
+            
         }) { (complete) in
             transitionContext.completeTransition(true)
         }
     }
     func contractHorizontalAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            for subview in fromVC.view.subviews {
+                if subview == fromVC.backgroundView {
+                    subview.alpha = 0.0
+                    continue
+                }
+                subview.transform = CGAffineTransform.init(scaleX: 0.001, y: 1)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
     }
     func contractVerticalAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
+        let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController
+        let duration = transitionDuration(using: transitionContext)
         
+        UIView.animate(withDuration: duration, animations: {
+            for subview in fromVC.view.subviews {
+                if subview == fromVC.backgroundView {
+                    subview.alpha = 0.0
+                    continue
+                }
+                subview.transform = CGAffineTransform.init(scaleX: 1, y: 0.01)
+            }
+        }) { (complete) in
+            transitionContext.completeTransition(true)
+        }
     }
     func slideDownAnimateTransition(context transitionContext: UIViewControllerContextTransitioning) -> Void {
         let fromVC:SSAlertController = transitionContext.viewController(forKey: .from) as! SSAlertController

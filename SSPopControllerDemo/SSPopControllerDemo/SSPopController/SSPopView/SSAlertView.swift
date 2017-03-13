@@ -2,52 +2,53 @@
 //  SSAlertView.swift
 //  SSPopControllerDemo
 //
-//  Created by Mac on 17/3/10.
+//  Created by Mac on 17/3/13.
 //  Copyright © 2017年 treee. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SSAlertView: UIView {
-    
+let padding:CGFloat = 15.0          //间隙
+let alertWidth:CGFloat = 270.0      //弹窗总宽度
+let bottonHeiht:CGFloat = 40.0      //按钮高度
+let containerWidth:CGFloat = alertWidth - 2*padding        //内容宽度
+
+class SSAlertView: SSAlertBaseView {
     //MARK:-
     //MARK:properties
-    let defaultHeight:CGFloat = ScreenSize.height
-    let defaultHeadViewHeight:CGFloat = 50.0
-    let defaultLabelHeight:CGFloat = 20.0
-    let defaultLabelPadding:CGFloat = 20.0
-    let defaultLabelToPadding:CGFloat = 15.0
-    
-    
-    var title:String = ""
-    var message:String = ""
-    
-    
+    private var titleLabel: UILabel = {
+        return UILabel()
+    }()
+    private var messageLabel:UILabel = {
+        return UILabel()
+    }()
     //MARK:-
     //MARK:lifeCycle
-    convenience init(_ title:String, message:String) {
+    convenience init(title:String, message:String,viewCOntroller:SSAlertController) {
         self.init()
         self.title = title
         self.message = message
-        setupView()
+        self.viewController = viewController
+        configure()
     }
     
     //MARK:-
-    //MARK:private
-    private func setupView() -> Void {
-        initialize()
-    }
+    //MARK:helper
     
-    private func initialize() {
-        backgroundColor = UIColor.clear
-        frame = CGRect.init(x: 0.0, y: ScreenSize.height-defaultHeight, width: ScreenSize.width, height: defaultHeight)
-        
-    }
     //MARK:-
     //MARK:public
-    
-    //MARK:-
-    //MARK:delegate
-    
+    override func configure() {
+        super.configure()
+        guard self.viewController != nil else {
+            assert(1 != 1, "self.viewController can't be nil")
+        }
+        self.backgroundColor = UIColor.purple
+        addSubview(titleLabel)
+        addSubview(messageLabel)
+        updateLayouts()
+    }
+    override func updateLayouts() {
+        super.updateLayouts()
+    }
 }

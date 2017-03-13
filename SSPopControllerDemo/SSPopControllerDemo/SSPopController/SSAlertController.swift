@@ -15,20 +15,25 @@ struct ScreenSize {
     static let height = ScreenSize.screenBounds.height
 }
 
+enum SSAlertControllerStyle {
+    case action
+    case alert
+    case custom
+}
 
 class SSAlertController: UIViewController {
-    
     //MARK:-
     //MARK:properties
-    
+    var style:SSAlertControllerStyle!
     var dismissStyle:SSAlertDismissAnimatorType = .slideDown
-    var presentStyle:SSAlertPresentAnimatorType = .system
+    var presentStyle:SSAlertPresentAnimatorType = .bounce
     
-    var alertView:SSAlertView!
+    var contentView:SSAlertBaseView!
+    
+    
     public lazy var backgroundView:UIView = {
         let view:UIView = UIView.init(frame: self.view.bounds)
         view.backgroundColor = UIColor.black
-        view.alpha = 0.4
         let gesture:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapToDismiss(_:)))
         view.addGestureRecognizer(gesture)
         return view
@@ -40,17 +45,11 @@ class SSAlertController: UIViewController {
         super.viewDidLoad()
         initialize()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        let subview = UIView.init(frame: CGRect.init(x: 200.0, y: 200.0, width: 100.0, height: 100.0))
-        subview.backgroundColor = UIColor.gray
-        self.view.addSubview(subview)
-        print("\(alertView.frame)---\(backgroundView.frame)")
-    }
-    convenience init(_ title:String, message:String) {
+    
+    convenience init(_ title:String, message:String, alertStyle:SSAlertControllerStyle) {
         self.init()
-        let alertView:SSAlertView = SSAlertView.init(title, message: message)
-        self.alertView = alertView
+        self.style = alertStyle
+        
         //如果不添加这个视图，跳转完成之后会变成黑色
         
         /**
@@ -58,50 +57,46 @@ class SSAlertController: UIViewController {
          */
         setupViews()
     }
-
+    //MARK:-
+    //MARK:public
+    
+    func addAction(action:SSAlertAction) -> Void {
+        contentView.actions.append(action)
+    }
+    
     //MARK:-
     //MARK:private
     private func initialize() {
         transitioningDelegate = self
         modalPresentationStyle = .custom
         view.backgroundColor = UIColor.clear
-        
     }
     
     func setupViews() {
         view.addSubview(backgroundView)
-//        view.addSubview(alertView)
-//        setupAlertViewContraints()
+        setupBackgroundViewContraints()
+        
+        if self.style == SSAlertControllerStyle.alert {
+            self.contentView = SSAlertView(title: "", message: "", viewCOntroller: self)
+        }else if self.style == SSAlertControllerStyle.action {
+            self.contentView = SSActionView(title: "", message: "", viewController: self)
+            
+            view.addSubview(contentView)
+        }else if self.style == SSAlertControllerStyle.custom {
+            
+        }
+        
+        self.contentView.updateLayouts()
     }
     
-    func setupAlertViewContraints() -> Void {
-        NSLayoutConstraint(item: alertView,
-                           attribute: .leading,
-                           relatedBy: .equal,
-                           toItem: self.view,
-                           attribute: .leading,
-                           multiplier: 1.0,
-                           constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: alertView,
-                           attribute: .bottom,
-                           relatedBy: .equal,
-                           toItem: self.view,
-                           attribute: .bottom,
-                           multiplier: 1.0,
-                           constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: alertView,
-                           attribute: .trailing,
-                           relatedBy: .equal,
-                           toItem: self.view,
-                           attribute: .trailing,
-                           multiplier: 1.0,
-                           constant: 0.0).isActive = true
-        
+    func setupBackgroundViewContraints() -> Void {
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.init(item: backgroundView, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0).isActive = true
+        NSLayoutConstraint.init(item: backgroundView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0).isActive = true
+        NSLayoutConstraint.init(item: backgroundView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
+        NSLayoutConstraint.init(item: backgroundView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
     }
  
-
 }
 
 extension SSAlertController {

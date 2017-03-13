@@ -22,10 +22,11 @@ class ViewController: UIViewController {
         
     }
     func clicked() -> Void {
-        let alertController:SSAlertController = SSAlertController("", message: "")
-        alertController.dismissStyle = .slideUp
-        alertController.presentStyle = .system
+        let alertController:SSAlertController = SSAlertController.init("", message: "", alertStyle: .action)
+        alertController.dismissStyle = .slideLeft
+        alertController.presentStyle = .slideLeft
         present(alertController, animated: true, completion: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
