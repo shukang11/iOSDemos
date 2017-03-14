@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
     }
     func clicked() -> Void {
-        let alertController:SSAlertController = SSAlertController.init("", message: "", alertStyle: .action)
+        let alertController:SSAlertController = SSAlertController.init("title", message: "message", alertStyle: .action)
         alertController.dismissStyle = .slideLeft
         alertController.presentStyle = .slideLeft
         present(alertController, animated: true, completion: nil)

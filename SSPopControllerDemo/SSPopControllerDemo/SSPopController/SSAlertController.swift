@@ -28,8 +28,9 @@ class SSAlertController: UIViewController {
     var dismissStyle:SSAlertDismissAnimatorType = .slideDown
     var presentStyle:SSAlertPresentAnimatorType = .bounce
     
-    var contentView:SSAlertBaseView!
-    
+    public var contentView:SSAlertBaseView = {
+        return SSAlertBaseView()
+    }()
     
     public lazy var backgroundView:UIView = {
         let view:UIView = UIView.init(frame: self.view.bounds)
@@ -45,13 +46,16 @@ class SSAlertController: UIViewController {
         super.viewDidLoad()
         initialize()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     convenience init(_ title:String, message:String, alertStyle:SSAlertControllerStyle) {
         self.init()
         self.style = alertStyle
         
         //如果不添加这个视图，跳转完成之后会变成黑色
-        
+        contentView = SSActionView.init(title: title, message: message)
+        contentView.alertController = self
         /**
          要在初始化的时候就添加视图才行。否则就迟了！
          */
@@ -60,9 +64,6 @@ class SSAlertController: UIViewController {
     //MARK:-
     //MARK:public
     
-    func addAction(action:SSAlertAction) -> Void {
-        contentView.actions.append(action)
-    }
     
     //MARK:-
     //MARK:private
@@ -74,19 +75,11 @@ class SSAlertController: UIViewController {
     
     func setupViews() {
         view.addSubview(backgroundView)
+        view.sendSubview(toBack: backgroundView)
         setupBackgroundViewContraints()
-        
-        if self.style == SSAlertControllerStyle.alert {
-            self.contentView = SSAlertView(title: "", message: "", viewCOntroller: self)
-        }else if self.style == SSAlertControllerStyle.action {
-            self.contentView = SSActionView(title: "", message: "", viewController: self)
-            
-            view.addSubview(contentView)
-        }else if self.style == SSAlertControllerStyle.custom {
-            
-        }
-        
-        self.contentView.updateLayouts()
+        view.addSubview(contentView)
+        view.bringSubview(toFront: contentView)
+        setupContentViewContranints()
     }
     
     func setupBackgroundViewContraints() -> Void {
@@ -96,7 +89,11 @@ class SSAlertController: UIViewController {
         NSLayoutConstraint.init(item: backgroundView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint.init(item: backgroundView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
     }
- 
+    
+    func setupContentViewContranints() -> Void {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.setupSuperViewContranints()
+    }
 }
 
 extension SSAlertController {
@@ -106,8 +103,6 @@ extension SSAlertController {
 }
 
 extension SSAlertController:UIViewControllerTransitioningDelegate {
-   
-    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SSAlertDismissAnimator.init(self.dismissStyle)
     }
