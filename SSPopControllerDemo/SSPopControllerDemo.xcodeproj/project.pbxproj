@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041362EF1E7286C1009BD62A /* SSAlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041362EE1E7286C1009BD62A /* SSAlertAnimator.swift */; };
+		0417C0661E7924BB002D30B9 /* SSAlertSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417C0651E7924BB002D30B9 /* SSAlertSystemView.swift */; };
 		04603EFF1E71215700C8EBFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04603EFE1E71215700C8EBFB /* AppDelegate.swift */; };
 		04603F011E71215700C8EBFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04603F001E71215700C8EBFB /* ViewController.swift */; };
 		04603F041E71215700C8EBFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04603F021E71215700C8EBFB /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		041362EE1E7286C1009BD62A /* SSAlertAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAlertAnimator.swift; sourceTree = "<group>"; };
+		0417C0651E7924BB002D30B9 /* SSAlertSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAlertSystemView.swift; sourceTree = "<group>"; };
 		04603EFB1E71215700C8EBFB /* SSPopControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSPopControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04603EFE1E71215700C8EBFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04603F001E71215700C8EBFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				04A9C49A1E77DEDC0022A507 /* SSAlertBaseView.swift */,
 				04A9C49C1E77E98B0022A507 /* SSActionView.swift */,
+				0417C0651E7924BB002D30B9 /* SSAlertSystemView.swift */,
 			);
 			path = SSAlertViews;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				047F3A501E727A3E00632294 /* SSAlertPresentAnimator.swift in Sources */,
 				047F3A4C1E7273F500632294 /* SSAlertController.swift in Sources */,
+				0417C0661E7924BB002D30B9 /* SSAlertSystemView.swift in Sources */,
 				04603F011E71215700C8EBFB /* ViewController.swift in Sources */,
 				047F3A521E727A5900632294 /* SSAlertDismissAnimator.swift in Sources */,
 				04A9C49B1E77DEDC0022A507 /* SSAlertBaseView.swift in Sources */,

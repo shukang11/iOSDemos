@@ -22,9 +22,19 @@ class ViewController: UIViewController {
         
     }
     func clicked() -> Void {
-        let alertController:SSAlertController = SSAlertController.init("title", message: "message", alertStyle: .action)
-        alertController.dismissStyle = .slideLeft
-        alertController.presentStyle = .slideLeft
+        let alertController:SSAlertController = SSAlertController.init("title", message: "messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessage", alertStyle: .systemAlert)
+        alertController.dismissStyle = .slideDown
+        alertController.presentStyle = .slideUp
+        for _ in 1...3 {
+            let action:SSAlertAction = SSAlertAction.init(title: "button1", style: .Default, handler: {
+                print("button1")
+            })
+            alertController.contentView.addAction(action: action)
+        }
+        let action:SSAlertAction = SSAlertAction.init(title: "button1", style: .Cancel, handler: {
+            print("button1")
+        })
+        alertController.contentView.addAction(action: action)
         present(alertController, animated: true, completion: nil)
         
     }

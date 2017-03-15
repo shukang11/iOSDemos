@@ -1,8 +1,8 @@
 //
-//  SSActionView.swift
+//  SSAlertSystemView.swift
 //  SSPopControllerDemo
 //
-//  Created by Mac on 17/3/14.
+//  Created by Mac on 17/3/15.
 //  Copyright © 2017年 treee. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ private let titleHeight:CGFloat = 30.0
 private let titleLabelFontSize:CGFloat = 15.0
 private let messageLabelFontSize:CGFloat = 12.0
 
-class SSActionView: SSAlertBaseView {
+class SSAlertSystemView: SSAlertBaseView {
     //MARK:-
     //MARK:properties
     var titleLabel:UILabel!
@@ -128,7 +128,7 @@ class SSActionView: SSAlertBaseView {
         self.maxHeight += padding
         
         NSLayoutConstraint.init(item: self, attribute: .centerX, relatedBy: .equal, toItem: alertController?.view, attribute: .centerX, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint.init(item: self, attribute: .bottom, relatedBy: .equal, toItem: alertController?.view, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
+        NSLayoutConstraint.init(item: self, attribute: .centerY, relatedBy: .equal, toItem: alertController?.view, attribute: .centerY, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: ScreenSize.width-2*padding).isActive = true
         NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: self.maxHeight).isActive = true
         
@@ -172,4 +172,3 @@ class SSActionView: SSAlertBaseView {
     }
     
 }
-

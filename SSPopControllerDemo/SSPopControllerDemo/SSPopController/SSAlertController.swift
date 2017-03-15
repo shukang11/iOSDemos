@@ -17,7 +17,7 @@ struct ScreenSize {
 
 enum SSAlertControllerStyle {
     case action
-    case alert
+    case systemAlert
     case custom
 }
 
@@ -48,13 +48,25 @@ class SSAlertController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        contentView.setupSuperViewContranints()
     }
     convenience init(_ title:String, message:String, alertStyle:SSAlertControllerStyle) {
         self.init()
         self.style = alertStyle
         
         //如果不添加这个视图，跳转完成之后会变成黑色
-        contentView = SSActionView.init(title: title, message: message)
+        switch alertStyle {
+        case .action:
+            contentView = SSActionView.init(title: title, message: message)
+            break
+        case .systemAlert:
+            contentView = SSAlertSystemView.init(title: title, message: message)
+            break
+        default:
+            contentView = SSAlertBaseView.init(title: title, message: message)
+            break
+        }
+        
         contentView.alertController = self
         /**
          要在初始化的时候就添加视图才行。否则就迟了！
@@ -92,7 +104,6 @@ class SSAlertController: UIViewController {
     
     func setupContentViewContranints() -> Void {
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.setupSuperViewContranints()
     }
 }
 
