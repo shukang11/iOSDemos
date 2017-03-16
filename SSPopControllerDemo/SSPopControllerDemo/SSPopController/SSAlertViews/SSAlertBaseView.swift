@@ -61,9 +61,17 @@ class SSAlertBaseView: UIView {
     }
     
     func setupSuperViewContranints() -> Void {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.translatesAutoresizingMaskIntoConstraints = false   
     }
+
+    func buttonClicked(_ sender:UIButton) -> Void {
+        assert(sender.tag <= actions.count, "can't find action in actions")
+        let action:SSAlertAction = actions[sender.tag]
+        self.alertController?.dismiss(animated: true, completion: { 
+            action.handler?()
+        })
+    }
+    
     
     //MARK:-
     //MARK:helper

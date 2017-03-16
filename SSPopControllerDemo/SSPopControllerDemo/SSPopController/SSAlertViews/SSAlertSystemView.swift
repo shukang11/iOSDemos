@@ -12,7 +12,7 @@ import UIKit
 private let padding:CGFloat = 15.0
 private let buttonHeight:CGFloat = 50.0
 private let titleHeight:CGFloat = 30.0
-private let titleLabelFontSize:CGFloat = 15.0
+private let titleLabelFontSize:CGFloat = 17.0
 private let messageLabelFontSize:CGFloat = 12.0
 
 class SSAlertSystemView: SSAlertBaseView {
@@ -36,6 +36,7 @@ class SSAlertSystemView: SSAlertBaseView {
             label?.backgroundColor = UIColor.white
             label?.numberOfLines = 0
         }
+        titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.systemFont(ofSize: titleLabelFontSize)
         messageLabel.font = UIFont.systemFont(ofSize: messageLabelFontSize)
         addSubview(titleLabel)
@@ -44,7 +45,6 @@ class SSAlertSystemView: SSAlertBaseView {
     
     override func addAction(action: SSAlertAction) {
         super.addAction(action: action)
-        
     }
     
     override func updateConstraints() {
@@ -63,7 +63,7 @@ class SSAlertSystemView: SSAlertBaseView {
                                toItem: self,
                                attribute: .leading,
                                multiplier: 1.0,
-                               constant: 0.0).isActive = true
+                               constant: padding).isActive = true
             
             NSLayoutConstraint(item: titleLabel,
                                attribute: .top,
@@ -79,10 +79,11 @@ class SSAlertSystemView: SSAlertBaseView {
                                toItem: self,
                                attribute: .trailing,
                                multiplier: 1.0,
-                               constant: 0.0).isActive = true
-            let size = title.getSize(togolFont: UIFont.systemFont(ofSize: titleLabelFontSize), togolSize: CGSize.init(width: self.frame.size.width, height: CGFloat.greatestFiniteMagnitude),breakMode: .byWordWrapping)
+                               constant: -padding).isActive = true
+            let size = title.getSize(togolFont: UIFont.systemFont(ofSize: titleLabelFontSize), togolSize: CGSize.init(width: self.frame.size.width-2*padding, height: CGFloat.greatestFiniteMagnitude),breakMode: .byWordWrapping)
             NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: size.height).isActive = true
             self.maxHeight += size.height
+            self.maxHeight += padding
         }
         if message != "" {
             messageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,15 +93,15 @@ class SSAlertSystemView: SSAlertBaseView {
                                toItem: self,
                                attribute: .leading,
                                multiplier: 1.0,
-                               constant: 0.0).isActive = true
+                               constant: padding).isActive = true
             
             NSLayoutConstraint(item: messageLabel,
                                attribute: .top,
                                relatedBy: .equal,
-                               toItem: titleLabel,
-                               attribute: .bottom,
+                               toItem: self,
+                               attribute: .top,
                                multiplier: 1.0,
-                               constant: 0.0).isActive = true
+                               constant: self.maxHeight).isActive = true
             
             NSLayoutConstraint(item: messageLabel,
                                attribute: .trailing,
@@ -108,11 +109,11 @@ class SSAlertSystemView: SSAlertBaseView {
                                toItem: self,
                                attribute: .trailing,
                                multiplier: 1.0,
-                               constant: 0.0).isActive = true
+                               constant: -padding).isActive = true
             let size = message.getSize(togolFont: UIFont.systemFont(ofSize: messageLabelFontSize), togolSize: CGSize.init(width: ScreenSize.width-2*padding, height: ScreenSize.height), breakMode: .byWordWrapping)
             NSLayoutConstraint(item: messageLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: size.height).isActive = true
-            print("\(size.height)\(size.width)")
             self.maxHeight += size.height
+            self.maxHeight += padding
         }
         
         buttons?.removeAll()
@@ -139,33 +140,42 @@ class SSAlertSystemView: SSAlertBaseView {
     //MARK:-
     //MARK:helper
     func appendDefaultButton(action:SSAlertAction) -> Void {
+        let index:Int = actions.index(of: action)!
         let appended:UIButton = UIButton.init(type: .custom)
         appended.frame = CGRect.init(x: 0.0, y: self.maxHeight, width: ScreenSize.width-2*padding, height: buttonHeight)
         appended.setTitle(action.title, for: .normal)
         appended.backgroundColor = UIColor.white
         appended.setTitleColor(UIColor.black, for: .normal)
+        appended.tag = index
+        appended.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         addSubview(appended)
         buttons?.append(appended)
         self.maxHeight += buttonHeight
     }
     
     func appendDestructiveButton(action:SSAlertAction) -> Void {
+        let index:Int = actions.index(of: action)!
         let appended:UIButton = UIButton.init(type: .custom)
         appended.frame = CGRect.init(x: 0.0, y: self.maxHeight, width: ScreenSize.width-2*padding, height: buttonHeight)
         appended.setTitle(action.title, for: .normal)
         appended.backgroundColor = UIColor.white
         appended.setTitleColor(UIColor.black, for: .normal)
+        appended.tag = index
+        appended.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         addSubview(appended)
         buttons?.append(appended)
         self.maxHeight += buttonHeight
     }
     
     func appendCancelButton(action:SSAlertAction) -> Void {
+        let index:Int = actions.index(of: action)!
         let appended:UIButton = UIButton.init(type: .custom)
         appended.frame = CGRect.init(x: 0.0, y: self.maxHeight, width: ScreenSize.width-2*padding, height: buttonHeight)
         appended.setTitle(action.title, for: .normal)
         appended.backgroundColor = UIColor.white
         appended.setTitleColor(UIColor.red, for: .normal)
+        appended.tag = index
+        appended.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         addSubview(appended)
         buttons?.append(appended)
         self.maxHeight += buttonHeight

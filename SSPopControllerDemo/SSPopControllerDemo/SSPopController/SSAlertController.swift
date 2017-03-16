@@ -32,11 +32,37 @@ class SSAlertController: UIViewController {
         return SSAlertBaseView()
     }()
     
+    public var canTapToDismiss:Bool {
+        set {
+            //UNDO:set can tap back
+            print("\(newValue)")
+            if newValue == false {
+                backgroundView.removeGestureRecognizer(gesture)
+            }else {
+                backgroundView.addGestureRecognizer(gesture)
+            }
+        }
+        get {
+            if let gestures:[UIGestureRecognizer] = backgroundView.gestureRecognizers {
+                for ges in gestures {
+                    if ges.isEqual(gesture) {
+                        return true
+                    }
+                }
+                return false
+            }
+            return false
+        }
+    }
+    
+    private lazy var gesture:UITapGestureRecognizer = {
+        let gesture:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapToDismiss(_:)))
+        return gesture
+    }()
     public lazy var backgroundView:UIView = {
         let view:UIView = UIView.init(frame: self.view.bounds)
         view.backgroundColor = UIColor.black
-        let gesture:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapToDismiss(_:)))
-        view.addGestureRecognizer(gesture)
+        view.addGestureRecognizer(self.gesture)
         return view
     }()
     
@@ -58,9 +84,15 @@ class SSAlertController: UIViewController {
         switch alertStyle {
         case .action:
             contentView = SSActionView.init(title: title, message: message)
+            self.presentStyle = .slideUp
+            self.dismissStyle = .slideDown
+            self.canTapToDismiss = true
             break
         case .systemAlert:
             contentView = SSAlertSystemView.init(title: title, message: message)
+            self.presentStyle = .bounce
+            self.dismissStyle = .fadeOut
+            self.canTapToDismiss = false
             break
         default:
             contentView = SSAlertBaseView.init(title: title, message: message)
