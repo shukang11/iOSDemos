@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4ED8A530D2BD12A9D91AA4612D95761DC0BE549D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8076AEB109CE7E2B0041937CBD6B3EF50F7E9A3B" : 9223372036854775807,
+    "4ED8A530D2BD12A9D91AA4612D95761DC0BE549D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0BA68055-A8E7-4809-AB74-DEA284D0FAB0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8076AEB109CE7E2B0041937CBD6B3EF50F7E9A3B" : "",
+    "4ED8A530D2BD12A9D91AA4612D95761DC0BE549D" : "iOSTestDemos\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "01-CoreText绘制文字",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ZYCoreText\/01-CoreText绘制文字.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jiazifa\/iOSTestDemos.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4ED8A530D2BD12A9D91AA4612D95761DC0BE549D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jiazifa\/SSOCKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8076AEB109CE7E2B0041937CBD6B3EF50F7E9A3B"
+    }
+  ]
+}
