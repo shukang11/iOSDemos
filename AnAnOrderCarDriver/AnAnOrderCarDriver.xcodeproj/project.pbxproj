@@ -34,12 +34,6 @@
 		0422F8511E7B8991007D90F5 /* SSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8251E7B8991007D90F5 /* SSView.swift */; };
 		0422F8521E7B8991007D90F5 /* BLinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8281E7B8991007D90F5 /* BLinCardView.swift */; };
 		0422F8531E7B8991007D90F5 /* BLinMenuScro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82A1E7B8991007D90F5 /* BLinMenuScro.swift */; };
-		0422F8541E7B8991007D90F5 /* BLinFire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82C1E7B8991007D90F5 /* BLinFire.swift */; };
-		0422F8551E7B8991007D90F5 /* BLinProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82D1E7B8991007D90F5 /* BLinProtocols.swift */; };
-		0422F8561E7B8991007D90F5 /* ParamertersEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82E1E7B8991007D90F5 /* ParamertersEncoding.swift */; };
-		0422F8571E7B8991007D90F5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82F1E7B8991007D90F5 /* Request.swift */; };
-		0422F8581E7B8991007D90F5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8301E7B8991007D90F5 /* SessionManager.swift */; };
-		0422F8591E7B8991007D90F5 /* SSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8311E7B8991007D90F5 /* SSError.swift */; };
 		0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8331E7B8991007D90F5 /* SSSecurity.swift */; };
 		0422F85B1E7B8991007D90F5 /* SSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8351E7B8991007D90F5 /* SSCache.swift */; };
 		0422F85C1E7B8991007D90F5 /* SSConventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8371E7B8991007D90F5 /* SSConventManager.swift */; };
@@ -49,6 +43,7 @@
 		0422F8601E7B8991007D90F5 /* SSImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83D1E7B8991007D90F5 /* SSImageManager.swift */; };
 		0422F8611E7B8991007D90F5 /* SSURLDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83E1E7B8991007D90F5 /* SSURLDownload.swift */; };
 		0422F8621E7B8991007D90F5 /* SSWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83F1E7B8991007D90F5 /* SSWebImageView.swift */; };
+		0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447D8E81E8271F200F8E051 /* HttpManager.swift */; };
 		650F5BBF476990E5AD7D8CF6 /* Pods_AnAnOrderCarDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE53906623E1DF24500B666D /* Pods_AnAnOrderCarDriver.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,12 +77,6 @@
 		0422F8251E7B8991007D90F5 /* SSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSView.swift; sourceTree = "<group>"; };
 		0422F8281E7B8991007D90F5 /* BLinCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLinCardView.swift; sourceTree = "<group>"; };
 		0422F82A1E7B8991007D90F5 /* BLinMenuScro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLinMenuScro.swift; sourceTree = "<group>"; };
-		0422F82C1E7B8991007D90F5 /* BLinFire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLinFire.swift; sourceTree = "<group>"; };
-		0422F82D1E7B8991007D90F5 /* BLinProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLinProtocols.swift; sourceTree = "<group>"; };
-		0422F82E1E7B8991007D90F5 /* ParamertersEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamertersEncoding.swift; sourceTree = "<group>"; };
-		0422F82F1E7B8991007D90F5 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		0422F8301E7B8991007D90F5 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		0422F8311E7B8991007D90F5 /* SSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSError.swift; sourceTree = "<group>"; };
 		0422F8331E7B8991007D90F5 /* SSSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSecurity.swift; sourceTree = "<group>"; };
 		0422F8351E7B8991007D90F5 /* SSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSCache.swift; sourceTree = "<group>"; };
 		0422F8371E7B8991007D90F5 /* SSConventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSConventManager.swift; sourceTree = "<group>"; };
@@ -98,6 +87,7 @@
 		0422F83E1E7B8991007D90F5 /* SSURLDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSURLDownload.swift; sourceTree = "<group>"; };
 		0422F83F1E7B8991007D90F5 /* SSWebImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSWebImageView.swift; sourceTree = "<group>"; };
 		0422F8631E7B8A39007D90F5 /* AnAnOrderCarDriver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnAnOrderCarDriver-Bridging-Header.h"; sourceTree = "<group>"; };
+		0447D8E81E8271F200F8E051 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		1B0C29979B105B6D26F38E16 /* Pods-AnAnOrderCarDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnAnOrderCarDriver.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnAnOrderCarDriver/Pods-AnAnOrderCarDriver.release.xcconfig"; sourceTree = "<group>"; };
 		71E3BA14F53CA7666441D3F4 /* Pods-AnAnOrderCarDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnAnOrderCarDriver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnAnOrderCarDriver/Pods-AnAnOrderCarDriver.debug.xcconfig"; sourceTree = "<group>"; };
 		FE53906623E1DF24500B666D /* Pods_AnAnOrderCarDriver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnAnOrderCarDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +199,7 @@
 			children = (
 				0422F80B1E7B892F007D90F5 /* HttpMessage.swift */,
 				0422F80D1E7B893E007D90F5 /* HttpConstant.swift */,
+				0447D8E81E8271F200F8E051 /* HttpManager.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -226,7 +217,6 @@
 			children = (
 				0422F8101E7B8991007D90F5 /* Base */,
 				0422F8261E7B8991007D90F5 /* Interface */,
-				0422F82B1E7B8991007D90F5 /* NetWork */,
 				0422F8321E7B8991007D90F5 /* security */,
 				0422F8341E7B8991007D90F5 /* SSCache */,
 				0422F8361E7B8991007D90F5 /* SSConventHelper */,
@@ -309,19 +299,6 @@
 				0422F82A1E7B8991007D90F5 /* BLinMenuScro.swift */,
 			);
 			path = BLinMenuScro;
-			sourceTree = "<group>";
-		};
-		0422F82B1E7B8991007D90F5 /* NetWork */ = {
-			isa = PBXGroup;
-			children = (
-				0422F82C1E7B8991007D90F5 /* BLinFire.swift */,
-				0422F82D1E7B8991007D90F5 /* BLinProtocols.swift */,
-				0422F82E1E7B8991007D90F5 /* ParamertersEncoding.swift */,
-				0422F82F1E7B8991007D90F5 /* Request.swift */,
-				0422F8301E7B8991007D90F5 /* SessionManager.swift */,
-				0422F8311E7B8991007D90F5 /* SSError.swift */,
-			);
-			path = NetWork;
 			sourceTree = "<group>";
 		};
 		0422F8321E7B8991007D90F5 /* security */ = {
@@ -518,7 +495,6 @@
 				0422F84D1E7B8991007D90F5 /* SSDevice.swift in Sources */,
 				0422F8441E7B8991007D90F5 /* SSDictionary.swift in Sources */,
 				0422F8461E7B8991007D90F5 /* SSNumber.swift in Sources */,
-				0422F8581E7B8991007D90F5 /* SessionManager.swift in Sources */,
 				0422F8621E7B8991007D90F5 /* SSWebImageView.swift in Sources */,
 				0422F8601E7B8991007D90F5 /* SSImageManager.swift in Sources */,
 				0422F8471E7B8991007D90F5 /* SSPath.swift in Sources */,
@@ -535,18 +511,14 @@
 				0422F85E1E7B8991007D90F5 /* SSKIt.swift in Sources */,
 				0422F8451E7B8991007D90F5 /* SSEncryption.swift in Sources */,
 				0422F8491E7B8991007D90F5 /* SSApplication.swift in Sources */,
-				0422F8561E7B8991007D90F5 /* ParamertersEncoding.swift in Sources */,
 				0422F8431E7B8991007D90F5 /* SSDate.swift in Sources */,
 				0422F85F1E7B8991007D90F5 /* SSCacheManager.swift in Sources */,
-				0422F8551E7B8991007D90F5 /* BLinProtocols.swift in Sources */,
 				0422F7F21E7B8732007D90F5 /* ViewController.swift in Sources */,
-				0422F8591E7B8991007D90F5 /* SSError.swift in Sources */,
+				0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */,
 				0422F84A1E7B8991007D90F5 /* SSButton.swift in Sources */,
 				0422F7F01E7B8732007D90F5 /* AppDelegate.swift in Sources */,
-				0422F8541E7B8991007D90F5 /* BLinFire.swift in Sources */,
 				0422F84B1E7B8991007D90F5 /* SSColor.swift in Sources */,
 				0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */,
-				0422F8571E7B8991007D90F5 /* Request.swift in Sources */,
 				0422F80E1E7B893E007D90F5 /* HttpConstant.swift in Sources */,
 				0422F8421E7B8991007D90F5 /* SSData.swift in Sources */,
 			);

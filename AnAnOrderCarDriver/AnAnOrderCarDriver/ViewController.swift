@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         super.viewDidLoad()
         self.createMainUI()
+        print("\(CC_NEED_LOGIN_QUEUE())")
+        print("\(kHttpRequest_Login)")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
