@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DGElasticPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Log.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AnAnOrderCarDriver.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>070374204E491EF7E794313D14C6950B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>115824B7CB2E76E5ACB836A251E79404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6952BBEE3CA6DBBFB972838FD189F69</key>
+		<key>B7C99010DEE22AAAB76BCF07F093651A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C738B38F8C4FB84614434FD8F9AF0C19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D08B8A83DDA21C7FA2D146635CB4C3D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -42,8 +42,15 @@ public func CC_NEED_COOKIE_QUEUE() -> [E_CMDCODE] {
 }
 
 
-let kHttp_BaseURL = ""
-let kHttp_API_URL = "userApi/"//中间的url地址
+//MARK: cookies
+let HEADERS       = ["X-Requested-With": "XMLHttpRequest", "User-Agent": "transportClient"]
+
+let kHost_baseURL = ""
+let kHost_Truck_Base_UTL = "http://stu.ahjtpx.com/"//客货运输
+let hHost_Danger_Base_URL = "http://stu.ahjtpx.com/"//危险品
+let kHost_Taxi_Base_URL = "http://cztu.ahjtpx.com/"//出租车
+let kHost_API_URL = "userApi/"//中间的url地址
+
 
 let kHttpRequest_Login                          =   "login.do"//学员登录
 let kHttpRequest_UpdPwd                         =   "updPwd.do"//修改密码
@@ -64,6 +71,7 @@ let kHttpRequest_appUpdate                      =   "appUpdate.do"//手机端比
 let kHttpRequest_addSuggestion                  =   "addSuggestion.do"//添加建议或者意见
 let kHttpRequest_findOegtNotification           =   "findOegtNotification.do"//获得有效的通知
 let kHttpRequest_CheckStudentLoginState         =   "checkStudentLoginState.do"//检查当前设备是不是活动设备
+
 
 let kHttp_Notice_ReqesutFailed = "网络连接失败，请稍后重试"
 let kHttp_Notice_LoadingText = "加载中..."

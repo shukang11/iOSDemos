@@ -54,7 +54,6 @@ class HttpMessage : NSObject {
     //添加的数值
     var additionValues : NSMutableDictionary = NSMutableDictionary.init()
     
-    
     init(url:String, postDic:NSDictionary, cmdCode:E_CMDCODE) {
         super.init()
         self.requestUrl = url
