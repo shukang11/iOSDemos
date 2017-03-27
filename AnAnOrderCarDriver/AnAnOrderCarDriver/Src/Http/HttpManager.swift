@@ -21,14 +21,20 @@ class HttpManager: NSObject {
     /// - Parameter url: 后缀的地址
     /// - Returns: 返回一个完整的url地址
     class func getUrl(url:String) -> String {
-        return ""
+        return kHost_Truck_Base_UTL + kHost_API_URL + url
     }
     
     /// 根据用户的请求字典，添加用户的辨识信息
     ///
     /// - Parameter sourceDic: 源字典
-    class func getParams(sourceDic : [String:Any]) -> [String : Any] {
-        return sourceDic
+    class func getParams(sourceDic : [String:Any], cmdCode:E_CMDCODE) -> [String : Any] {
+        guard CC_NEED_LOGIN_QUEUE().contains(cmdCode) else {
+            return sourceDic
+        }
+        var temsourceDic: [String:Any] = sourceDic
+        
+        temsourceDic["token"] = Config.current.getUserDictionary().object(forKey: "token")
+        return temsourceDic
     }
     
     /// 请求地址，包含了请求所有状态的回调
@@ -91,6 +97,7 @@ class HttpManager: NSObject {
     class func request(_ url:String, method:HTTPMethod, params:[String:Any], successBlock:SuccessBlock?, requestFailBlock:RequestFailBlock?, connectFailBlock:ConnectFailBlock?) -> Void {
         
         Alamofire.request(url, method: method, parameters: params, headers: nil).responseJSON { (response) in
+            print("\(url)->\(params)")
             if response.result.isFailure {
                 if (connectFailBlock != nil) {
                     connectFailBlock!(kHttp_Notice_ReqesutFailed as AnyObject)
@@ -98,7 +105,7 @@ class HttpManager: NSObject {
                 }
             }else {
                 let jsonData = JSON.init(data: response.data!)
-                if stateSuccess(jsonData["status"].string!) {
+                if stateSuccess(jsonData["state"].string!) {
                     if (successBlock != nil) {
                         successBlock!(jsonData as AnyObject)
                         return

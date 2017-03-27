@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
-class CommonViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CommonViewController: UIViewController {
     //MARK:-
     //MARK:properties
+    let tableView:UITableView = {
+        return UITableView.tableView()
+    }()
     
     /// 设置页面的标题
     override var title: String? {
@@ -28,14 +31,6 @@ class CommonViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
-    var tableView: UITableView = {
-        return UITableView.tableView()
-    }()
-    
-    var groupTableView: UITableView = {
-        return UITableView.groupTableView()
-    }()
-    
     //MARK:-
     //MARK:lifeCycle
     
@@ -47,18 +42,8 @@ class CommonViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     //MARK:-
     //MARK:delegate&dataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init()
-        return cell
-    }
     //MARK:-
     //MARK:publicMethod
     public func controller() -> CommonViewController {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Log
 struct APPConstant {
     
     //MARK:Singlton
@@ -46,3 +47,13 @@ public let kCOlor_Green = "20d375"
 
 public let kColor_Gray = "3c3c3c"
 public let kColor_Back_Gray = "#EFEFEF"
+
+
+
+//MARK:-
+//MARK:日志框架
+public func DLog<T>(_ message:T, file: String = #file, method: String = #function, line: Int = #line) {
+    #if DEBUG
+        print("\((file as NSString).lastPathComponent), \(method)[\(line)],: \(message)")
+    #endif
+}

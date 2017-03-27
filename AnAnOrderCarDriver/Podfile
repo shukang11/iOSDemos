@@ -14,4 +14,7 @@ pod 'DGElasticPullToRefresh'#下拉刷新
 
 pod 'Log'#日志框架
 
+pod 'Kingfisher' #图片加载框架
+
+pod 'IQKeyboardManager'
 end

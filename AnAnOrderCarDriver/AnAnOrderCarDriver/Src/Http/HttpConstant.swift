@@ -29,12 +29,25 @@ public enum E_CMDCODE:UInt {
     case CC_AddSuggestion                  =   0x0021//添加建议或者意见
     case CC_FindOegtNotification           =   0x0022//获得有效的通知
     case CC_CheckStudentLoginState         =   0x0023//检查当前设备是不是活动设备
-
+    
 }
-//需要验证登录信息的接口
+//需要验证登录信息的接口(需要token)
 public func CC_NEED_LOGIN_QUEUE() -> [E_CMDCODE] {
-    return [E_CMDCODE.CC_Login,
-            E_CMDCODE.CC_UpdPwd]
+    return [.CC_UpdPwd,
+            .CC_LogOut,
+            .CC_StuInfo,
+            .CC_GetAllBigClass,
+            .CC_GetContinueStudyByBigId,
+            .CC_GetContinueStudy,
+            .CC_GetStartPlayVideo,
+            .CC_GetStopPlayVideo,
+            .CC_GetTiMuById,
+            .CC_GetStuJd,
+            .CC_AddYanZhengPhoto,
+            .CC_GetMobileNum,
+            .CC_CheckMobileNum,
+            .CC_AddSuggestion,
+            .CC_CheckStudentLoginState]
 }
 //需要重写cookie的接口
 public func CC_NEED_COOKIE_QUEUE() -> [E_CMDCODE] {

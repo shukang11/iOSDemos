@@ -9,6 +9,21 @@
 import Foundation
 import UIKit
 
+/**
+ simg       学员头像图片地址
+ sid        学号
+ name       姓名
+ idcard     身份证号
+ sex        性别
+ age        年龄
+ mobile     手机
+ adr        住址
+ token      凭证
+ xueshi     学时
+ isdate     时间参数?
+ */
+private let dic_token = "token"//token
+
 final class Config: NSObject {
     //MARK:-
     //MARK:properties
@@ -25,7 +40,8 @@ final class Config: NSObject {
     //MARK:lifeCycle
     private override init() {
         super.init()
-        let dictionary = getUserDictionary()
+        let dictionary:NSDictionary = getUserDictionary()
+        print("\(dictionary)")
     }
     
     //MARK:-
@@ -37,13 +53,22 @@ final class Config: NSObject {
         }
         return false
     }
-    
-    private func getUserDictionary() -> NSDictionary {
+    //MARK:-
+    //MARK:public
+    public func getUserDictionary() -> NSDictionary {
         let path:String = configPath()
         guard let dic:NSDictionary = NSDictionary.init(contentsOfFile: path) else {
             return NSDictionary.init()
         }
         return dic
+    }
+    
+    public func getToken() -> String {
+        let dic: NSDictionary = getUserDictionary()
+        guard let token:String = dic.object(forKey: dic_token) as! String? else {
+            return ""
+        }
+        return token
     }
     //MARK:-
     //MARK:hepler

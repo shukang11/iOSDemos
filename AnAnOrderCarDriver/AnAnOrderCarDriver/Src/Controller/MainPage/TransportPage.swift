@@ -24,6 +24,8 @@ class TransportPage: CommonViewController {
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
     func createMainUI() {
+        self.tableView.frame = CGRect.init(x: 0.0, y: 64.0, width: self.view.width, height: self.view.height - 64.0)
         
+        view.addSubview(self.tableView)
     }
 }

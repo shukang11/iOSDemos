@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Log
+import NVActivityIndicatorView
+
 class HomePage: CommonViewController {
     //MARK:property属性
     //MARK:system系统
@@ -24,6 +27,16 @@ class HomePage: CommonViewController {
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
     func createMainUI() {
-        
+        self.showDefaultHub(self.view, message: kHttp_Notice_LoadingText)
+        HttpManager.postForResult(HttpManager.getUrl(url: kHttpRequest_findOegtNotification), params: HttpManager.getParams(sourceDic: [:], cmdCode: .CC_FindOegtNotification), successBlock: { (response) in
+            self.hidHub()
+            DLog("\(response)")
+        }, requestFailBlock: { (fail) in
+            self.hidHub()
+            DLog(fail)
+        }) { (connectFail) in
+            self.hidHub()
+            DLog(kHttp_Notice_ReqesutFailed)
+        }
     }
 }

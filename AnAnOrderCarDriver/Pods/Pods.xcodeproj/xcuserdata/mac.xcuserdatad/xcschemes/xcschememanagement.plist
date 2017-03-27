@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Log.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,22 +57,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36B0463235F72C04604C5B181606334D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37C76CD246D637B8E4C586284A0D96B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38208139E79407B0197C26BEC0B6BA11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B7C99010DEE22AAAB76BCF07F093651A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C738B38F8C4FB84614434FD8F9AF0C19</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D08B8A83DDA21C7FA2D146635CB4C3D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
