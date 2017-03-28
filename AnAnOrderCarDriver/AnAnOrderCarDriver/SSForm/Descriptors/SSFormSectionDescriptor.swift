@@ -15,7 +15,7 @@ class SSFormSectionDescriptor: NSObject {
     //MARK:-
     //MARK:property
     var title:String = ""
-    var height:CGFloat = 30.0
+    var height:CGFloat = 0.0
     private dynamic var formRows:[SSFormRowDescriptor] = []
     public var formRowsCount:Int {
         return self.formRows.count

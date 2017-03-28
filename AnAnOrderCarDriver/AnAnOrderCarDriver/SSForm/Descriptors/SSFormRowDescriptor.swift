@@ -19,9 +19,11 @@ class SSFormRowDescriptor: NSObject {
     var cellConfig:[String:AnyObject]?
     var sectionDescriptor:SSFormSectionDescriptor?
     var delegate:AnyObject?
+    var style: UITableViewCellStyle = .default
     
     
     init(_ height:CGFloat,cellClassString:String, value:AnyObject) {
+        assert(cellClassString.length > 0, "cellClassString cant be nil")
         self.height = height
         self.cellClassString = cellClassString
         self.value = value
@@ -30,7 +32,7 @@ class SSFormRowDescriptor: NSObject {
     }
     //MARK:-
     //MARK:hepler
-    public func makeCell(_ formViewController: SSFormViewController) -> SSFormBaseCell {
+    public func makeCell() -> SSFormBaseCell {
         if self.cell == nil {
             let className = self.cellClassString.getClassString()
             let cls:AnyClass = NSClassFromString(className)!

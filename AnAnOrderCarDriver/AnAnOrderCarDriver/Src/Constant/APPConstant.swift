@@ -51,9 +51,9 @@ public let kColor_Back_Gray = "#EFEFEF"
 
 
 //MARK:-
-//MARK:日志框架
+//MARK:日志模块
 public func DLog<T>(_ message:T, file: String = #file, method: String = #function, line: Int = #line) {
     #if DEBUG
-        print("\((file as NSString).lastPathComponent), \(method)[\(line)],: \(message)")
+        print("\((file as NSString).lastPathComponent), \(method)[\(line)]---> \(message)")
     #endif
 }

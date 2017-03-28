@@ -16,6 +16,7 @@ class CommonViewController: UIViewController {
         return UITableView.tableView()
     }()
     
+    var formView: SSFormTableView!
     /// 设置页面的标题
     override var title: String? {
         didSet{

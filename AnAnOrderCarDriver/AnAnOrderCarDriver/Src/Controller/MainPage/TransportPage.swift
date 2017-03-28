@@ -24,8 +24,16 @@ class TransportPage: CommonViewController {
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
     func createMainUI() {
-        self.tableView.frame = CGRect.init(x: 0.0, y: 64.0, width: self.view.width, height: self.view.height - 64.0)
+        formView = SSFormTableView.init(frame: CGRect.init(x: 0.0, y: 64.0, width: view.frame.size.width, height: view.frame.size.height - 64.0))
+        view.addSubview(formView)
+        let form = formView.form
         
-        view.addSubview(self.tableView)
+        let section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("")
+        form?.addSection(section)
+        for _ in 1...10 {
+            let row :SSFormRowDescriptor = SSFormRowDescriptor.init(40.0, cellClassString: "SSFormSystemTextCell", value: ["title":"name","detailLabel":"detialLabel"] as AnyObject)
+            section.add(row)
+        }
     }
+    
 }

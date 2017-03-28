@@ -1,49 +1,55 @@
 //
-//  SSFormViewController.swift
+//  SSFormTableView.swift
 //  SSFormSwiftDemo
 //
-//  Created by Mac on 17/3/7.
+//  Created by Mac on 17/3/28.
 //  Copyright © 2017年 treee. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SSFormViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SSFormDescriptorDelegate,SSFormViewControllerDelegate {
+
+/// 便于集成到工程中，降低耦合
+class SSFormTableView: UIView,UITableViewDataSource,UITableViewDelegate,SSFormDescriptorDelegate,SSFormViewControllerDelegate {
+    
     //MARK:-
     //MARK:properties
-    var form:SSFormDescriptor = {
-        let form = SSFormDescriptor.init()
-        return form
-    }()
+    var form:SSFormDescriptor! {
+        didSet {
+            form.delegate = self
+        }
+    }
+    
     var tableView:UITableView = {
         let cusTableView = UITableView.init(frame: CGRect.zero, style: .plain)
         return cusTableView
     }()
+    
     var tableViewStyle:UITableViewStyle!
     
     //MARK:-
     //MARK:lifeCycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        self.tableView.frame = self.view.bounds
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let form:SSFormDescriptor = SSFormDescriptor.init("表格")
+        self.form = form
+        addSubview(self.tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = bounds
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.form.delegate = self;
-        self.title = self.form.title
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     //MARK:-
     //MARK:delegate&dataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.form.formSectionCount != 0 {
-            return self.form.formSectionCount
+        if form.formSectionCount != 0 {
+            return form.formSectionCount
         }
         return 1
     }
@@ -87,6 +93,7 @@ class SSFormViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
     //MARK:-
     //MARK:formDescriptorDelegate
     func formRowHasBeenAdded(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
