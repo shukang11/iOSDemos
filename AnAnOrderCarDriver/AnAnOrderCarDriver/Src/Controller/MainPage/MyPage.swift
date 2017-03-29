@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 class MyPage: CommonViewController {
     //MARK:property属性
+    var mydelegate:Mydelegate = {
+        return Mydelegate()
+    }()
     //MARK:system系统
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.white
@@ -24,6 +27,43 @@ class MyPage: CommonViewController {
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
     func createMainUI() {
+        view.addSubview(tableView)
+        tableView.frame = CGRect.init(x: 0.0, y: 64.0, width: view.width, height: view.height - 64.0)
+        tableView.delegate = mydelegate
+        tableView.dataSource = mydelegate
+        for index in 1...100 {
+            mydelegate.models.append("\(index)行")
+        }
+    }
+}
+class Mydelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
+    //MARK:-
+    //MARK:properties
+    var models:[String] = []
+    //MARK:-
+    //MARK:delegate&dataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
+        }
+        cell?.textLabel?.text = "\(indexPath)-->\(models[indexPath.row])"
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }

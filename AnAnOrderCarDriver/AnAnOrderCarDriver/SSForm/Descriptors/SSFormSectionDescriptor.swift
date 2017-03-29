@@ -22,6 +22,9 @@ class SSFormSectionDescriptor: NSObject {
     }
     var formDescriptor:SSFormDescriptor?
     
+    
+    var insertAnimation:UITableViewRowAnimation = .automatic
+    var deleteAnimation:UITableViewRowAnimation = .automatic
     //MARK:-
     //MARK:lifeCycle
     

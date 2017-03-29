@@ -10,43 +10,65 @@ import Foundation
 import UIKit
 
 private var myContext = 0
+typealias OnClickedBlock = (_ formRow:SSFormRowDescriptor) -> Void
 
 class SSFormRowDescriptor: NSObject {
+    
     dynamic var value:AnyObject!
+    
     var cellClassString:String = ""
+    
     var height : CGFloat
+    
     var cell:SSFormBaseCell?
+    
+    var cellClass:SSFormBaseCell.Type
+    
     var cellConfig:[String:AnyObject]?
+    
     var sectionDescriptor:SSFormSectionDescriptor?
+    
     var delegate:AnyObject?
-    var style: UITableViewCellStyle = .default
     
+    var canEditRow:Bool = false
     
-    init(_ height:CGFloat,cellClassString:String, value:AnyObject) {
-        assert(cellClassString.length > 0, "cellClassString cant be nil")
+    var onClickedBlock:OnClickedBlock?
+    
+    var insertAnimation:UITableViewRowAnimation = .automatic
+    
+    var deleteAnimation:UITableViewRowAnimation = .automatic
+    
+    init(_ height:CGFloat,cellClass:SSFormBaseCell.Type, value:AnyObject) {
         self.height = height
-        self.cellClassString = cellClassString
+        self.cellClass = cellClass
         self.value = value
         super.init()
         self.addObserver(self, forKeyPath: "value", options: [.new,.old], context: &myContext)
     }
     //MARK:-
+    //MARK:public
+    public func removeFromSection() -> Void {
+        self.sectionDescriptor?.removeRow(self)
+    }
+    
+    public func addToSection(_ toSection: SSFormSectionDescriptor) -> Void {
+        toSection.add(self)
+    }
+    
+    //MARK:-
     //MARK:hepler
     public func makeCell() -> SSFormBaseCell {
         if self.cell == nil {
-            let className = self.cellClassString.getClassString()
-            let cls:AnyClass = NSClassFromString(className)!
-            assert(cls.isSubclass(of: SSFormBaseCell.self), "class must be the subClass of SSFormBaseCell")
-            if let cellClass = cls as? SSFormBaseCell.Type {
-                
-                let obj:SSFormBaseCell = cellClass.init()
-                self.cell = obj
-                self.cell?.rowDescriptor = self
-            }
+            let obj:SSFormBaseCell = cellClass.init()
+            self.cell = obj
+            self.cell?.rowDescriptor = self
+
         }
         return self.cell!
     }
-    
+    public func onClickHandle(_ clicked: @escaping OnClickedBlock) -> Void {
+        self.onClickedBlock = clicked
+    }
     //MARK:-
     //MARK:KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

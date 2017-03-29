@@ -85,6 +85,7 @@
 		041A266E1E8515FB00A92A7B /* navigationbar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041A262A1E8515FB00A92A7B /* navigationbar_back@2x.png */; };
 		041A266F1E8515FB00A92A7B /* me_image_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 041A262B1E8515FB00A92A7B /* me_image_grey.png */; };
 		041A26701E8515FB00A92A7B /* menuBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 041A262C1E8515FB00A92A7B /* menuBg.jpg */; };
+		041D1EA81E8B9E300019C904 /* SSFormTableViewSourceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D1EA71E8B9E300019C904 /* SSFormTableViewSourceHelper.swift */; };
 		0422F7F01E7B8732007D90F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F7EF1E7B8732007D90F5 /* AppDelegate.swift */; };
 		0422F7F71E7B8732007D90F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0422F7F61E7B8732007D90F5 /* Assets.xcassets */; };
 		0422F80C1E7B892F007D90F5 /* HttpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F80B1E7B892F007D90F5 /* HttpMessage.swift */; };
@@ -204,6 +205,7 @@
 		041A262A1E8515FB00A92A7B /* navigationbar_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_back@2x.png"; sourceTree = "<group>"; };
 		041A262B1E8515FB00A92A7B /* me_image_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_image_grey.png; sourceTree = "<group>"; };
 		041A262C1E8515FB00A92A7B /* menuBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menuBg.jpg; sourceTree = "<group>"; };
+		041D1EA71E8B9E300019C904 /* SSFormTableViewSourceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormTableViewSourceHelper.swift; sourceTree = "<group>"; };
 		0422F7EC1E7B8732007D90F5 /* AnAnOrderCarDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnAnOrderCarDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0422F7EF1E7B8732007D90F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0422F7F61E7B8732007D90F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 			children = (
 				04C43A1B1E8A365E00D582CF /* SSFormTableView.swift */,
 				04C43A1C1E8A365E00D582CF /* SSFormViewController.swift */,
+				041D1EA71E8B9E300019C904 /* SSFormTableViewSourceHelper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				0422F84B1E7B8991007D90F5 /* SSColor.swift in Sources */,
 				0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */,
 				04C43A291E8A365E00D582CF /* SSFormSectionDescriptor.swift in Sources */,
+				041D1EA81E8B9E300019C904 /* SSFormTableViewSourceHelper.swift in Sources */,
 				04C43A261E8A365E00D582CF /* SSFormDescriptor.swift in Sources */,
 				041A25D71E84EA6200A92A7B /* SSNavigationController.swift in Sources */,
 				0422F80E1E7B893E007D90F5 /* HttpConstant.swift in Sources */,

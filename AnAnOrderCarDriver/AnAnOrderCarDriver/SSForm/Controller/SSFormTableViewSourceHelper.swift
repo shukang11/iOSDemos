@@ -1,44 +1,43 @@
 //
-//  SSFormViewController.swift
-//  SSFormSwiftDemo
+//  SSFormTableViewSourceHelper.swift
+//  AnAnOrderCarDriver
 //
-//  Created by Mac on 17/3/7.
+//  Created by Mac on 17/3/29.
 //  Copyright © 2017年 treee. All rights reserved.
 //
 
 import Foundation
 import UIKit
-
-class SSFormViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SSFormDescriptorDelegate {
+///将用到的代理和数据源等剥离出来
+class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDataSource, SSFormDescriptorDelegate {
     //MARK:-
     //MARK:properties
-    var form:SSFormDescriptor = {
-        let form = SSFormDescriptor.init()
-        return form
-    }()
-    var tableView:UITableView = {
-        let cusTableView = UITableView.init(frame: CGRect.zero, style: .plain)
-        return cusTableView
-    }()
-    var tableViewStyle:UITableViewStyle!
-    
+    var form:SSFormDescriptor! {
+        didSet {
+            form.delegate = self
+        }
+    }
+    var tableView:SSFormTable!
     //MARK:-
-    //MARK:lifeCycle
+    //MARK:init
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        self.tableView.frame = self.view.bounds
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.form.delegate = self;
-        self.title = self.form.title
+    convenience init(_ tableView:SSFormTable) {
+        self.init()
+        self.tableView = tableView
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.form = SSFormDescriptor.init()
+        self.form.delegate = self
     }
     
+    convenience init(_ tableView:SSFormTable, form: SSFormDescriptor) {
+        self.init()
+        self.tableView = tableView
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.form = form
+        self.form.delegate = self
+    }
     //MARK:-
     //MARK:delegate&dataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,7 +84,14 @@ class SSFormViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
         
+        guard cell.rowDescriptor != nil else { return}
+        
+        let formRow:SSFormRowDescriptor = cell.rowDescriptor!
+        if ((formRow.onClickedBlock) != nil) {
+            formRow.onClickedBlock!(formRow)
+        }
     }
     //MARK:-
     //MARK:formDescriptorDelegate

@@ -12,11 +12,25 @@ import UIKit
 class CommonViewController: UIViewController {
     //MARK:-
     //MARK:properties
-    let tableView:UITableView = {
+    var tableView:UITableView = {
         return UITableView.tableView()
     }()
     
-    var formView: SSFormTableView!
+    var formTable:SSFormTable = {
+        let _tableView : SSFormTable = SSFormTable.init(frame: CGRect.zero, style: .plain)
+        _tableView.indicatorStyle = .white
+        _tableView.isScrollEnabled = true
+        _tableView.isUserInteractionEnabled = true
+        _tableView.backgroundColor = UIColor.clear
+        _tableView.backgroundView = nil
+        _tableView.tableFooterView = UIView.init()
+        
+        _tableView.sectionHeaderHeight = 0.0
+        _tableView.sectionFooterHeight = 0.0
+        
+        _tableView.separatorStyle = .singleLine
+        return _tableView
+    }()
     /// 设置页面的标题
     override var title: String? {
         didSet{

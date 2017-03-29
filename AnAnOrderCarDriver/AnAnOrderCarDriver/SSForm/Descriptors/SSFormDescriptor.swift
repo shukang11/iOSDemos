@@ -94,7 +94,7 @@ class SSFormDescriptor: NSObject {
     }
     
     public func formSectionAt(_ index:Int) -> SSFormSectionDescriptor {
-        assert(index < self.formSectionCount, "out of range")
+        assert(index < self.formSectionCount, "out of range <<<index:\(index);self.formSectionCount:\(self.formSectionCount)>>>")
         return self.formSections[index]
     }
     
