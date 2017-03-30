@@ -112,8 +112,8 @@ class SSFormViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.tableView.deleteSections(IndexSet.init(integer: index), with: insertFormSection(formSection))
         self.tableView.endUpdates()
     }
-    
-    func formRowDescriptorValueHasChanged(_ formRow: SSFormRowDescriptor, oldValue: AnyObject, newValue: AnyObject) {
+   
+    func formRowDescriptorValueHasChanged(_ formRow: SSFormRowDescriptor,  newValue: AnyObject) {
         self.update(formRow)
     }
     //MARK:-

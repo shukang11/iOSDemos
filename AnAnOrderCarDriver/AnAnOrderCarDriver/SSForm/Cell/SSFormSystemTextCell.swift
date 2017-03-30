@@ -34,6 +34,7 @@ class demoCell: SSFormBaseCell {
     
     override func configure() {
         super.configure()
+        textLabel?.textColor = UIColor.red
     }
 }
 

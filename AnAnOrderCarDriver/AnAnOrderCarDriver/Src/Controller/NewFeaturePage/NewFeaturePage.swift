@@ -30,6 +30,8 @@ class NewFeaturePage: UIViewController {
     func createMainUI() {
         let scrol:UIScrollView = UIScrollView.init(frame: self.view.frame)
         scrol.bounces = false
+        scrol.showsVerticalScrollIndicator = false
+        scrol.showsHorizontalScrollIndicator = false
         scrol.isPagingEnabled = true
         self.view.addSubview(scrol)
         

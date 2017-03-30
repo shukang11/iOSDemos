@@ -47,7 +47,7 @@ class SSFormBaseCell: UITableViewCell,SSFormDescriptorCell {
     //MARK:-
     //MARK:SSFormDescriptorCell
     func configure() {
-        self.selectionStyle = .none
+//        self.selectionStyle = .none
     }
     
     func update() {

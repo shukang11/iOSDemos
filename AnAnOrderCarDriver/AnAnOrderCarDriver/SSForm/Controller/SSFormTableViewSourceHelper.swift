@@ -48,79 +48,99 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowsInSection")
         assert(section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(section)
         return section.formRowsCount
     }
-    
+    /*
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        print("heightForHeaderInSection")
         assert(section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(section)
         return (section.height > 0) ? section.height : 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        print("heightForFooterInSection")
         return 0.01
     }
-    
+    */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print("heightForRowAt")
         assert(indexPath.section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(indexPath.section)
         let formRow:SSFormRowDescriptor = section.formRowsAt(indexPath.row)
         return formRow.height
     }
-    
+    /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        print("titleForHeaderInSection")
         assert(section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(section)
         return section.title
     }
+ */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cellForRowAt")
         guard let rowDescriptor:SSFormRowDescriptor = self.form.formRowAt(indexPath) else {
             return UITableViewCell.init()
         }
-        self.update(rowDescriptor)
-        return rowDescriptor.makeCell()
+        let cell:SSFormBaseCell = rowDescriptor.makeCell()
+        cell.update()
+//        self.update(rowDescriptor)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
+        tableView.reloadRows(at: [indexPath], with: .fade)
+/*
         let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
-        
         guard cell.rowDescriptor != nil else { return}
-        
         let formRow:SSFormRowDescriptor = cell.rowDescriptor!
+        
         if ((formRow.onClickedBlock) != nil) {
-            formRow.onClickedBlock!(formRow)
+            formRow.onClickedBlock!(formRow,indexPath)
         }
+ */
     }
     //MARK:-
     //MARK:formDescriptorDelegate
     func formRowHasBeenAdded(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
+        print("formRowHasBeenAdded")
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [indexPath], with: insertFormRow(formRow))
         self.tableView.endUpdates()
     }
     
     func formRowHasBeenRemoced(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
+        print("formRowHasBeenRemoced")
         self.tableView.beginUpdates()
         self.tableView.deleteRows(at: [indexPath], with: deleteFormRow(formRow))
         self.tableView.endUpdates()
     }
     
     func formSectionHasBeenAdded(_ formSection: SSFormSectionDescriptor, At index:Int) {
+        print("formSectionHasBeenAdded")
         self.tableView.beginUpdates()
         self.tableView.insertSections(IndexSet.init(integer: index), with: insertFormSection(formSection))
         self.tableView.endUpdates()
     }
     
     func formSectionHasBeenRemoved(_ formSection: SSFormSectionDescriptor, At index:Int) {
+        print("formSectionHasBeenRemoved")
         self.tableView.beginUpdates()
         self.tableView.deleteSections(IndexSet.init(integer: index), with: insertFormSection(formSection))
         self.tableView.endUpdates()
     }
     
-    func formRowDescriptorValueHasChanged(_ formRow: SSFormRowDescriptor, oldValue: AnyObject, newValue: AnyObject) {
-        self.update(formRow)
+    func formRowDescriptorValueHasChanged(_ formRow: SSFormRowDescriptor, newValue: AnyObject) {
+        print("formRowDescriptorValueHasChanged")
+        self.tableView.beginUpdates()
+//        self.tableView.reloadRows(at: [form.indexPathOf(formRow)!], with: .right)
+        formRow.cell?.update()
+        self.tableView.endUpdates()
     }
     //MARK:-
     //MARK:SSFormViewControllerDelegate
@@ -139,11 +159,14 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     
     //MARK:-
     //MARK:helper
-    @discardableResult func update(_ formRow:SSFormRowDescriptor) -> SSFormBaseCell {
-        let cell:SSFormBaseCell = formRow.makeCell()
+    func update(_ formRow:SSFormRowDescriptor) -> Void {
+        /// 在这里不能放刷新操作，会造成循环引用
+        guard let cell:SSFormBaseCell = formRow.cell else {
+            return
+        }
         self.configCell(cell)
         cell.setNeedsLayout()
-        return cell
+        print("\(cell)\([form.indexPathOf(formRow)!])")
     }
     func configCell(_ cell:SSFormBaseCell) -> Void {
         cell.update()

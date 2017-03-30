@@ -14,20 +14,36 @@ private var myContext = 0
 class SSFormSectionDescriptor: NSObject {
     //MARK:-
     //MARK:property
-    var title:String = ""
+    
+    /// 区头的文字
+    var title:String?
+    
+    /// 区头的高度
     var height:CGFloat = 0.0
+    
+    /// 包含的所有的单元格描述对象
     private dynamic var formRows:[SSFormRowDescriptor] = []
     public var formRowsCount:Int {
         return self.formRows.count
     }
+    
+    /// 表格的描述对象
     var formDescriptor:SSFormDescriptor?
     
-    
+    /// 区的添加动画类型
     var insertAnimation:UITableViewRowAnimation = .automatic
+    /// 区的删除动画类型
     var deleteAnimation:UITableViewRowAnimation = .automatic
+    
+    /// 区的刷新动画类型
+    var freshAnimation:UITableViewRowAnimation = .automatic
+    
     //MARK:-
     //MARK:lifeCycle
     
+    /// 初始化方法
+    ///
+    /// - Parameter title: 区头的标题
     init(_ title:String) {
         super.init()
         self.title = title
@@ -44,9 +60,85 @@ class SSFormSectionDescriptor: NSObject {
     //MARK:-
     //MARK:public
     
+    /// 添加单元格
+    ///
+    /// - Parameter formRow: 单元格描述对象
+    public func add(_ formRow:SSFormRowDescriptor) {
+        add(formRow, At: self.formRows.count)
+    }
+    
+    /// 根据索引添加单元格
+    ///
+    /// - Parameters:
+    ///   - formRow: 单元格描述对象
+    ///   - index: 索引
+    public func add(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
+        ss_add(formRow, At: index)
+    }
+    
+    /// 根据索引移除一行单元格
+    ///
+    /// - Parameter index: 索引号
+    public func removeAt(_ index:Int) -> Void {
+        guard index < self.formRows.count else { return}
+        let formRow:SSFormRowDescriptor = self.formRows[index]
+        ss_removeRow(formRow, At: index)
+    }
+    
+    /// 移除一个单元格对象
+    ///
+    /// - Parameter formRow: 单元格描述对象
+    public func removeRow(_ formRow:SSFormRowDescriptor) -> Void {
+        let index:Int = self.formRows.index(of: formRow)!
+        guard index < self.formRows.count else { return}
+        ss_removeRow(formRow, At: index)
+    }
+    
+    /// 根据索引获得单元格的描述对象
+    ///
+    /// - Parameter index: 索引
+    /// - Returns: 单元格的描述对象
+    public func formRowsAt(_ index:Int) -> SSFormRowDescriptor {
+        return self.formRows[index]
+    }
+    
+    /// 返回一个单元格对象在集合中的索引
+    ///
+    /// - Parameter formRow: 单元格的描述对象
+    /// - Returns: 索引号，如果没有找到就返回nil
+    func rowIndexOf(_ formRow:SSFormRowDescriptor) -> Int? {
+        if (formRows.contains(formRow) == true) {
+            return formRows.index(of: formRow)
+        }
+        return nil
+    }
     //MARK:-
     //MARK:helper
-
+    
+    /// 【私有方法】添加描述对象到索引号中，并将自己赋值到其中
+    ///
+    /// - Parameters:
+    ///   - formRow: 单元格的描述对象
+    ///   - index: 索引号
+    private func ss_add(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
+        formRow.sectionDescriptor = self
+        self.formRows.insert(formRow, at: index)
+        guard self.formDescriptor?.delegate != nil && (self.formDescriptor?.containFormSection(self))! else { return}
+        let sectionIndex:Int = (self.formDescriptor?.index(self))!
+        self.formDescriptor?.delegate?.formRowHasBeenAdded(formRow, At: IndexPath.init(row: index, section: sectionIndex))
+    }
+    
+    /// 【私有方法】根据索引号移除单元格的描述对象
+    ///
+    /// - Parameters:
+    ///   - formRow: 移除的描述对象
+    ///   - index: 索引
+    private func ss_removeRow(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
+        self.formRows.remove(at: index)
+        guard self.formDescriptor?.delegate != nil else { return}
+        let sectionIndex:Int = (self.formDescriptor?.index(self))!
+        self.formDescriptor?.delegate?.formRowHasBeenRemoced(formRow, At: IndexPath.init(row: index, section: sectionIndex))
+    }
     //MARK:-
     //MARK:KVC
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -88,40 +180,5 @@ class SSFormSectionDescriptor: NSObject {
     }
     
     
-    public func add(_ formRow:SSFormRowDescriptor) {
-        add(formRow, At: self.formRows.count)
-    }
-    public func add(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
-        ss_add(formRow, At: index)
-    }
     
-    private func ss_add(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
-        formRow.sectionDescriptor = self
-        self.formRows.insert(formRow, at: index)
-        guard self.formDescriptor?.delegate != nil && (self.formDescriptor?.containFormSection(self))! else { return}
-        let sectionIndex:Int = (self.formDescriptor?.index(self))!
-        self.formDescriptor?.delegate?.formRowHasBeenAdded(formRow, At: IndexPath.init(row: index, section: sectionIndex))
-    }
-    
-    public func removeAt(_ index:Int) -> Void {
-        guard index < self.formRows.count else { return}
-        let formRow:SSFormRowDescriptor = self.formRows[index]
-        ss_removeRow(formRow, At: index)
-    }
-    public func removeRow(_ formRow:SSFormRowDescriptor) -> Void {
-        let index:Int = self.formRows.index(of: formRow)!
-        guard index < self.formRows.count else { return}
-        ss_removeRow(formRow, At: index)
-    }
-    
-    private func ss_removeRow(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
-        self.formRows.remove(at: index)
-        guard self.formDescriptor?.delegate != nil else { return}
-        let sectionIndex:Int = (self.formDescriptor?.index(self))!
-        self.formDescriptor?.delegate?.formRowHasBeenRemoced(formRow, At: IndexPath.init(row: index, section: sectionIndex))
-    }
-    
-    public func formRowsAt(_ index:Int) -> SSFormRowDescriptor {
-        return self.formRows[index]
-    }
 }

@@ -30,19 +30,18 @@ class TransportPage: CommonViewController {
         let formHelper:SSFormTableViewSourceHelper = SSFormTableViewSourceHelper.init(formTable)
         
         let form:SSFormDescriptor = SSFormDescriptor.init("表格")
-        var section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("")
+        let section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("")
         form.addSection(section)
-        for _ in 1...10 {
-            let row :SSFormRowDescriptor = SSFormRowDescriptor.init(40.0, cellClass: demoCell.self, value: "111" as AnyObject)
+        for index in 1...2 {
+            let row :SSFormRowDescriptor = SSFormRowDescriptor.init(40.0, cellClass: demoCell.self, value: "\(index)行----->点击我刷新当前行" as AnyObject)
             row.deleteAnimation = .left
-            row.onClickHandle({ (rowDes) in
-                rowDes.value = "112" as AnyObject
+//            row.freshAnimation = .right
+            row.onClickHandle({ (rowDes, indexPath) in
+                rowDes.value = "ssdfasldkjasdklfj" as AnyObject
             })
             section.add(row)
         }
-        section = SSFormSectionDescriptor.init("added")
-        section.height = 60.0
-        form.addSection(section)
+        
         
         formHelper.form = form
         
