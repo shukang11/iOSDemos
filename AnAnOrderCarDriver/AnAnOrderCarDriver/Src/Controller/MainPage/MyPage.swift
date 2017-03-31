@@ -31,7 +31,7 @@ class MyPage: CommonViewController {
         tableView.frame = CGRect.init(x: 0.0, y: 64.0, width: view.width, height: view.height - 64.0)
         tableView.delegate = mydelegate
         tableView.dataSource = mydelegate
-        for index in 1...1 {
+        for index in 1...10 {
             mydelegate.models.append("\(index)行")
         }
     }
@@ -65,6 +65,7 @@ class Mydelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
             cell?.selectionStyle = .none
         }
         cell?.textLabel?.text = "\(indexPath)-->\(models[indexPath.row])"
+        print("---->\(cell!)")
         return cell!
     }
     

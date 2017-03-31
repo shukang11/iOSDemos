@@ -51,4 +51,5 @@ protocol SSFormDescriptorDelegate {
     ///   - newValue: new值
     /// - Returns: void
     func formRowDescriptorValueHasChanged(_ formRow:SSFormRowDescriptor, newValue:AnyObject) -> Void
+    
 }

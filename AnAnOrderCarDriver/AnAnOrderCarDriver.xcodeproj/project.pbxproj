@@ -117,7 +117,6 @@
 		04C43A221E8A365E00D582CF /* SSFormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */; };
 		04C43A231E8A365E00D582CF /* SSFormDescriptorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */; };
 		04C43A241E8A365E00D582CF /* SSFormTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A1B1E8A365E00D582CF /* SSFormTableView.swift */; };
-		04C43A251E8A365E00D582CF /* SSFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A1C1E8A365E00D582CF /* SSFormViewController.swift */; };
 		04C43A261E8A365E00D582CF /* SSFormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A1E1E8A365E00D582CF /* SSFormDescriptor.swift */; };
 		04C43A271E8A365E00D582CF /* SSFormDescriptorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A1F1E8A365E00D582CF /* SSFormDescriptorDelegate.swift */; };
 		04C43A281E8A365E00D582CF /* SSFormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A201E8A365E00D582CF /* SSFormRowDescriptor.swift */; };
@@ -240,7 +239,6 @@
 		04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormBaseCell.swift; sourceTree = "<group>"; };
 		04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormDescriptorCell.swift; sourceTree = "<group>"; };
 		04C43A1B1E8A365E00D582CF /* SSFormTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormTableView.swift; sourceTree = "<group>"; };
-		04C43A1C1E8A365E00D582CF /* SSFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormViewController.swift; sourceTree = "<group>"; };
 		04C43A1E1E8A365E00D582CF /* SSFormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormDescriptor.swift; sourceTree = "<group>"; };
 		04C43A1F1E8A365E00D582CF /* SSFormDescriptorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormDescriptorDelegate.swift; sourceTree = "<group>"; };
 		04C43A201E8A365E00D582CF /* SSFormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormRowDescriptor.swift; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 			isa = PBXGroup;
 			children = (
 				04C43A1B1E8A365E00D582CF /* SSFormTableView.swift */,
-				04C43A1C1E8A365E00D582CF /* SSFormViewController.swift */,
 				041D1EA71E8B9E300019C904 /* SSFormTableViewSourceHelper.swift */,
 			);
 			path = Controller;
@@ -842,7 +839,6 @@
 				0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */,
 				04C43A281E8A365E00D582CF /* SSFormRowDescriptor.swift in Sources */,
 				0422F84A1E7B8991007D90F5 /* SSButton.swift in Sources */,
-				04C43A251E8A365E00D582CF /* SSFormViewController.swift in Sources */,
 				0422F7F01E7B8732007D90F5 /* AppDelegate.swift in Sources */,
 				041A25D41E84E93C00A92A7B /* NewFeaturePage.swift in Sources */,
 				0422F84B1E7B8991007D90F5 /* SSColor.swift in Sources */,

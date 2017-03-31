@@ -24,7 +24,6 @@ class SSFormBaseCell: UITableViewCell,SSFormDescriptorCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         configure()
     }
     
@@ -40,14 +39,11 @@ class SSFormBaseCell: UITableViewCell,SSFormDescriptorCell {
     //MARK:-
     //MARK:public
     
-    public func createCell(_ identifier:String) ->SSFormBaseCell {
-        return SSFormBaseCell.init(style: .default, reuseIdentifier: identifier)
-    }
     
     //MARK:-
     //MARK:SSFormDescriptorCell
     func configure() {
-//        self.selectionStyle = .none
+        self.selectionStyle = .none
     }
     
     func update() {
@@ -55,8 +51,4 @@ class SSFormBaseCell: UITableViewCell,SSFormDescriptorCell {
         self.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .body)
     }
     
-    func formViewController() -> SSFormViewController {
-        
-        return SSFormViewController()
-    }
 }

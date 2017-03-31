@@ -14,7 +14,6 @@ import UIKit
     @objc func update() ->Void
     
     @objc optional func formDescriptorCellHeightForRowDescriptor(_ rowDescripotr:SSFormRowDescriptor) ->CGFloat
-    @objc optional func formDescriptorCellDidSelectedWithFormController(_ controller:SSFormViewController) -> Void
     
     @objc optional func highLight()
     @objc optional func unhighLight()

@@ -39,7 +39,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         self.form.delegate = self
     }
     //MARK:-
-    //MARK:delegate&dataSource
+    //MARK:dataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.form.formSectionCount != 0 {
             return self.form.formSectionCount
@@ -53,7 +53,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         let section:SSFormSectionDescriptor = self.form.formSectionAt(section)
         return section.formRowsCount
     }
-    /*
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print("heightForHeaderInSection")
         assert(section <= (self.form.formSectionCount), "out of range")
@@ -65,37 +65,54 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         print("heightForFooterInSection")
         return 0.01
     }
-    */
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("heightForRowAt")
+        print("heightForRowAt\(indexPath)")
         assert(indexPath.section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(indexPath.section)
         let formRow:SSFormRowDescriptor = section.formRowsAt(indexPath.row)
         return formRow.height
     }
-    /*
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         print("titleForHeaderInSection")
         assert(section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(section)
         return section.title
     }
- */
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellForRowAt")
+        print("cellForRowAt\(indexPath)")
         guard let rowDescriptor:SSFormRowDescriptor = self.form.formRowAt(indexPath) else {
             return UITableViewCell.init()
         }
-        let cell:SSFormBaseCell = rowDescriptor.makeCell()
+        let cell:SSFormBaseCell
+        cell = rowDescriptor.makeCell(tableView as! SSFormTable)!
+        cell.rowDescriptor = rowDescriptor
         cell.update()
-//        self.update(rowDescriptor)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return false}
+        return formRow.canEditRow
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return false}
+        print("--->canMoveRowAt\(formRow.canMoveRow)")
+        return formRow.canMoveRow
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return .none}
+        return formRow.editingStyle
+    }
+    
+    //MARK:-
+    //MARK:delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
-        tableView.reloadRows(at: [indexPath], with: .fade)
-/*
+        print("didSelectRowAt\(indexPath)")
         let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
         guard cell.rowDescriptor != nil else { return}
         let formRow:SSFormRowDescriptor = cell.rowDescriptor!
@@ -103,19 +120,45 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         if ((formRow.onClickedBlock) != nil) {
             formRow.onClickedBlock!(formRow,indexPath)
         }
- */
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return}
+        
+        if formRow.editingStyleHandle != nil {
+            formRow.editingStyleHandle!(formRow, editingStyle, indexPath)
+        }else {
+            switch editingStyle {
+            case .none:
+                break
+            case .insert:
+                guard let addRow:SSFormRowDescriptor = formRow.addFormRow else { break}
+                guard let index = formRow.sectionDescriptor?.rowIndexOf(formRow) else { break}
+                formRow.sectionDescriptor?.add(addRow, At: index + 1)
+                break
+            case .delete:
+                formRow.removeFromSection()
+                break
+            }
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        form.exchangeFormRow(sourceIndexPath, to: destinationIndexPath)
     }
     //MARK:-
     //MARK:formDescriptorDelegate
     func formRowHasBeenAdded(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
-        print("formRowHasBeenAdded")
+        print("formRowHasBeenAdded\(indexPath)")
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [indexPath], with: insertFormRow(formRow))
         self.tableView.endUpdates()
     }
     
     func formRowHasBeenRemoced(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
-        print("formRowHasBeenRemoced")
+        print("formRowHasBeenRemoced\(indexPath)")
         self.tableView.beginUpdates()
         self.tableView.deleteRows(at: [indexPath], with: deleteFormRow(formRow))
         self.tableView.endUpdates()
@@ -138,7 +181,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     func formRowDescriptorValueHasChanged(_ formRow: SSFormRowDescriptor, newValue: AnyObject) {
         print("formRowDescriptorValueHasChanged")
         self.tableView.beginUpdates()
-//        self.tableView.reloadRows(at: [form.indexPathOf(formRow)!], with: .right)
+        self.tableView.reloadRows(at: [form.indexPathOf(formRow)!], with: formRow.freshAnimation)
         formRow.cell?.update()
         self.tableView.endUpdates()
     }

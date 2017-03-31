@@ -27,9 +27,10 @@ class SSFormSystemTextCell: SSFormBaseCell {
 
 class demoCell: SSFormBaseCell {
     var name:String = ""
+    
     override func update() {
         super.update()
-        self.textLabel?.text = "\(self.rowDescriptor?.value as! String)"
+        self.textLabel?.text = "\(self.rowDescriptor?.value as! String))"
     }
     
     override func configure() {

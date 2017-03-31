@@ -94,6 +94,15 @@ class SSFormSectionDescriptor: NSObject {
         ss_removeRow(formRow, At: index)
     }
     
+    /// 根据序列号替换一个元素
+    ///
+    /// - Parameters:
+    ///   - formRow: 替换的源元素
+    ///   - index: 目标的索引
+    func replaceRow(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
+        ss_replaceRow(formRow, At: index)
+    }
+    
     /// 根据索引获得单元格的描述对象
     ///
     /// - Parameter index: 索引
@@ -139,6 +148,17 @@ class SSFormSectionDescriptor: NSObject {
         let sectionIndex:Int = (self.formDescriptor?.index(self))!
         self.formDescriptor?.delegate?.formRowHasBeenRemoced(formRow, At: IndexPath.init(row: index, section: sectionIndex))
     }
+    
+    /// 【私有方法】根据序列号替换一个元素
+    ///
+    /// - Parameters:
+    ///   - formRow: 替换的源元素
+    ///   - index: 目标的索引
+    private func ss_replaceRow(_ formRow:SSFormRowDescriptor, At index:Int) -> Void {
+        guard index < formRows.count else { return}
+        formRows[index] = formRow
+    }
+    
     //MARK:-
     //MARK:KVC
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

@@ -144,6 +144,17 @@ class SSFormDescriptor: NSObject {
         }
         return nil
     }
+    
+    /// 交换两个单位
+    ///
+    /// - Parameters:
+    ///   - moveAt: 源地址
+    ///   - to: 目标地址
+    public func exchangeFormRow(_ moveAt: IndexPath, to: IndexPath) -> Void {
+        guard let sourceDes = formRowAt(moveAt), let toDes = formRowAt(to) else { return}
+        self.formSections[moveAt.section].replaceRow(toDes, At: moveAt.row)
+        self.formSections[to.section].replaceRow(sourceDes, At: to.row)
+    }
     //MARK:-
     //MARK:helper
 
