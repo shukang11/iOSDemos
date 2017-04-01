@@ -40,14 +40,15 @@ class TransportPage: CommonViewController {
             let row :SSFormRowDescriptor = SSFormRowDescriptor.init(40.0, cellClass: demoCell.self, value: "\(index)行----->点击我刷新当前行" as AnyObject)
             row.canMoveRow = true
             row.canEditRow = true
+            row.cellConfig["textLabel?.text"] = "change" as AnyObject?
             if index == 2 {
                 row.editingStyle = .delete
-//                row.editingStyleHandle({ (formRow, style, indexPath) in
-//                    if style != .insert { return}
-//                    let section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("im added")
-//                    form.addSection(section)
-//                    row.canEditRow = false
-//                })
+                //                row.editingStyleHandle({ (formRow, style, indexPath) in
+                //                    if style != .insert { return}
+                //                    let section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("im added")
+                //                    form.addSection(section)
+                //                    row.canEditRow = false
+                //                })
             }
             row.deleteAnimation = .left
             row.onClickHandle({ (rowDes, indexPath) in
@@ -58,5 +59,6 @@ class TransportPage: CommonViewController {
         
         formHelper.form = form
         formTable.sourceHelper = formHelper
+        
     }
 }

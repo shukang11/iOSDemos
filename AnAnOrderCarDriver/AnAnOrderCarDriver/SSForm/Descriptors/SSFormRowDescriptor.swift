@@ -121,6 +121,11 @@ class SSFormRowDescriptor: NSObject {
             tableview.register(cellClass, forCellReuseIdentifier: identifier)
             cell = tableview.dequeueReusableCell(withIdentifier: identifier)
         }
+        
+        for (key, value) in cellConfig {
+            cell?.setValue((value), forKey: key)
+        }
+        
         return cell as! SSFormBaseCell?
     }
     

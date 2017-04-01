@@ -51,4 +51,7 @@ class SSFormBaseCell: UITableViewCell,SSFormDescriptorCell {
         self.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .body)
     }
     
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        print("\(key) --> \(value)")
+    }
 }
