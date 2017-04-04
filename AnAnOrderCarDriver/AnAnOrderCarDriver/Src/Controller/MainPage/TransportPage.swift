@@ -38,18 +38,9 @@ class TransportPage: CommonViewController {
         form.addSection(section)
         for index in 1...10 {
             let row :SSFormRowDescriptor = SSFormRowDescriptor.init(40.0, cellClass: demoCell.self, value: "\(index)行----->点击我刷新当前行" as AnyObject)
-            row.canMoveRow = true
-            row.canEditRow = true
+//            row.canMoveRow = true
             row.cellConfig["textLabel?.text"] = "change" as AnyObject?
-            if index == 2 {
-                row.editingStyle = .delete
-                //                row.editingStyleHandle({ (formRow, style, indexPath) in
-                //                    if style != .insert { return}
-                //                    let section:SSFormSectionDescriptor = SSFormSectionDescriptor.init("im added")
-                //                    form.addSection(section)
-                //                    row.canEditRow = false
-                //                })
-            }
+            
             row.deleteAnimation = .left
             row.onClickHandle({ (rowDes, indexPath) in
                 rowDes.value = "ssdfasldkjasdklfj" as AnyObject

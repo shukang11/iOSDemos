@@ -61,6 +61,13 @@ class SSFormRowDescriptor: NSObject {
     /// 编辑的样式(删除/添加)
     var editingStyle:UITableViewCellEditingStyle = .none
     
+    ///删除样式的标题
+    var titleForDeleteConfirmationButton:String?
+    
+    ///编辑状态下，侧滑显示的响应集合
+    var editActions:[UITableViewRowAction]?
+    
+    
     /// 在编辑状态下，点击到按钮的回调事件，如果没有实现，就会执行默认的动作
     var editingStyleHandle:EditingStyleHandle?
     

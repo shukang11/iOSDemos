@@ -109,6 +109,8 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         return formRow.editingStyle
     }
     
+    
+    
     //MARK:-
     //MARK:delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,6 +124,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         }
     }
     
+    ///编辑状态下的代理方法
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return}
@@ -144,7 +147,20 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         }
     }
     
+    ///删除按钮的文字
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
+        guard cell.rowDescriptor != nil else { return nil}
+        return cell.rowDescriptor?.titleForDeleteConfirmationButton
+    }
+    ///编辑状态下侧滑返回的几个响应的集合
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
+        guard cell.rowDescriptor != nil else { return nil}
+        return cell.rowDescriptor?.editActions
+    }
     
+    /// 移动的代理方法
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         form.exchangeFormRow(sourceIndexPath, to: destinationIndexPath)
     }
