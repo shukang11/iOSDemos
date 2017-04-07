@@ -95,6 +95,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return false}
+        print("canEditRowAt\(formRow.canEditRow)")
         return formRow.canEditRow
     }
     
@@ -104,12 +105,12 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         return formRow.canMoveRow
     }
     
+    //编辑样式，如果想要使用滑动显示侧滑菜单，那么需要删除这个方法
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return .none}
+        print("editingStyleForRowAt--->\(formRow.editingStyle)")
         return formRow.editingStyle
     }
-    
-    
     
     //MARK:-
     //MARK:delegate
@@ -125,10 +126,10 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     }
     
     ///编辑状态下的代理方法
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return}
-        
+        print("commit editingStyle")
         if formRow.editingStyleHandle != nil {
             formRow.editingStyleHandle!(formRow, editingStyle, indexPath)
         }else {
@@ -151,10 +152,13 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
         guard cell.rowDescriptor != nil else { return nil}
+        print("titleForDeleteConfirmationButtonForRowAt\(cell.rowDescriptor?.titleForDeleteConfirmationButton)")
         return cell.rowDescriptor?.titleForDeleteConfirmationButton
     }
-    ///编辑状态下侧滑返回的几个响应的集合
+    
+    ///编辑状态下侧滑返回的几个响应的集合,如果想要执行这个方法，那么必须将editingStyleForRowAt方法删除掉
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        print("editActionsForRowAt")
         let cell:SSFormBaseCell = tableView.cellForRow(at: indexPath) as! SSFormBaseCell
         guard cell.rowDescriptor != nil else { return nil}
         return cell.rowDescriptor?.editActions
@@ -164,6 +168,8 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         form.exchangeFormRow(sourceIndexPath, to: destinationIndexPath)
     }
+    
+    
     //MARK:-
     //MARK:formDescriptorDelegate
     func formRowHasBeenAdded(_ formRow: SSFormRowDescriptor, At indexPath: IndexPath) {
@@ -230,4 +236,9 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     func configCell(_ cell:SSFormBaseCell) -> Void {
         cell.update()
     }
+    
+    
+    
+    //MARK:-
+    //MARK:runtime_Helper
 }

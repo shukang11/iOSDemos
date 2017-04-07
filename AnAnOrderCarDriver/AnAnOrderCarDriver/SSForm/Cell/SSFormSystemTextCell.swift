@@ -14,13 +14,14 @@ class SSFormSystemTextCell: SSFormBaseCell {
     override func update() {
         super.update()
         let str:[String:String] = self.rowDescriptor?.value as! [String:String]
-        self.textLabel?.text = str["title"]
-        self.detailTextLabel?.text = str["detailLabel"]
+        self.textLabel?.text = str["title"] ?? ""
+        self.detailTextLabel?.text = str["detailLabel"] ?? ""
+        
     }
     
     override func configure() {
         super.configure()
-        
+        print("\(self.detailTextLabel?.text)")
     }
 }
 

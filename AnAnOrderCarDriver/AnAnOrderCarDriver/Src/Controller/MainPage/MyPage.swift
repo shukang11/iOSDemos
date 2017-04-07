@@ -23,6 +23,9 @@ class MyPage: CommonViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
@@ -59,13 +62,14 @@ class Mydelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cellForRowAt")
-        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
+        var cell:demoCell? = tableView.dequeueReusableCell(withIdentifier: "cell") as! demoCell?
         if cell == nil {
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
+            cell = demoCell.init(style: .value1, reuseIdentifier: "cell")
             cell?.selectionStyle = .none
         }
+        cell?.contentView.debugModeColor()
         cell?.textLabel?.text = "\(indexPath)-->\(models[indexPath.row])"
-        print("---->\(cell!)")
+        cell?.detailTextLabel?.text = "didSelectRowAtdidSelectRowAtdetail"
         return cell!
     }
     
@@ -73,5 +77,28 @@ class Mydelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
         print("didSelectRowAt")
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadRows(at: [indexPath], with: .right)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action:UITableViewRowAction = UITableViewRowAction.init(style: .default, title: "添加", handler:{
+            (action, indexPath) in
+            print("added")
+        })
+        action.backgroundColor = UIColor.randomColor()
+        
+        let ac:UITableViewRowAction = UITableViewRowAction.init(style: .default, title: "删除", handler:{
+            (action, indexPath) in
+            print("added")
+        })
+        ac.backgroundColor = UIColor.randomColor()
+        return [action,ac]
     }
 }

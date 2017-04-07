@@ -35,7 +35,7 @@ class CommonViewController: UIViewController {
     override var title: String? {
         didSet{
             let _titleView:UILabel = UILabel.init()
-            _titleView.textColor = UIColor.color("0x313131")
+            _titleView.textColor = UIColor.white
             _titleView.backgroundColor = UIColor.clear
             _titleView.font = UIFont.systemFont(ofSize: 19.0)
             _titleView.textAlignment = .center
@@ -53,6 +53,13 @@ class CommonViewController: UIViewController {
         super.loadView()
         self.view.isExclusiveTouch = true//设置界面的排他性，避免多个控件同时接受点击事件
         self.view.backgroundColor = UIColor.white
+        self.commonInit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        let value:NSNumber = NSNumber.init(value: UIInterfaceOrientation.portrait.rawValue)
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     //MARK:-
@@ -66,6 +73,13 @@ class CommonViewController: UIViewController {
     }
     //MARK:-
     //MARK:helper
+    
+    func commonInit() -> Void {
+        self.navigationController?.navigationBar.shadowImage = UIImage.init()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.color(kColor_Blue)
+        self.navigationController?.navigationBar.barTintColor = UIColor.color(kColor_Blue)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+    }
 }
 
 

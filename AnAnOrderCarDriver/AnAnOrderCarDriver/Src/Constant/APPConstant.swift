@@ -22,7 +22,6 @@ struct APPConstant {
     
     static let currentVersion:String = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String//版本号
     
-    
     //MARK:aboutSize
     static let windowBounds:CGRect = (UIApplication.shared.keyWindow?.frame)!//窗口尺寸
     static let contentBounds:CGRect = CGRect(x: APPConstant.windowBounds.origin.x, y: APPConstant.windowBounds.origin.y+64.0, width: APPConstant.windowBounds.size.width, height: APPConstant.windowBounds.size.height-64.0)//有导航条的时候的内容尺寸
