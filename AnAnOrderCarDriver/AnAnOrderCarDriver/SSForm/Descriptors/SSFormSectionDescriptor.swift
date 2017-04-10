@@ -107,7 +107,7 @@ class SSFormSectionDescriptor: NSObject {
     ///
     /// - Parameter index: 索引
     /// - Returns: 单元格的描述对象
-    public func formRowsAt(_ index:Int) -> SSFormRowDescriptor {
+    public subscript(index:Int) -> SSFormRowDescriptor {
         return self.formRows[index]
     }
     

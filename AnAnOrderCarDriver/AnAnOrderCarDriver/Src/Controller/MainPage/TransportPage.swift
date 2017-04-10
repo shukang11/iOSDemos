@@ -42,10 +42,11 @@ class TransportPage: CommonViewController {
                 print("added")
             })
             
-            let ac:UITableViewRowAction = UITableViewRowAction.init(style: .default, title: "删除", handler:{
+            let ac:UITableViewRowAction = UITableViewRowAction.init(style: .normal, title: "删除", handler:{
                 (action, indexPath) in
                 print("delete")
             })
+            row.canMoveRow = true
             row.canEditRow = true
             row.editActions = [action,ac]
 //            row.editingStyleHandle({ (rowDes, style, indexPath) in
@@ -64,6 +65,6 @@ class TransportPage: CommonViewController {
         
         formHelper.form = form
         formTable.sourceHelper = formHelper
-        
     }
+    
 }

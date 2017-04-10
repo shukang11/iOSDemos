@@ -118,9 +118,9 @@ class SSFormDescriptor: NSObject {
     ///
     /// - Parameter indexPath: indexPath对象
     /// - Returns: 单元格的描述对象
-    public func formRowAt(_ indexPath:IndexPath) -> SSFormRowDescriptor? {
+    public subscript(indexPath:IndexPath) -> SSFormRowDescriptor? {
         if (self.formSections.count > indexPath.section)&&(self.formSections[indexPath.section].formRowsCount > indexPath.row) {
-            return self.formSections[indexPath.section].formRowsAt(indexPath.row)
+            return self.formSections[indexPath.section][indexPath.row]
         }
         return nil
     }
@@ -151,7 +151,7 @@ class SSFormDescriptor: NSObject {
     ///   - moveAt: 源地址
     ///   - to: 目标地址
     public func exchangeFormRow(_ moveAt: IndexPath, to: IndexPath) -> Void {
-        guard let sourceDes = formRowAt(moveAt), let toDes = formRowAt(to) else { return}
+        guard let sourceDes = self[moveAt], let toDes = self[to] else { return}
         self.formSections[moveAt.section].replaceRow(toDes, At: moveAt.row)
         self.formSections[to.section].replaceRow(sourceDes, At: to.row)
     }

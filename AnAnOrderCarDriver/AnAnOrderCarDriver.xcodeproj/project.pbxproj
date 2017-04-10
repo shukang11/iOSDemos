@@ -113,6 +113,11 @@
 		0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8331E7B8991007D90F5 /* SSSecurity.swift */; };
 		0422F85E1E7B8991007D90F5 /* SSKIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83A1E7B8991007D90F5 /* SSKIt.swift */; };
 		0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447D8E81E8271F200F8E051 /* HttpManager.swift */; };
+		044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AC1E9B7F45003A3E47 /* Row.swift */; };
+		044CF2B01E9B8035003A3E47 /* BaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AF1E9B8035003A3E47 /* BaseRow.swift */; };
+		044CF2B21E9B8044003A3E47 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2B11E9B8044003A3E47 /* CellType.swift */; };
+		044CF2B41E9B804D003A3E47 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2B31E9B804D003A3E47 /* Cell.swift */; };
+		044CF2B61E9B827F003A3E47 /* RowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2B51E9B827F003A3E47 /* RowType.swift */; };
 		045A3C4C1E88B19200F512FC /* NVAHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A3C4B1E88B19200F512FC /* NVAHubView.swift */; };
 		04C43A221E8A365E00D582CF /* SSFormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */; };
 		04C43A231E8A365E00D582CF /* SSFormDescriptorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */; };
@@ -235,6 +240,11 @@
 		0422F83A1E7B8991007D90F5 /* SSKIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSKIt.swift; sourceTree = "<group>"; };
 		0422F8631E7B8A39007D90F5 /* AnAnOrderCarDriver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnAnOrderCarDriver-Bridging-Header.h"; sourceTree = "<group>"; };
 		0447D8E81E8271F200F8E051 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
+		044CF2AC1E9B7F45003A3E47 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		044CF2AF1E9B8035003A3E47 /* BaseRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRow.swift; sourceTree = "<group>"; };
+		044CF2B11E9B8044003A3E47 /* CellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		044CF2B31E9B804D003A3E47 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		044CF2B51E9B827F003A3E47 /* RowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowType.swift; sourceTree = "<group>"; };
 		045A3C4B1E88B19200F512FC /* NVAHubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVAHubView.swift; sourceTree = "<group>"; };
 		04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormBaseCell.swift; sourceTree = "<group>"; };
 		04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormDescriptorCell.swift; sourceTree = "<group>"; };
@@ -555,9 +565,21 @@
 			path = security;
 			sourceTree = "<group>";
 		};
+		044CF2AE1E9B8026003A3E47 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				044CF2AF1E9B8035003A3E47 /* BaseRow.swift */,
+				044CF2B11E9B8044003A3E47 /* CellType.swift */,
+				044CF2B31E9B804D003A3E47 /* Cell.swift */,
+				044CF2B51E9B827F003A3E47 /* RowType.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		04C43A161E8A365E00D582CF /* SSForm */ = {
 			isa = PBXGroup;
 			children = (
+				044CF2AE1E9B8026003A3E47 /* Core */,
 				04C43A171E8A365E00D582CF /* Cell */,
 				04C43A1A1E8A365E00D582CF /* Controller */,
 				04C43A1D1E8A365E00D582CF /* Descriptors */,
@@ -571,6 +593,7 @@
 				04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */,
 				04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */,
 				04C43A2A1E8A3C6D00D582CF /* SSFormSystemTextCell.swift */,
+				044CF2AC1E9B7F45003A3E47 /* Row.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -803,9 +826,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */,
 				0422F84C1E7B8991007D90F5 /* SSControl.swift in Sources */,
 				0422F84F1E7B8991007D90F5 /* SSImage.swift in Sources */,
 				0422F84D1E7B8991007D90F5 /* SSDevice.swift in Sources */,
+				044CF2B21E9B8044003A3E47 /* CellType.swift in Sources */,
 				0422F8441E7B8991007D90F5 /* SSDictionary.swift in Sources */,
 				04C43A221E8A365E00D582CF /* SSFormBaseCell.swift in Sources */,
 				04C43A2B1E8A3C6D00D582CF /* SSFormSystemTextCell.swift in Sources */,
@@ -813,6 +838,7 @@
 				0422F8471E7B8991007D90F5 /* SSPath.swift in Sources */,
 				041A25E11E85081300A92A7B /* SSTabBarPage.swift in Sources */,
 				0422F8531E7B8991007D90F5 /* BLinMenuScro.swift in Sources */,
+				044CF2B01E9B8035003A3E47 /* BaseRow.swift in Sources */,
 				0422F80C1E7B892F007D90F5 /* HttpMessage.swift in Sources */,
 				0422F8411E7B8991007D90F5 /* SSArray.swift in Sources */,
 				04C43A231E8A365E00D582CF /* SSFormDescriptorCell.swift in Sources */,
@@ -837,6 +863,8 @@
 				0422F8491E7B8991007D90F5 /* SSApplication.swift in Sources */,
 				0422F8431E7B8991007D90F5 /* SSDate.swift in Sources */,
 				0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */,
+				044CF2B41E9B804D003A3E47 /* Cell.swift in Sources */,
+				044CF2B61E9B827F003A3E47 /* RowType.swift in Sources */,
 				04C43A281E8A365E00D582CF /* SSFormRowDescriptor.swift in Sources */,
 				0422F84A1E7B8991007D90F5 /* SSButton.swift in Sources */,
 				0422F7F01E7B8732007D90F5 /* AppDelegate.swift in Sources */,

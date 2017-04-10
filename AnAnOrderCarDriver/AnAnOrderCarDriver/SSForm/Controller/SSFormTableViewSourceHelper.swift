@@ -70,7 +70,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         print("heightForRowAt\(indexPath)")
         assert(indexPath.section <= (self.form.formSectionCount), "out of range")
         let section:SSFormSectionDescriptor = self.form.formSectionAt(indexPath.section)
-        let formRow:SSFormRowDescriptor = section.formRowsAt(indexPath.row)
+        let formRow:SSFormRowDescriptor = section[indexPath.row]
         return formRow.height
     }
     
@@ -83,7 +83,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cellForRowAt\(indexPath)")
-        guard let rowDescriptor:SSFormRowDescriptor = self.form.formRowAt(indexPath) else {
+        guard let rowDescriptor:SSFormRowDescriptor = self.form[indexPath] else {
             return UITableViewCell.init()
         }
         let cell:SSFormBaseCell
@@ -94,20 +94,20 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return false}
+        guard let formRow:SSFormRowDescriptor = form[indexPath] else { return false}
         print("canEditRowAt\(formRow.canEditRow)")
         return formRow.canEditRow
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return false}
+        guard let formRow:SSFormRowDescriptor = form[indexPath] else { return false}
         print("--->canMoveRowAt\(formRow.canMoveRow)")
         return formRow.canMoveRow
     }
     
     //编辑样式，如果想要使用滑动显示侧滑菜单，那么需要删除这个方法
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return .none}
+        guard let formRow:SSFormRowDescriptor = form[indexPath] else { return .none}
         print("editingStyleForRowAt--->\(formRow.editingStyle)")
         return formRow.editingStyle
     }
@@ -128,7 +128,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
     ///编辑状态下的代理方法
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        guard let formRow:SSFormRowDescriptor = form.formRowAt(indexPath) else { return}
+        guard let formRow:SSFormRowDescriptor = form[indexPath] else { return}
         print("commit editingStyle")
         if formRow.editingStyleHandle != nil {
             formRow.editingStyleHandle!(formRow, editingStyle, indexPath)
@@ -156,6 +156,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         return cell.rowDescriptor?.titleForDeleteConfirmationButton
     }
     
+    /*
     ///编辑状态下侧滑返回的几个响应的集合,如果想要执行这个方法，那么必须将editingStyleForRowAt方法删除掉
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         print("editActionsForRowAt")
@@ -163,7 +164,7 @@ class SSFormTableViewSourceHelper: NSObject, UITableViewDelegate, UITableViewDat
         guard cell.rowDescriptor != nil else { return nil}
         return cell.rowDescriptor?.editActions
     }
-    
+    */
     /// 移动的代理方法
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         form.exchangeFormRow(sourceIndexPath, to: destinationIndexPath)

@@ -96,7 +96,6 @@ class SSFormRowDescriptor: NSObject {
         self.cellClass = cellClass
         self.value = value
         super.init()
-        //        self.addObserver(self, forKeyPath: "value", options: [.new,.old], context: &myContext)
     }
     //MARK:-
     //MARK:public
@@ -132,7 +131,6 @@ class SSFormRowDescriptor: NSObject {
         for (key, value) in cellConfig {
             cell?.setValue((value), forKey: key)
         }
-        
         return cell as! SSFormBaseCell?
     }
     
