@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// 针对cell的协议
 public protocol BaseCellType: class {
     
     /// 在初始化单元格后调用
@@ -20,6 +21,7 @@ public protocol BaseCellType: class {
     func didSelect()
 }
 
+/// 所有的cell都应该遵循这个协议，因为都需要有个Value值
 public protocol TypedCellType: BaseCellType {
     associatedtype Value:Equatable
 }

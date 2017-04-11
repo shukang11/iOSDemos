@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04026E6C1E9CBD0D0008B329 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04026E6B1E9CBD0D0008B329 /* Validation.swift */; };
 		041A25D41E84E93C00A92A7B /* NewFeaturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A25D31E84E93C00A92A7B /* NewFeaturePage.swift */; };
 		041A25D71E84EA6200A92A7B /* SSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A25D61E84EA6200A92A7B /* SSNavigationController.swift */; };
 		041A25D91E84EAE100A92A7B /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A25D81E84EAE100A92A7B /* CommonViewController.swift */; };
@@ -112,6 +113,7 @@
 		0422F8531E7B8991007D90F5 /* BLinMenuScro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F82A1E7B8991007D90F5 /* BLinMenuScro.swift */; };
 		0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F8331E7B8991007D90F5 /* SSSecurity.swift */; };
 		0422F85E1E7B8991007D90F5 /* SSKIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83A1E7B8991007D90F5 /* SSKIt.swift */; };
+		042DA1C01E9CC7FA0003F2DF /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DA1BF1E9CC7FA0003F2DF /* Core.swift */; };
 		0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447D8E81E8271F200F8E051 /* HttpManager.swift */; };
 		044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AC1E9B7F45003A3E47 /* Row.swift */; };
 		044CF2B01E9B8035003A3E47 /* BaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AF1E9B8035003A3E47 /* BaseRow.swift */; };
@@ -131,6 +133,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04026E6B1E9CBD0D0008B329 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		041A25D31E84E93C00A92A7B /* NewFeaturePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeaturePage.swift; sourceTree = "<group>"; };
 		041A25D61E84EA6200A92A7B /* SSNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSNavigationController.swift; sourceTree = "<group>"; };
 		041A25D81E84EAE100A92A7B /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 		0422F8331E7B8991007D90F5 /* SSSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSecurity.swift; sourceTree = "<group>"; };
 		0422F83A1E7B8991007D90F5 /* SSKIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSKIt.swift; sourceTree = "<group>"; };
 		0422F8631E7B8A39007D90F5 /* AnAnOrderCarDriver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnAnOrderCarDriver-Bridging-Header.h"; sourceTree = "<group>"; };
+		042DA1BF1E9CC7FA0003F2DF /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0447D8E81E8271F200F8E051 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		044CF2AC1E9B7F45003A3E47 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		044CF2AF1E9B8035003A3E47 /* BaseRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRow.swift; sourceTree = "<group>"; };
@@ -572,6 +576,8 @@
 				044CF2B11E9B8044003A3E47 /* CellType.swift */,
 				044CF2B31E9B804D003A3E47 /* Cell.swift */,
 				044CF2B51E9B827F003A3E47 /* RowType.swift */,
+				04026E6B1E9CBD0D0008B329 /* Validation.swift */,
+				042DA1BF1E9CC7FA0003F2DF /* Core.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */,
+				042DA1C01E9CC7FA0003F2DF /* Core.swift in Sources */,
 				0422F84C1E7B8991007D90F5 /* SSControl.swift in Sources */,
 				0422F84F1E7B8991007D90F5 /* SSImage.swift in Sources */,
 				0422F84D1E7B8991007D90F5 /* SSDevice.swift in Sources */,
@@ -856,6 +863,7 @@
 				0422F8401E7B8991007D90F5 /* AnimationView.swift in Sources */,
 				0422F8511E7B8991007D90F5 /* SSView.swift in Sources */,
 				0422F85E1E7B8991007D90F5 /* SSKIt.swift in Sources */,
+				04026E6C1E9CBD0D0008B329 /* Validation.swift in Sources */,
 				041A25E51E850C1E00A92A7B /* MyPage.swift in Sources */,
 				041A25DB1E84EC2600A92A7B /* Config.swift in Sources */,
 				0422F8451E7B8991007D90F5 /* SSEncryption.swift in Sources */,

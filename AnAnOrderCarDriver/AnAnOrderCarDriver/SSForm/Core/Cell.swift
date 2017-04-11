@@ -9,8 +9,19 @@
 import Foundation
 import UIKit
 
+/// 继承于UITableViewCell，为框架中的基本cell，遵循了一些协议
 open class BaseCell:UITableViewCell, BaseCellType {
 
+    public var baseRow: BaseCell! { return nil }
+    
+    public required override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     open func configure() {}
     open func update() {}
     open func didSelect() {}
@@ -23,7 +34,7 @@ open class Cell<T: Equatable>: BaseCell, TypedCellType {
         super.init(coder: aDecoder)
     }
     
-    required public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         height = { UITableViewAutomaticDimension }()
     }
