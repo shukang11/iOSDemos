@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+/// 一个cell的动作的类，弄清楚之后会重新解释的
 internal class RowDefaults {
     static var cellUpdate = [String: (BaseCell, BaseRow) -> Void]()
     static var cellSetup = [String: (BaseCell, BaseRow) -> Void]()

@@ -11,6 +11,8 @@ import UIKit
 
 /// 继承于UITableViewCell，为框架中的基本cell，遵循了一些协议
 open class BaseCell:UITableViewCell, BaseCellType {
+    public var cellHeight: (() -> CGFloat)?
+
 
     public var baseRow: BaseCell! { return nil }
     
@@ -25,6 +27,21 @@ open class BaseCell:UITableViewCell, BaseCellType {
     open func configure() {}
     open func update() {}
     open func didSelect() {}
+    
+    public /// 获得当前的试图控制器
+    func formHandlerViewController() -> UIViewController? {
+        return nil
+    }
+    
+    public /// 当cell注销第一响应者的时候调用
+    func cellResignFirstResponder() -> Bool {
+        return false
+    }
+    
+    public /// 当cell成为第一响应者的时候调用
+    func cellCanBecomeFirstResponder() -> Bool {
+        return false
+    }
 }
 
 open class Cell<T: Equatable>: BaseCell, TypedCellType {

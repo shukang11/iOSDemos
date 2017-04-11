@@ -115,7 +115,6 @@
 		0422F85E1E7B8991007D90F5 /* SSKIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422F83A1E7B8991007D90F5 /* SSKIt.swift */; };
 		042DA1C01E9CC7FA0003F2DF /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DA1BF1E9CC7FA0003F2DF /* Core.swift */; };
 		0447D8E91E8271F200F8E051 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447D8E81E8271F200F8E051 /* HttpManager.swift */; };
-		044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AC1E9B7F45003A3E47 /* Row.swift */; };
 		044CF2B01E9B8035003A3E47 /* BaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2AF1E9B8035003A3E47 /* BaseRow.swift */; };
 		044CF2B21E9B8044003A3E47 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2B11E9B8044003A3E47 /* CellType.swift */; };
 		044CF2B41E9B804D003A3E47 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CF2B31E9B804D003A3E47 /* Cell.swift */; };
@@ -129,6 +128,10 @@
 		04C43A281E8A365E00D582CF /* SSFormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A201E8A365E00D582CF /* SSFormRowDescriptor.swift */; };
 		04C43A291E8A365E00D582CF /* SSFormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A211E8A365E00D582CF /* SSFormSectionDescriptor.swift */; };
 		04C43A2B1E8A3C6D00D582CF /* SSFormSystemTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C43A2A1E8A3C6D00D582CF /* SSFormSystemTextCell.swift */; };
+		23DB8D8F1E9D12B000C1C89B /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB8D8E1E9D12B000C1C89B /* Row.swift */; };
+		23DB8D911E9D1AC000C1C89B /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB8D901E9D1AC000C1C89B /* Section.swift */; };
+		23DB8D931E9D1DF200C1C89B /* HeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB8D921E9D1DF200C1C89B /* HeaderFooterView.swift */; };
+		23DB8D951E9D1F5100C1C89B /* HelperTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB8D941E9D1F5100C1C89B /* HelperTypes.swift */; };
 		650F5BBF476990E5AD7D8CF6 /* Pods_AnAnOrderCarDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE53906623E1DF24500B666D /* Pods_AnAnOrderCarDriver.framework */; };
 /* End PBXBuildFile section */
 
@@ -244,7 +247,6 @@
 		0422F8631E7B8A39007D90F5 /* AnAnOrderCarDriver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnAnOrderCarDriver-Bridging-Header.h"; sourceTree = "<group>"; };
 		042DA1BF1E9CC7FA0003F2DF /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0447D8E81E8271F200F8E051 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
-		044CF2AC1E9B7F45003A3E47 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		044CF2AF1E9B8035003A3E47 /* BaseRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRow.swift; sourceTree = "<group>"; };
 		044CF2B11E9B8044003A3E47 /* CellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		044CF2B31E9B804D003A3E47 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -259,6 +261,10 @@
 		04C43A211E8A365E00D582CF /* SSFormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormSectionDescriptor.swift; sourceTree = "<group>"; };
 		04C43A2A1E8A3C6D00D582CF /* SSFormSystemTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSFormSystemTextCell.swift; sourceTree = "<group>"; };
 		1B0C29979B105B6D26F38E16 /* Pods-AnAnOrderCarDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnAnOrderCarDriver.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnAnOrderCarDriver/Pods-AnAnOrderCarDriver.release.xcconfig"; sourceTree = "<group>"; };
+		23DB8D8E1E9D12B000C1C89B /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		23DB8D901E9D1AC000C1C89B /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		23DB8D921E9D1DF200C1C89B /* HeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderFooterView.swift; sourceTree = "<group>"; };
+		23DB8D941E9D1F5100C1C89B /* HelperTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTypes.swift; sourceTree = "<group>"; };
 		71E3BA14F53CA7666441D3F4 /* Pods-AnAnOrderCarDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnAnOrderCarDriver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnAnOrderCarDriver/Pods-AnAnOrderCarDriver.debug.xcconfig"; sourceTree = "<group>"; };
 		FE53906623E1DF24500B666D /* Pods_AnAnOrderCarDriver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnAnOrderCarDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -578,6 +584,10 @@
 				044CF2B51E9B827F003A3E47 /* RowType.swift */,
 				04026E6B1E9CBD0D0008B329 /* Validation.swift */,
 				042DA1BF1E9CC7FA0003F2DF /* Core.swift */,
+				23DB8D8E1E9D12B000C1C89B /* Row.swift */,
+				23DB8D901E9D1AC000C1C89B /* Section.swift */,
+				23DB8D921E9D1DF200C1C89B /* HeaderFooterView.swift */,
+				23DB8D941E9D1F5100C1C89B /* HelperTypes.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -599,7 +609,6 @@
 				04C43A181E8A365E00D582CF /* SSFormBaseCell.swift */,
 				04C43A191E8A365E00D582CF /* SSFormDescriptorCell.swift */,
 				04C43A2A1E8A3C6D00D582CF /* SSFormSystemTextCell.swift */,
-				044CF2AC1E9B7F45003A3E47 /* Row.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -832,7 +841,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044CF2AD1E9B7F45003A3E47 /* Row.swift in Sources */,
 				042DA1C01E9CC7FA0003F2DF /* Core.swift in Sources */,
 				0422F84C1E7B8991007D90F5 /* SSControl.swift in Sources */,
 				0422F84F1E7B8991007D90F5 /* SSImage.swift in Sources */,
@@ -842,6 +850,7 @@
 				04C43A221E8A365E00D582CF /* SSFormBaseCell.swift in Sources */,
 				04C43A2B1E8A3C6D00D582CF /* SSFormSystemTextCell.swift in Sources */,
 				0422F8461E7B8991007D90F5 /* SSNumber.swift in Sources */,
+				23DB8D911E9D1AC000C1C89B /* Section.swift in Sources */,
 				0422F8471E7B8991007D90F5 /* SSPath.swift in Sources */,
 				041A25E11E85081300A92A7B /* SSTabBarPage.swift in Sources */,
 				0422F8531E7B8991007D90F5 /* BLinMenuScro.swift in Sources */,
@@ -849,6 +858,7 @@
 				0422F80C1E7B892F007D90F5 /* HttpMessage.swift in Sources */,
 				0422F8411E7B8991007D90F5 /* SSArray.swift in Sources */,
 				04C43A231E8A365E00D582CF /* SSFormDescriptorCell.swift in Sources */,
+				23DB8D931E9D1DF200C1C89B /* HeaderFooterView.swift in Sources */,
 				0422F8481E7B8991007D90F5 /* SSString.swift in Sources */,
 				04C43A241E8A365E00D582CF /* SSFormTableView.swift in Sources */,
 				041A25E71E85156200A92A7B /* MainPage.swift in Sources */,
@@ -856,6 +866,7 @@
 				041A25D91E84EAE100A92A7B /* CommonViewController.swift in Sources */,
 				041A25DD1E84EC2A00A92A7B /* APPConstant.swift in Sources */,
 				0422F84E1E7B8991007D90F5 /* SSFont.swift in Sources */,
+				23DB8D951E9D1F5100C1C89B /* HelperTypes.swift in Sources */,
 				0422F8501E7B8991007D90F5 /* SSNavigationBar.swift in Sources */,
 				04C43A271E8A365E00D582CF /* SSFormDescriptorDelegate.swift in Sources */,
 				045A3C4C1E88B19200F512FC /* NVAHubView.swift in Sources */,
@@ -878,6 +889,7 @@
 				0422F7F01E7B8732007D90F5 /* AppDelegate.swift in Sources */,
 				041A25D41E84E93C00A92A7B /* NewFeaturePage.swift in Sources */,
 				0422F84B1E7B8991007D90F5 /* SSColor.swift in Sources */,
+				23DB8D8F1E9D12B000C1C89B /* Row.swift in Sources */,
 				0422F85A1E7B8991007D90F5 /* SSSecurity.swift in Sources */,
 				04C43A291E8A365E00D582CF /* SSFormSectionDescriptor.swift in Sources */,
 				041D1EA81E8B9E300019C904 /* SSFormTableViewSourceHelper.swift in Sources */,

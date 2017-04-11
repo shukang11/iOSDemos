@@ -24,14 +24,10 @@ open class BaseRow: BaseRowType {
     public var tag: String?
     
     /// 点击的时候调用
-    public func didSelect() {
-        
-    }
+    public func didSelect() {}
     
     /// 重绘的时候调用
-    public func updateCell() {
-        
-    }
+    public func updateCell() {}
     
     /// cell的title属性
     public var title: String?
@@ -41,5 +37,17 @@ open class BaseRow: BaseRowType {
     
     /// row对应的cell
     public var baseCell: BaseCell! { return nil}
+    
+    /// 这个row无类型的value
+    public var baseValue: Any? {
+        set {}
+        get { return nil}
+    }
+    
+    public static var estimatedRowHeight: CGFloat = 44.0
+    
+    public required init(tag: String? = nil) {
+        self.tag = tag
+    }
     
 }
