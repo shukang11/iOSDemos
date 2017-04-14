@@ -65,23 +65,6 @@ let kHost_Taxi_Base_URL = "http://cztu.ahjtpx.com/"//出租车
 let kHost_API_URL = "userApi/"//中间的url地址
 
 
-let kHttpRequest_Login                          =   "login.do"//学员登录
-let kHttpRequest_UpdPwd                         =   "updPwd.do"//修改密码
-let kHttpRequest_logOut                         =   "logOut.do"//登出
-let kHttpRequest_stuInfo                        =   "stuInfo.do"//个人资料
-let kHttpRequest_getAllBigClass                 =   "getAllBigClass.do"//获得所有的大单元
-let kHttpRequest_getContinueStudyByBigId        =   "getContinueStudyByBigId.do"//获得小单元
-let kHttpRequest_getContinueStudy               =   "getContinueStudy.do"//登录以后继续学习
-let kHttpRequest_getStartPlayVideo              =   "getStartPlayVideo.do"//开始学习当前视频
-let kHttpRequest_getStopPlayVideo               =   "getStopPlayVideo.do"//结束学习当前的视频
-let kHttpRequest_getTiMuById                    =   "getTiMuById.do"//小单元结束以后获得题目
-let kHttpRequest_getStuJd                       =   "getStuJd.do"//获得学员的学习进度
-let kHttpRequest_addYanZhengPhoto               =   "addYanZhengPhoto.do"//保存验证的图像
-let kHttpRequest_getMobileNum                   =   "getMobileNum.do"//向手机用户发送验证码
-let kHttpRequest_checkMobileNum                 =   "checkMobileNum.do"//检查用户输入的验证码
-let kHttpRequest_setAppUser                     =   "setAppUser.do"//添加app用户
-let kHttpRequest_appUpdate                      =   "appUpdate.do"//手机端比较版本号
-let kHttpRequest_addSuggestion                  =   "addSuggestion.do"//添加建议或者意见
 let kHttpRequest_findOegtNotification           =   "findOegtNotification.do"//获得有效的通知
 let kHttpRequest_CheckStudentLoginState         =   "checkStudentLoginState.do"//检查当前设备是不是活动设备
 
