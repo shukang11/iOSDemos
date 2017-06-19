@@ -8,16 +8,19 @@
 
 import Foundation
 import UIKit
+import SSKitSwift
+import SSFormSwift
 
 class CommonViewController: UIViewController {
     //MARK:-
     //MARK:properties
+    
     var tableView:UITableView = {
         return UITableView.tableView()
     }()
     
-    var formTable:SSFormTable = {
-        let _tableView : SSFormTable = SSFormTable.init(frame: CGRect.zero, style: .plain)
+    var formTable:UITableView = {
+        let _tableView : UITableView = UITableView.init(frame: CGRect.zero, style: .plain)
         _tableView.indicatorStyle = .white
         _tableView.isScrollEnabled = true
         _tableView.isUserInteractionEnabled = true

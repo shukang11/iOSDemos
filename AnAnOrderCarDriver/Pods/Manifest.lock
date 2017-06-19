@@ -1,11 +1,13 @@
 PODS:
-  - Alamofire (4.2.0)
+  - Alamofire (4.4.0)
   - DGElasticPullToRefresh (1.1)
-  - IQKeyboardManager (4.0.7)
-  - Kingfisher (3.2.1)
+  - IQKeyboardManager (4.0.9)
+  - Kingfisher (3.6.2)
   - Log (1.0)
-  - NVActivityIndicatorView (3.0)
-  - SwiftyJSON (3.1.3)
+  - NVActivityIndicatorView (3.6.1)
+  - SSFormSwift (0.1.2)
+  - SSKitSwift (0.1.1)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -14,17 +16,21 @@ DEPENDENCIES:
   - Kingfisher
   - Log
   - NVActivityIndicatorView
+  - SSFormSwift
+  - SSKitSwift
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
-  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
-  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
+  IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   Log: 5e368c9528db07517d18d2d04ff5fe2b6f5a1e21
-  NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  SSFormSwift: 54ce5fa374107744cb386ebb740e2ff266e36751
+  SSKitSwift: 4758cc93a8abd12bace870ac97f88862b7de13ae
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8558a165db6eea7eb6adefd2d49b6613b7ebf718
+PODFILE CHECKSUM: e40a9b94ad1e132963a40f53a1c8ce34e0d7e521
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1

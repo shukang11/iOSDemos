@@ -1,5 +1,10 @@
+#source 'https://github.com/jiazifa/SSFormSwift.git'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/jiazifa/Specs.git'
+
 platform :ios, '8.1'
 
+inhibit_all_warnings!#不显示第三方库中的警告
 use_frameworks!
 
 target 'AnAnOrderCarDriver' do
@@ -16,5 +21,8 @@ pod 'Log'#日志框架
 
 pod 'Kingfisher' #图片加载框架
 
-pod 'IQKeyboardManager'
+pod 'IQKeyboardManager' #, :inhibit_all_warnings => true表示允许此库显示警告信息
+#私有库内容
+pod 'SSFormSwift'
+pod 'SSKitSwift'
 end

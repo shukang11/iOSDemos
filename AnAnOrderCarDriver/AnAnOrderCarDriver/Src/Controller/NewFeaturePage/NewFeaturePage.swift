@@ -54,3 +54,15 @@ class NewFeaturePage: UIViewController {
     }
 }
 
+extension NewFeaturePage {
+    
+}
+
+public enum NewFeatureSourceType {
+    ///默认，新版本显示此页
+    case newVersion
+    ///数据来源需要下载
+    case downloadData
+    
+}
+

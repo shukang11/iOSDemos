@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 class MyPage: CommonViewController {
     //MARK:property属性
     var mydelegate:Mydelegate = {
@@ -62,9 +63,9 @@ class Mydelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cellForRowAt")
-        var cell:demoCell? = tableView.dequeueReusableCell(withIdentifier: "cell") as! demoCell?
+        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
-            cell = demoCell.init(style: .value1, reuseIdentifier: "cell")
+            cell = UITableViewCell.init(style: .value1, reuseIdentifier: "cell")
             cell?.selectionStyle = .none
         }
         cell?.contentView.debugModeColor()

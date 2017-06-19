@@ -50,7 +50,7 @@ class SSNavigationController: UINavigationController {
         
         btn.size = (btn.currentBackgroundImage?.size)!
         btn.addTarget(target, action: action, for: .touchUpInside)
-        
+
         return UIBarButtonItem.init(customView: btn)
     }
     

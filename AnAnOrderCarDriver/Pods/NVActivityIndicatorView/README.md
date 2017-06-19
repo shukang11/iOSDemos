@@ -21,14 +21,14 @@ For first-hand experience, just open the project and run it.
 
 | Type | Type | Type | Type |
 |---|---|---|---|
-1. BallPulse | 2. BallGridPulse | 3. BallClipRotate | 4. SquareSpin
-5. BallClipRotatePulse | 6. BallClipRotateMultiple | 7. BallPulseRise | 8. BallRotate
-9. CubeTransition | 10. BallZigZag | 11. BallZigZagDeflect | 12. BallTrianglePath
-13. BallScale | 14. LineScale | 15. LineScaleParty | 16. BallScaleMultiple
-17. BallPulseSync | 18. BallBeat | 19. LineScalePulseOut | 20. LineScalePulseOutRapid
-21. BallScaleRipple | 22. BallScaleRippleMultiple | 23. BallSpinFadeLoader | 24. LineSpinFadeLoader
-25. TriangleSkewSpin | 26. Pacman | 27. BallGridBeat | 28. SemiCircleSpin
-29. BallRotateChase | 30. Orbit | 31. AudioEqualizer
+|1. ballPulse | 2. ballGridPulse | 3. ballClipRotate | 4. squareSpin|
+|5. ballClipRotatePulse | 6. ballClipRotateMultiple | 7. ballPulseRise | 8. ballRotate|
+|9. cubeTransition | 10. ballZigZag | 11. ballZigZagDeflect | 12. ballTrianglePath|
+|13. ballScale | 14. lineScale | 15. lineScaleParty | 16. ballScaleMultiple|
+|17. ballPulseSync | 18. ballBeat | 19. lineScalePulseOut | 20. lineScalePulseOutRapid|
+|21. ballScaleRipple | 22. ballScaleRippleMultiple | 23. ballSpinFadeLoader | 24. lineSpinFadeLoader|
+|25. triangleSkewSpin | 26. pacman | 27. ballGridBeat | 28. semiCircleSpin|
+|29. ballRotateChase | 30. orbit | 31. audioEqualizer|
 
 # Installation
 
@@ -70,15 +70,23 @@ github "ninjaprox/NVActivityIndicatorView"
 
 Run `carthage` to build the framework and drag the built `NVActivityIndicatorView.framework` into your Xcode project.
 
+_**Note:** You might encounter compile issue, if so please use `carthage` branch instead. Check issue [#101](https://github.com/ninjaprox/NVActivityIndicatorView/issues/101) for more information._
+
 ## Manual
 
 Copy `NVActivityIndicatorView` folder to your project. That's it.
 
-_**Note:** Make sure that all files in `NVActivityIndicatorView` included in Compile Sources in Build Phases.
+_**Note:** Make sure that all files in `NVActivityIndicatorView` included in Compile Sources in Build Phases._
+
+_**Note:** If you encounter issues while uploading the app to iTunes Connect, remove the `Info.plist` file in `NVActivityIndicatorView`. Check issue [#129](https://github.com/ninjaprox/NVActivityIndicatorView/issues/129) for more information._
 
 # Migration
 
-## Vesrion 3.0
+## Version 3.6.0
+
+This version requires Xcode 8.3 and Swift 3.1.
+
+## Version 3.0
 
 This version requires Xcode 8.0 and Swift 3.
 
@@ -108,13 +116,15 @@ Then, there are two ways you can create NVActivityIndicatorView:
 
 - By storyboard, changing class of any `UIView` to `NVActivityIndicatorView`.
 
+_**Note:** Set Module to `NVActivityIndicatorView`._
+
 - By code, using initializer. All parameters other than `frame` are optional and `NVActivityIndicatorView.DEFAULT_*` are used as default values.
 
 ```swift
 NVActivityIndicatorView(frame: frame, type: type, color: color, padding: padding)
 ```
 
-_**Note:** Check [DEFAULTS](#DEFAULTS) for default values._
+_**Note:** Check [DEFAULTS](#defaults) for default values._
 
 ## Control
 
@@ -176,12 +186,18 @@ let activityData = ActivityData()
 NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
 ```
 
-_**Note:** Check documentation for detail of `ActivityData`._
+_**Note:** Check [documentation](http://cocoadocs.org/docsets/NVActivityIndicatorView) for detail of `ActivityData`._
 
 Stop animating.
 
 ```swift
 NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+```
+
+Change message.
+
+```swift
+NVActivityIndicatorPresenter.sharedInstance.setMessage("Done")
 ```
 
 ## DEFAULTS
@@ -191,13 +207,19 @@ There are global defaults for all `NVActivityIndicatorView` instances.
 - Default animation type.
 
 ```swift
-NVActivityIndicatorView.DEFAULT_TYPE = .BallSpinFadeLoader
+NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
 ```
 
 - Default color of activity indicator view.
 
 ```swift
-NVActivityIndicatorView.DEFAULT_COLOR = UIColor.whiteColor()
+NVActivityIndicatorView.DEFAULT_COLOR = UIColor.white
+```
+
+- Default color of the text below the activity indicator view when using an `NVActivityIndicatorPresenter`. The presentor will use the activity indicator `color` for the text if it is set but a `textColor` is not. `DEFAULT_TEXT_COLOR` is only used when neither are set.
+
+```swift
+NVActivityIndicatorView.DEFAULT_TEXT_COLOR = UIColor.white
 ```
 
 - Default padding of activity indicator view.
@@ -210,6 +232,12 @@ NVActivityIndicatorView.DEFAULT_PADDING = CGFloat(0)
 
 ```swift
 NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSizeMake(60, 60)
+```
+
+- Default background color of UI blocker.
+
+```swift
+NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
 ```
 
 - Default display time threshold.
@@ -228,6 +256,18 @@ NVActivityIndicatorView.DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD = 0 // in millise
 NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0 // in milliseconds
 ```
 
+- Default message displayed in UI blocker.
+
+```swift
+NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE: String? = nil
+```
+
+- Default font of message displayed in UI blocker.
+
+```swift
+NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE_FONT = UIFont.boldSystemFont(ofSize: 20)
+```
+
 # Acknowledgment
 
 Thanks [Connor Atherton](https://github.com/ConnorAtherton) for great loaders and [Danil Gontovnik](https://github.com/gontovnik) for kick-start.
@@ -236,4 +276,4 @@ Thanks [Connor Atherton](https://github.com/ConnorAtherton) for great loaders an
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Nguyen Vinh [@ninjaprox](http://twitter.com/ninjaprox)
+Copyright (c) 2016 Vinh Nguyen [@ninjaprox](http://twitter.com/ninjaprox)

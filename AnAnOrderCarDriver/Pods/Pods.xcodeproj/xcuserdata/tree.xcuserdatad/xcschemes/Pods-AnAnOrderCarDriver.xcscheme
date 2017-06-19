@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "36B0463235F72C04604C5B181606334D"
+               BlueprintIdentifier = "0F68BFF4F8E209C89BF6EDEEB050435B"
                BuildableName = "Pods_AnAnOrderCarDriver.framework"
                BlueprintName = "Pods-AnAnOrderCarDriver"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "36B0463235F72C04604C5B181606334D"
+            BlueprintIdentifier = "0F68BFF4F8E209C89BF6EDEEB050435B"
             BuildableName = "Pods_AnAnOrderCarDriver.framework"
             BlueprintName = "Pods-AnAnOrderCarDriver"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "36B0463235F72C04604C5B181606334D"
-            BuildableName = "Pods_AnAnOrderCarDriver.framework"
-            BlueprintName = "Pods-AnAnOrderCarDriver"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -7,25 +7,31 @@
 //
 
 import Foundation
-
-enum SSRequestMethod {
-    case post
-    case get
-    //post 数据流，非表单，文件流上传
-    case stream
+import Alamofire
+// MARK: - 提供一些常用的方法,用于快速创建对象
+extension HttpMessage {
+    func defaultJSONHeaders() -> [String: String] {
+        return ["Content-Type": "application/json"]
+    }
 }
-class HttpMessage : NSObject {
-    //==>sending
+
+
+class HttpMessage {
+    //MARK:-
+    //MARK:sending
+
     //发送的代码类型
     var cmdCode : E_CMDCODE = .CC_Default
     //请求超时
-    var timeout : Float = 30.0
+    var timeout : Float = 15.0
     //请求的地址
     var requestUrl : String = ""
     //请求的参数
-    var postParame : NSDictionary = NSDictionary.init()
+    var parame : [String: Any]?
+    /// 请求头信息(can be nil)
+    var headers: [String: String]?
     //请求的方法
-    var requestMethod : SSRequestMethod = .get
+    var requestMethod : HTTPMethod = .get
     //添加的用户信息(can be nil)
     var userInfo : AnyObject?
     //二进制流 e.g. 图片数据
@@ -35,14 +41,18 @@ class HttpMessage : NSObject {
     //请求回调
     var delegate : HttpResponseDelegate?
     
+    /// 请求的参数类型。默认是Alamofire默认的参数。有的情况会需要json的类型，可以修改这里
+    var paramsEncoding : ParameterEncoding = URLEncoding.default
     
-    //==>recieving
+    //MARK:-
+    //MARK:recieving
+
     //错误码
-    var errorCode : String = ""
+    var errorCode : Int = 0
     //回应的字符
     var responseString : String = ""
     //返回的json数据
-    var jsonItens : NSDictionary = NSDictionary.init()
+    var jsonItems : [String:Any] = [:]
     //请求能否可以多个并行
     var canMultipleConCurrent : Bool = false
     //追加的cookies
@@ -50,14 +60,19 @@ class HttpMessage : NSObject {
     //返回的状态码
     var responseStatusCode : Int = 0
     //请求的错误
-    var error : NSError = NSError.init()
+    var error : Error?
     //添加的数值
     var additionValues : NSMutableDictionary = NSMutableDictionary.init()
     
-    init(url:String, postDic:NSDictionary, cmdCode:E_CMDCODE) {
-        super.init()
+    func setup() {
+        self.requestMethod = .get
+    }
+    
+    init(url:String = "", postDic:NSDictionary = NSDictionary(), delegate:HttpResponseDelegate? = nil, cmdCode:E_CMDCODE = E_CMDCODE.CC_Default) {
+        setup()
         self.requestUrl = url
         self.cmdCode = cmdCode
+        self.delegate = delegate
     }
     
     public func cancelDelegate() -> Void {
@@ -73,19 +88,20 @@ class HttpMessage : NSObject {
  @abstract       HttpMessage的一个代理
  @discussion     代理模式
  */
-@objc protocol HttpResponseDelegate {
+protocol HttpResponseDelegate {
     /*!
      @method        receiveDidFinished
      @abstract      请求完成（请求有返回）后的回调方法
      @discussion    代理类中实现
      @param         receiveMsg  HttpMessage对象
      */
-    @objc optional func receiveDidFinished(receiveMsg:HttpMessage) -> Void;
+    func receiveDidFinished(receiveMsg:HttpMessage) -> Void;
     /*!
      @method        receiveDidFailed
      @abstract      请求失败（超时，网络未链接等错误）后的回调方法
      @discussion    代理类中实现
      @param         receiveMsg  HttpMessage对象
      */
-    @objc optional func receiveDidFailed(receiveMsg:HttpMessage) -> Void;
+    func receiveDidFailed(receiveMsg:HttpMessage) -> Void;
 }
+

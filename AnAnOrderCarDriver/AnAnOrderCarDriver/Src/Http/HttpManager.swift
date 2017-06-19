@@ -14,8 +14,17 @@ typealias SuccessBlock = (_ success:AnyObject) -> Void
 typealias RequestFailBlock = (_ message:AnyObject) -> Void
 typealias ConnectFailBlock = (_ error:AnyObject) -> Void
 
+/// 网络请求信息
 class HttpManager: NSObject {
+    //MARK:-
+    //MARK:properties
     
+    //MARK:-
+    //MARK:method
+    private override init() {
+        super.init()
+    }
+
     /// 根据后缀地址拼接成完整的url访问地址
     ///
     /// - Parameter url: 后缀的地址
@@ -46,7 +55,7 @@ class HttpManager: NSObject {
     ///   - requestFailBlock: 请求失败
     ///   - connectFailBlock: 无法连接到服务器
     class func postForResult(_ url:String, params:[String:Any], successBlock:SuccessBlock?, requestFailBlock:RequestFailBlock?, connectFailBlock:ConnectFailBlock?) -> Void {
-        request(url, method: .post, params: params, successBlock: successBlock, requestFailBlock: requestFailBlock, connectFailBlock: connectFailBlock)
+        request(url, method: .post, params: params, headers: nil, successBlock: successBlock, requestFailBlock: requestFailBlock, connectFailBlock: connectFailBlock)
     }
     
     
@@ -70,7 +79,7 @@ class HttpManager: NSObject {
     ///   - requestFailBlock: 请求失败的回调
     ///   - connectFailBlock: 无法连接到服务器
     class func getForResult(_ url:String, params:[String:Any], successBlock:SuccessBlock?, requestFailBlock:RequestFailBlock?, connectFailBlock:ConnectFailBlock?) -> Void {
-        request(url, method: .get, params: params, successBlock: successBlock, requestFailBlock: requestFailBlock, connectFailBlock: connectFailBlock)
+        request(url, method: .get, params: params, headers: nil, successBlock: successBlock, requestFailBlock: requestFailBlock, connectFailBlock: connectFailBlock)
     }
     
     /// 请求地址，包含了所有状态的回调
@@ -94,9 +103,8 @@ class HttpManager: NSObject {
     ///   - successBlock: 成功的回调
     ///   - requestFailBlock: 失败的回调
     ///   - connectFailBlock: 无法连接到服务器
-    class func request(_ url:String, method:HTTPMethod, params:[String:Any], successBlock:SuccessBlock?, requestFailBlock:RequestFailBlock?, connectFailBlock:ConnectFailBlock?) -> Void {
-        
-        Alamofire.request(url, method: method, parameters: params, headers: nil).responseJSON { (response) in
+    class func request(_ url:String, method:HTTPMethod, params:[String:Any], headers: [String: String]?, successBlock:SuccessBlock?, requestFailBlock:RequestFailBlock?, connectFailBlock:ConnectFailBlock?) -> Void {
+        Alamofire.request(url, method: method, parameters: params, headers: headers).responseJSON { (response) in
             print("\(url)->\(params)")
             if response.result.isFailure {
                 if (connectFailBlock != nil) {
@@ -105,7 +113,7 @@ class HttpManager: NSObject {
                 }
             }else {
                 let jsonData = JSON.init(data: response.data!)
-                if stateSuccess(jsonData["state"].string!) {
+                if self.stateSuccess(jsonData["state"].string!) {
                     if (successBlock != nil) {
                         successBlock!(jsonData as AnyObject)
                         return
@@ -120,8 +128,9 @@ class HttpManager: NSObject {
         }
     }
     
+    
    class func stateSuccess(_ stateCode:String) -> Bool {
-        let errorCode:[String] = ["error","unSuccess"]
+        let errorCode:[String] = ["error","unSuccess","fail"]
         if (errorCode.contains(stateCode)) {
             return false
         }

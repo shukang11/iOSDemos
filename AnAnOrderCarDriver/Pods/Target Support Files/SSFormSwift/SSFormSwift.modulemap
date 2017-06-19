@@ -1,0 +1,6 @@
+framework module SSFormSwift {
+  umbrella header "SSFormSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

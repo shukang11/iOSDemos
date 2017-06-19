@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import SSFormSwift
+
 class TransportPage: CommonViewController {
     //MARK:property属性
     //MARK:system系统
@@ -27,7 +29,7 @@ class TransportPage: CommonViewController {
     //MARK:delegate&dataSource代理和数据源
     //MARK:customMethod自定义
     func createMainUI() {
-        formTable = SSFormTable.init(frame: CGRect.init(x: 0.0, y: 64.0, width: view.width, height: view.height-64.0-50.0), style: .plain)
+        formTable = UITableView.init(frame: CGRect.init(x: 0.0, y: 64.0, width: view.width, height: view.height-64.0-50.0), style: .plain)
         view.addSubview(formTable)
         let formHelper:SSFormTableViewSourceHelper = SSFormTableViewSourceHelper.init(formTable)
         
@@ -57,6 +59,7 @@ class TransportPage: CommonViewController {
 //                formHelper.form.addSection(section)
 //            })
             row.deleteAnimation = .left
+            row.freshAnimation = .left
             row.onClickHandle({ (rowDes, indexPath) in
                 rowDes.value = "ssdfasldkjasdklfj" as AnyObject
             })
@@ -68,3 +71,5 @@ class TransportPage: CommonViewController {
     }
     
 }
+
+
