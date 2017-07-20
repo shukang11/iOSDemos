@@ -20,10 +20,8 @@ public class DataService: HttpResponseDelegate {
     //MARK:-
     //MARK:delegete
     func receiveDidFinished(receiveMsg: HttpMessage) {
-        DLog(receiveMsg.jsonItems)
     }
 
     func receiveDidFailed(receiveMsg: HttpMessage) {
-        
     }
 }

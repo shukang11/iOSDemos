@@ -8,9 +8,16 @@
 
 import Foundation
 
+protocol CommonServiceDelegate {
+    func didReceiveNotice() -> Void;
+    
+    func didFailureReceived() -> Void;
+}
+
 class CommonService: DataService {
     var hasNoticeMsg: HttpMessage?
     
+    var delegate: CommonServiceDelegate?
     override init() {
         
         super.init()
@@ -25,7 +32,17 @@ class CommonService: DataService {
     //MARK:-
     //MARK:serice back delegate
     override func receiveDidFinished(receiveMsg: HttpMessage) {
-        DLog(receiveMsg.jsonItems)
+        if (receiveMsg.cmdCode == E_CMDCODE.CC_FindOegtNotification) {
+            self.delegate?.didReceiveNotice()
+        }else {
+            
+        }
     }
-
+    override func receiveDidFailed(receiveMsg: HttpMessage) {
+        if (receiveMsg.cmdCode == E_CMDCODE.CC_FindOegtNotification) {
+            self.delegate?.didFailureReceived()
+        }else {
+            
+        }
+    }
 }

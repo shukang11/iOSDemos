@@ -11,7 +11,7 @@ import UIKit
 import Log
 import NVActivityIndicatorView
 
-class HomePage: CommonViewController {
+class HomePage: CommonViewController,CommonServiceDelegate {
     //MARK:property属性
     let commonService: CommonService = CommonService.init()
     //MARK:system系统
@@ -19,6 +19,7 @@ class HomePage: CommonViewController {
         self.view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = false
         super.viewDidLoad()
+        self.commonService.delegate = self
         self.createMainUI()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -26,19 +27,18 @@ class HomePage: CommonViewController {
     }
     
     //MARK:delegate&dataSource代理和数据源
+    
+    func didReceiveNotice() {
+        DLog("没有通知")
+        self.hidHub()
+    }
+    
+    func didFailureReceived() {
+        
+    }
     //MARK:customMethod自定义
     func createMainUI() {
         self.showDefaultHub(self.view, message: kHttp_Notice_LoadingText)
-//        HttpManager.postForResult(HttpManager.getUrl(url: kHttpRequest_findOegtNotification), params: HttpManager.getParams(sourceDic: [:], cmdCode: .CC_FindOegtNotification), successBlock: { (response) in
-//            self.hidHub()
-//            DLog("\(response)")
-//        }, requestFailBlock: { (fail) in
-//            self.hidHub()
-//            DLog(fail)
-//        }) { (connectFail) in
-//            self.hidHub()
-//            DLog(kHttp_Notice_ReqesutFailed)
-//        }
         self.commonService.beginGetNotice()
     }
 }

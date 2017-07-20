@@ -321,6 +321,7 @@
 		0422F8011E7B88D0007D90F5 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				2354568D1EFE4ABB00FCF66B /* Common */,
 				041A25D51E84EA4D00A92A7B /* StaticStylePage */,
 				0422F8021E7B88D0007D90F5 /* Constant */,
 				0422F8031E7B88D0007D90F5 /* Controller */,
@@ -412,6 +413,13 @@
 				1B0C29979B105B6D26F38E16 /* Pods-AnAnOrderCarDriver.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2354568D1EFE4ABB00FCF66B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B8C59A386BA5EBD00D8F144B /* Frameworks */ = {
