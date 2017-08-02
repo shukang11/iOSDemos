@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>https</key>
+	<string>WebViewController</string>
+	<key>http</key>
+	<string>#WebViewController</string>
+	<key>panda</key>
+	<array>
+		<dict>
+			<key>attribute</key>
+			<dict/>
+			<key>exact_url</key>
+			<string>page.panda/productDetail</string>
+			<key>object</key>
+			<string>#DetailPage</string>
+		</dict>
+		<dict>
+			<key>attribute</key>
+			<dict/>
+			<key>exact_url</key>
+			<string>page.panda/page1</string>
+			<key>object</key>
+			<string>#ListPage</string>
+		</dict>
+		<dict>
+			<key>attribute</key>
+			<dict/>
+			<key>exact_url</key>
+			<string>page.panda/newView</string>
+			<key>object</key>
+			<string>UIView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
