@@ -22,8 +22,8 @@ class ViewController: UIViewController {
         
     }
     func clicked() -> Void {
-        let alertController:SSAlertController = SSAlertController.init("title", message: "messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessage", alertStyle: .systemAlert)
-        for index in 1...1 {
+        let alertController:SSAlertController = SSAlertController.init("title", message: "messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessage", alertStyle: .action)
+        for index in 1...3 {
             let action:SSAlertAction = SSAlertAction.init(title: "button1", style: .Default, handler: {
                 print("button\(index)")
             })
