@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Level_One</key>
+	<dict>
+		<key>Navigation_Title_Font_Size</key>
+		<integer>17</integer>
+		<key>Default_Title_Font_Size</key>
+		<integer>15</integer>
+		<key>Default_Body_Font_Size</key>
+		<integer>13</integer>
+		<key>Default_Limit_Font_Size</key>
+		<integer>11</integer>
+		<key>Default_Remark_Font_Size</key>
+		<integer>9</integer>
+	</dict>
+	<key>Level_Two</key>
+	<dict>
+		<key>Navigation_Title_Font_Size</key>
+		<integer>19</integer>
+		<key>Default_Title_Font_Size</key>
+		<integer>17</integer>
+		<key>Default_Body_Font_Size</key>
+		<integer>15</integer>
+		<key>Default_Limit_Font_Size</key>
+		<integer>13</integer>
+		<key>Default_Remark_Font_Size</key>
+		<integer>11</integer>
+	</dict>
+	<key>Level_Three</key>
+	<dict>
+		<key>Navigation_Title_Font_Size</key>
+		<integer>21</integer>
+		<key>Default_Title_Font_Size</key>
+		<integer>19</integer>
+		<key>Default_Body_Font_Size</key>
+		<integer>17</integer>
+		<key>Default_Limit_Font_Size</key>
+		<integer>15</integer>
+		<key>Default_Remark_Font_Size</key>
+		<integer>13</integer>
+	</dict>
+</dict>
+</plist>
