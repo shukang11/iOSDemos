@@ -41,8 +41,8 @@ class HttpManager: NSObject {
             return sourceDic
         }
         var temsourceDic: [String:Any] = sourceDic
-        
-        temsourceDic["token"] = Config.current.getUserDictionary().object(forKey: "token")
+        let currentConfig = Config.current
+        temsourceDic["token"] = currentConfig.getUserDictionary().object(forKey: "token")
         return temsourceDic
     }
     

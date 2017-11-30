@@ -40,4 +40,28 @@ public extension UIImage {
         imgString = data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
         return imgString
     }
+    
+    public class func imageNamed(WithNoScale name: String) -> UIImage? {
+        
+        guard name.length > 0 else { return nil}
+        guard name.hasSuffix("/") else { return nil}
+        let tempName: NSString = name as NSString
+        let res: String = tempName.deletingPathExtension
+        let ext: String = tempName.pathExtension
+        var path: String? = nil
+        let exts = (ext.length > 0) ? ([ext]) : (["", "png", "gif", "webp", "apng", "jpg", "jpeg"])
+        let scales: [Float] = Bundle.main.preferredScales
+        for s in scales {
+            let scaledName: String = res.stringByAppendingNameScale(CGFloat(s))
+            for e in exts {
+                path = Bundle.main.path(forResource: scaledName, ofType: e)
+                if path != nil { break}
+            }
+            if path != nil { break}
+        }
+        guard let p = path else { return nil }
+        let data: NSData? = NSData(contentsOfFile: p)
+        guard let d: Data = data as Data? else { return nil }
+        return UIImage.init(data: d)
+    }
 }

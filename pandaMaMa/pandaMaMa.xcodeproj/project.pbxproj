@@ -274,6 +274,7 @@
 		2354568E1EFE4BB600FCF66B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				23FCF3F61FB59B5100CE852F /* DAO */,
 				23903EA91F46D83000633FB2 /* UserInfoCenter */,
 				23F8E8C91F42837B001018E8 /* Command */,
 				2332FF271F59399D00E0EFFC /* SSPageScrollView */,
@@ -425,6 +426,13 @@
 				23F8E8CC1F428395001018E8 /* CommandManager.swift */,
 			);
 			path = Command;
+			sourceTree = "<group>";
+		};
+		23FCF3F61FB59B5100CE852F /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DAO;
 			sourceTree = "<group>";
 		};
 		23FDBF681F789781001A1C69 /* Controller */ = {

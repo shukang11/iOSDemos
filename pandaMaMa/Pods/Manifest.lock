@@ -9,14 +9,14 @@ PODS:
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire
-  - DGElasticPullToRefresh
-  - IQKeyboardManager
-  - Kingfisher
-  - NVActivityIndicatorView
-  - SnapKit
-  - SSKitSwift
-  - SwiftyJSON
+  - Alamofire (~> 4.4.0)
+  - DGElasticPullToRefresh (~> 1.1)
+  - IQKeyboardManager (~> 4.0.9)
+  - Kingfisher (~> 3.6.2)
+  - NVActivityIndicatorView (~> 3.6.1)
+  - SnapKit (~> 3.2.0)
+  - SSKitSwift (~> 0.1.1)
+  - SwiftyJSON (~> 3.1.4)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -28,6 +28,6 @@ SPEC CHECKSUMS:
   SSKitSwift: 4758cc93a8abd12bace870ac97f88862b7de13ae
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8d0249853237d402efe0ac42321636eea32b66cd
+PODFILE CHECKSUM: 00f229cc4e07c5034b6e20c8afb02553d481b61a
 
 COCOAPODS: 1.2.1

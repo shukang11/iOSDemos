@@ -17,10 +17,14 @@ class HomeBannerCell:UITableViewCell  {
                 o.append(dict.stringValue(key:"pic"))
             }
             scrollView.urlImages = o
-            scrollView.autoScroll = true
         }
     }
-    let scrollView: SSPageScrollView = SSPageScrollView()
+    let scrollView: SSPageScrollView = {
+       let scrollView = SSPageScrollView()
+        scrollView.autoScroll = true
+        scrollView.contentMode = .scaleAspectFit
+        return scrollView
+    }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         self.bannerArray = []

@@ -16,14 +16,16 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     var bannerArray: [[String: AnyObject]] = [
         ["pic":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505972754561&di=569f6163fc6f6d0121e9d3d8229c2946&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6d81800a19d8bc3e3bad2adf888ba61ea8d34579.jpg" as AnyObject],
         ["pic":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505973029865&di=ffdfe764719be6449619380b25db2d04&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D2603370572%2C337907411%26fm%3D214%26gp%3D0.jpg" as AnyObject],
-         ["pic":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505973168071&di=7f0ef7c0908f6b9fe4f3c556d1d185b8&imgtype=0&src=http%3A%2F%2Fwww.pp3.cn%2Fuploads%2Fallimg%2F111120%2F1003433962-9.jpg" as AnyObject]]
+         ["pic":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505973168071&di=7f0ef7c0908f6b9fe4f3c556d1d185b8&imgtype=0&src=http%3A%2F%2Fwww.pp3.cn%2Fuploads%2Fallimg%2F111120%2F1003433962-9.jpg" as AnyObject],
+         ["pic":"HomeModuleLogo.bundle/logo_hotsail" as AnyObject],
+         ]
     
     var crossArray: [[String: AnyObject]] = []
     var cheeperArray: [[String: AnyObject]] = []
     var hotArray: [[String: AnyObject]] = []
     var newArray: [[String: AnyObject]] = []
     var recommandArray: [[String: AnyObject]] = []
-    
+    let commandManager: CommandManager = CommandManager.sharedInstance
     let service: HomeService = {
         return HomeService.init()
     }()
@@ -154,6 +156,11 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view.snp.bottom).offset(-44.0)
+        }
+        
+        let command: AutoLoginCommand = AutoLoginCommand.init()
+        commandManager.executeCommand(command) { (cmd) in
+            print("\(cmd)")
         }
     }
     private func prepareTableSource() -> [[String: Any]] {

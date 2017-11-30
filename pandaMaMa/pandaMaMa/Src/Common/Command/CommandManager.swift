@@ -10,7 +10,7 @@ import Foundation
 
 class CommandManager: NSObject {
     
-    var commandQueue: [Command] = []
+    private var commandQueue: [Command] = []
     
     static let sharedInstance = CommandManager()
     

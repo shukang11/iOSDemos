@@ -34,16 +34,6 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
             _allUnits = o
         }
     }
-    public var localImages: [String] {// 本地图片
-        didSet {
-            var o = [String]()
-            if localImages.count == 0 { localImages.append("")}
-            if let last = localImages.last { o.append(last)}
-            for temp_unit in localImages { o.append(temp_unit) }
-            if let fir = localImages.first { o.append(fir)}
-            _allUnits = o
-        }
-    }
     public var placeholder: UIImage? {// 占位图
         didSet { self.collectionView.reloadData() }
     }
@@ -56,20 +46,22 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     public var delegate: SSPageScrollDelegate?// 代理
     
     public var autoScrollTimerInterval: TimeInterval = 2.0
-//    public var infinite: Bool = false {// 如果不是无尽模式，不允许自动轮播
-//        didSet { self.autoScroll = infinite}
-//    }
     public var autoScroll: Bool = false {
         didSet{
             invalidateTimer()
             if autoScroll == true { setUpTimer()}
+            else if self._allUnits.count > pageController.numberOfPages && min(_allUnits.count, 3) == 3 {
+                _ = _allUnits.popLast()
+                _allUnits.removeFirst()
+                self.collectionView.reloadData()
+            }
         }
     }
     //MARK:-
     //MARK:private property
     private var _allUnits: [String] {
         didSet {
-            if max(0, _allUnits.count) <= 0 { return }
+            if max(0, _allUnits.count) <= 0 { return}
             pageController.numberOfPages = urlImages.count
             collectionView.reloadData()
             currentUnitIndex = 1
@@ -85,6 +77,7 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     private var currentUnitIndex: Int = 0// 当前的视图索引
     private var currentPageIndex: Int {// 当前pageController的索引
         get {
+            guard autoScroll == true else { return currentUnitIndex}
             currentUnitIndex = min(_allUnits.count, currentUnitIndex)
             currentUnitIndex = max(0, currentUnitIndex)
             if _allUnits.count - currentUnitIndex == 1 { return 0 }
@@ -106,7 +99,6 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK:lifeCycle
     override init(frame: CGRect) {
         self.urlImages = []
-        self.localImages = []
         _allUnits = urlImages
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -138,6 +130,9 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.bounces = false
         collectionView.isPagingEnabled = true
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        }
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
@@ -157,6 +152,7 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func fixCollectionViewOffset() {// 更新布局
+        if autoScroll == false { return}
         var o = 0
         if currentUnitIndex == 0 { o = _allUnits.count - 2 }
         else if _allUnits.count - currentUnitIndex == 1 { o = 1 }
@@ -187,20 +183,24 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK:-
     //MARK:delegate
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        guard scrollView == collectionView && autoScroll == true else { return}
         if scrollView != collectionView { return}
-        let index = Int(collectionView.contentOffset.x / self.collectionView.width)
+        let index = Int(collectionView.contentOffset.x / self.collectionView.bounds.size.width)
         currentUnitIndex = index
         updatePageController()
         fixCollectionViewOffset()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard scrollView == collectionView && autoScroll == true else { return}
         invalidateTimer()
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let index = Int(collectionView.contentOffset.x / self.collectionView.width)
+        guard scrollView == collectionView && autoScroll == true else { return}
+        let index = Int(collectionView.contentOffset.x / self.collectionView.bounds.size.width)
         currentUnitIndex = index
+        updatePageController()
         setUpTimer()
     }
     
@@ -211,12 +211,20 @@ class SSPageScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let item: SSPageScrollCell = collectionView.dequeueReusableCell(withReuseIdentifier: img_unit_idf, for: indexPath) as? SSPageScrollCell {
-            if let url: NSURL = NSURL.init(string: _allUnits[indexPath.item]) {
-                item.imageView.setImageURL(picURL: url as URL, placeholder: placeholder)
+            let resource: String = _allUnits[indexPath.item]
+            if resource.lowercased().hasPrefix("http") {
+                let url: URL? = URL.init(string: resource)
+                item.imageView.setImageURL(picURL: url, placeholder: placeholder)
+            }else {
+                if let img: UIImage = UIImage.init(named: resource) {
+                    item.imageView.image = img
+                }else { item.imageView.image = self.placeholder}
             }
             item.label.text = "\(indexPath.row)"
             item.label.font = UIFont.boldSystemFont(ofSize: 20)
             item.label.textAlignment = .center
+            item.imageView.contentMode = self.contentMode
+            item.label.backgroundColor = UIColor.randomColor()
             return item
         }else { return UICollectionViewCell.init() }
     }

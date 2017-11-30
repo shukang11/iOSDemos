@@ -10,9 +10,11 @@ import Foundation
 
 class AutoLoginCommand: Command {
     override func execute() {
-        DLog("执行自动登录")
         //执行结束。清除
-        self.done()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+4) {
+            DLog("执行自动登录")
+            self.done()
+        }
     }
     override func done() {
         CommandManager.sharedInstance.cancelCommand(self)

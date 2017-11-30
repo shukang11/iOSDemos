@@ -145,3 +145,13 @@ public extension UIScreen {
     }
 }
 
+public extension Bundle {
+    public var preferredScales: [Float] {
+        var scales: [Float]
+        let screenScale: CGFloat = UIScreen.main.scale
+        if screenScale <= 1 { scales = [1.0, 2.0, 3.0]}
+        else if screenScale <= 2 { scales = [2.0, 3.0, 1.0]}
+        else { scales = [3.0, 2.0, 1.0]}
+        return scales
+    }
+}
