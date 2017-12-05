@@ -1,6 +1,0 @@
-framework module Pods_AnAnOrderCarDriver {
-  umbrella header "Pods-AnAnOrderCarDriver-umbrella.h"
-
-  export *
-  module * { export * }
-}

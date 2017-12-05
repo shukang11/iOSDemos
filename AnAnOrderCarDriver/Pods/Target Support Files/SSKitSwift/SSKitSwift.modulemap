@@ -1,6 +1,0 @@
-framework module SSKitSwift {
-  umbrella header "SSKitSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}

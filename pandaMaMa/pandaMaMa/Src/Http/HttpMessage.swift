@@ -47,8 +47,6 @@ class HttpMessage {
     //MARK:-
     //MARK:recieving
 
-    //错误码
-    var errorCode : Int = 0
     //回应的字符
     var responseString : String = ""
     //返回的全部信息
@@ -61,8 +59,8 @@ class HttpMessage {
     var canMultipleConCurrent : Bool = false
     //追加的cookies
     var addedCookies : NSMutableArray = NSMutableArray.init()
-    //返回的状态码
-    var responseStatusCode : Int = 0
+    //返回的状态码， 默认200成功
+    var responseStatusCode : Int = 200
     //请求的错误
     var error : Error?
     //添加的数值
@@ -101,5 +99,6 @@ protocol HttpResponseDelegate {
      @param         receiveMsg  HttpMessage对象
      */
     func receiveDidFinished(receiveMsg:HttpMessage) -> Void;
+    
 }
 

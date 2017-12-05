@@ -52,7 +52,7 @@ public func appendParams(params: [String: Any] = [:], carryDeviceInfo:Bool = tru
 
 public enum E_CMDCODE:String {
     case CC_default                         =   ""//默认
-    case CC_login                           =   "/user/login"// 登录
+    case CC_login                           =   "/user/1"// 登录
 }
 //需要验证登录信息的接口(需要token)
 public func CC_NEED_LOGIN_QUEUE() -> [E_CMDCODE] {
@@ -67,9 +67,9 @@ public func CC_NEED_COOKIE_QUEUE() -> [E_CMDCODE] {
 let HEADERS       = ["X-Requested-With": "XMLHttpRequest", "User-Agent": "transportClient"]
 
 #if DEBUG
-let kHost_baseURL = "http://127.0.0.1:9000/"
+let kHost_baseURL = "http://127.0.0.1:5000/"
 #else
-let kHost_baseURL = "http://api.pandamuying.com/api.php/"
+let kHost_baseURL = "http://127.0.0.1:5000/"
 #endif
 let kHost_endpoint_URL = "api/v1000"//中间的url地址
 

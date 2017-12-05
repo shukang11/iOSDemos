@@ -46,9 +46,13 @@ class HttpMsgCtrl {
     func requestDidFinished(response:DataResponse<Any>) {
         guard let url = response.request?.url?.absoluteString else { return }
         guard let message = messages[url] else { return }
+        
         let jsonData = JSON.init(data: response.data!)
-        message.errorCode = response.response?.statusCode ?? 0
-        message.responseStatusCode = jsonData["statusCode"].intValue
+        let code: Int = response.response?.statusCode ?? 400
+        
+        assert(code != 405, "Method wrong")
+        
+        message.responseStatusCode = code
         message.json = jsonData.dictionaryObject
         message.bodyObject = jsonData["body"].object as AnyObject
         message.error = response.error
