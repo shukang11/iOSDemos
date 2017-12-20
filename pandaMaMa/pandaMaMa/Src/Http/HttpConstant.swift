@@ -46,21 +46,22 @@ public func appendParams(params: [String: Any] = [:], carryDeviceInfo:Bool = tru
         }
     }
     encryptString = encryptString.appending(kEncript_code)
-    tempParams["verify"] = encryptString.md5String()
     return tempParams
 }
 
 public enum E_CMDCODE:String {
     case CC_default                         =   ""//默认
     case CC_login                           =   "/user/1"// 登录
+    case CC_index_banner                    =   "/index/banner"// 首页轮播图信息
 }
 //需要验证登录信息的接口(需要token)
 public func CC_NEED_LOGIN_QUEUE() -> [E_CMDCODE] {
     return [.CC_login]
 }
+
 //需要重写cookie的接口
 public func CC_NEED_COOKIE_QUEUE() -> [E_CMDCODE] {
-    return []
+    return [.CC_login]
 }
 
 //MARK: cookies

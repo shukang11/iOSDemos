@@ -19,6 +19,21 @@ public extension NSDictionary {
         return self[key] != nil
     }
     
+    
+    /// 将所有的键-正序后产出
+    ///
+    /// - Returns: 正序的集合
+    func allKeysSorted() -> [String] {
+        let keys:[String] = self.allKeys as! [String];
+        return keys.sorted(by: { (k1:String, k2:String) -> Bool in
+            return k1 > k2
+        })
+    }
+    
+    /// 将几个键值对取出来组成新的字典
+    ///
+    /// - Parameter forKeys: 键的集合
+    /// - Returns: 组成的字典
     public func entries(forKeys:[String]) -> NSDictionary {
         let dic : NSMutableDictionary = NSMutableDictionary.init(capacity: 0)
         for key in forKeys {
@@ -42,7 +57,6 @@ public extension NSDictionary {
             return nil
         }
     }
-    
-    
-    
 }
+
+

@@ -22,9 +22,7 @@ target 'pandaMaMa' do
     pod 'Kingfisher', '~> 3.6.2' #图片加载框架
     
     pod 'IQKeyboardManager', '~> 4.0.9' #, :inhibit_all_warnings => true表示允许此库显示警告信息
-    #私有库内容
     
-#    pod 'Realm', '~> 2.7.0'# 数据库
-
-     pod 'SSKitSwift', '~> 0.1.1'
+    #私有库内容
+     pod 'SSKitSwift', '0.1.3'
 end

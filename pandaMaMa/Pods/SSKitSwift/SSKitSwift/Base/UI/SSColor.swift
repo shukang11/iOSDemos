@@ -22,11 +22,11 @@ public extension UIColor {
     
     public class func color(_ hex: String, alpha: CGFloat) -> UIColor {
         var cleanString = hex.replacingOccurrences(of: "#", with: "")
-        if cleanString.characters.count == 3 {
+        if cleanString.count == 3 {
             cleanString = (cleanString as NSString).substring(with: NSMakeRange(0, 1)) + (cleanString as NSString).substring(with: NSMakeRange(0, 1)) + (cleanString as NSString).substring(with: NSMakeRange(1, 1)) + (cleanString as NSString).substring(with: NSMakeRange(1, 1)) + (cleanString as NSString).substring(with: NSMakeRange(2, 1)) + (cleanString as NSString).substring(with: NSMakeRange(2, 1))
         }
         
-        if cleanString.characters.count == 6 {
+        if cleanString.count == 6 {
             cleanString = cleanString.appending("ff")
         }
         var baseValue: UInt32 = 0

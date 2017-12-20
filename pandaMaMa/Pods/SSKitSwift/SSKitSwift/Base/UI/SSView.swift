@@ -145,6 +145,7 @@ public extension UIView {
     
     ///调试模式下，将所有视图和其子视图描边显示
     public func debugModeColor() {
+        #if DEBUG
         self.backgroundColor = UIColor.randomColor()
         for view in self.subviews {
             if (view.subviews.count > 0) {view.debugModeColor()}
@@ -152,10 +153,10 @@ public extension UIView {
             view.layer.borderColor = UIColor.white.cgColor
             view.layer.borderWidth = 0.5
         }
+        #endif
     }
     
     //MARK:animate动画
-    
     public func shake(_ size: CGSize) {
         let layer:CALayer = self.layer;
         let position:CGPoint = layer.position;

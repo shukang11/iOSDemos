@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+/*
 public extension UIButton {
     enum SSButtonEdgeInsetsStyles {
         case Top            //图片在上
@@ -60,3 +60,4 @@ public extension UIButton {
         self.imageEdgeInsets = imageEdgeInsets
     }
 }
+*/

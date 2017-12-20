@@ -11,7 +11,7 @@ import UIKit
 
 public extension String {
     
-    public var length : Int { return self.characters.count }
+    public var length : Int { return self.count }
     
     
     /// 去除空格和换行之后的字符串
@@ -107,6 +107,7 @@ public extension String {
         return String.init(nsstring)
     }
     
+    //MARK: 尺寸相关
     /// 将字符串的占用大小计算出来并返回
     ///
     /// - Parameters:
@@ -154,7 +155,23 @@ public extension String {
         return size.height
     }
     
+    //MAR:转换相关
+    func toDouble() -> Double {
+        let scanner = Scanner.init(string: self)
+        var double: Double = 0
+        
+        if scanner.scanDouble(&double) {
+            return double
+        }
+        return double
+    }
     
+    func toFloat() -> Float {
+        let scanner = Scanner.init(string: self)
+        var float: Float = 0
+        scanner.scanFloat(&float)
+        return float
+    }
 }
 
 

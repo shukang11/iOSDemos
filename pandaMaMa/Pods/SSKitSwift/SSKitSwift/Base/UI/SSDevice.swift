@@ -112,20 +112,7 @@ public extension UIDevice {
         default:                                        return identifier
         }
     }
-    /*
-    func canRecord() -> Bool {
-        var bCanRecord = true
-        if (UIDevice.systemVersion() >= 7.0) {
-            let audioSession:AVAudioSession = AVAudioSession.sharedInstance()
-            if (audioSession.responds(to: #selector(AVAudioSession.requestRecordPermission(_:)))) {
-                audioSession.perform(#selector(AVAudioSession.requestRecordPermission(_:)), with: { (granted:Bool) in
-                    bCanRecord = granted
-                })
-            }
-        }
-        return bCanRecord
-    }
-    */
+    
 }
 
 import AVFoundation
@@ -148,3 +135,23 @@ public extension UIImagePickerController {
     }
 }
 
+
+public extension UIScreen {
+    /// 获得屏幕的分辨率
+    public var resolutionSize: CGSize {
+        let screenSize: CGSize = UIScreen.main.bounds.size;
+        let scale = UIScreen.main.scale
+        return CGSize.init(width: screenSize.width * scale, height: screenSize.height * scale)
+    }
+}
+
+public extension Bundle {
+    public var preferredScales: [Float] {
+        var scales: [Float]
+        let screenScale: CGFloat = UIScreen.main.scale
+        if screenScale <= 1 { scales = [1.0, 2.0, 3.0]}
+        else if screenScale <= 2 { scales = [2.0, 3.0, 1.0]}
+        else { scales = [3.0, 2.0, 1.0]}
+        return scales
+    }
+}

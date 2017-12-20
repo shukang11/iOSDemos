@@ -45,6 +45,14 @@ public extension UIApplication {
         return UIDevice.current.model
     }
     
+    public var modelName: String {
+        var size = 0
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = [CChar](repeating: 0,  count: Int(size))
+        sysctlbyname("hw.machine", &machine, &size, nil, 0)
+        return String(cString: machine)
+    }
+    
     /// 获取app的版本号
     public var appVersion: String {
         return infoDictionary[CFBundleShortVersionString] as! String
@@ -64,4 +72,5 @@ public extension UIApplication {
     public var bundleIdentifier: String {
         return infoDictionary[CFBundleIdentifier] as! String
     }
+
 }

@@ -23,7 +23,8 @@ public class HomeService: DataService {
         var params = appendParams()
         params["username"] = "18356289815"
         params["password"] = "123456"
-        let msg = HttpMessage.init(url: .CC_login, postDic: params, delegate: self, cmdCode: .CC_login)
+        let msg = HttpMessage.init(cmdCode: .CC_login, postDic: nil, delegate: self)
+        msg.requestMethod = .get
         self.httpMsgCtrl.sendMessage(message: msg)
     }
     

@@ -8,7 +8,9 @@
 
 import Foundation
 
-public extension Data {
+/// need to import <CommonCrypto/CommonCrypto.h>!!!!
+
+public extension NSData {
     
     static let base64EncodingTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
     static let base64DecodingTable = [
@@ -28,10 +30,8 @@ public extension Data {
         -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2,
         -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2,
         -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2]
-    var utf8String: String {
-        if (self.count > 0) {
-            return String.init(data: self, encoding: .utf8)!
-        }
-        return ""
+    var utf8String: String? {
+        return String.init(data: self as Data, encoding: .utf8)
     }
+   
 }

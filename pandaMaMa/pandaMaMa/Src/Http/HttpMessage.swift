@@ -70,7 +70,7 @@ class HttpMessage {
         self.requestMethod = .post
     }
     
-    init(url:E_CMDCODE = .CC_default, postDic:[String: Any]? = nil, delegate:HttpResponseDelegate? = nil, cmdCode:E_CMDCODE = E_CMDCODE.CC_default) {
+    init(cmdCode:E_CMDCODE = E_CMDCODE.CC_default, postDic:[String: Any]? = nil, delegate:HttpResponseDelegate? = nil) {
         setup()
         self.requestUrl = append(suffUrl: cmdCode)
         self.cmdCode = cmdCode
