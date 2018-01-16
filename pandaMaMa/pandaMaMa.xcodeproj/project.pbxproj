@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2313A3D41ECC3ECF00298EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2313A3D31ECC3ECF00298EB7 /* Assets.xcassets */; };
+		236B33AC200C4A1F00EF673F /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B33AB200C4A1F00EF673F /* BaseRequest.swift */; };
+		236B33AE200C574600EF673F /* ReuqestCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B33AD200C574600EF673F /* ReuqestCtrl.swift */; };
 		236EB0481F629CB300C1B358 /* FontConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236EB0471F629CB300C1B358 /* FontConfig.plist */; };
 		237EDF4F1F7898A600A98EBB /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A4371ECC3FD400298EB7 /* CommonViewController.swift */; };
 		237EDF501F7898A600A98EBB /* SSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A4381ECC3FD400298EB7 /* SSNavigationController.swift */; };
@@ -75,6 +77,8 @@
 		235456911EFE50E500FCF66B /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		235456921EFE50E500FCF66B /* HttpMsgCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMsgCtrl.swift; sourceTree = "<group>"; };
 		235456931EFE50E500FCF66B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		236B33AB200C4A1F00EF673F /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		236B33AD200C574600EF673F /* ReuqestCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuqestCtrl.swift; sourceTree = "<group>"; };
 		236EB0471F629CB300C1B358 /* FontConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontConfig.plist; sourceTree = "<group>"; };
 		238C6DD11F6376A500F5AD14 /* PD_Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Style.swift; sourceTree = "<group>"; };
 		23903EAA1F46D83000633FB2 /* UserInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCenter.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		2313A3DE1ECC3FD400298EB7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				236B33A9200C49CF00EF673F /* Tools */,
 				23BF79581F4583DE00C2A51C /* Resource */,
 				2313A4361ECC3FD400298EB7 /* StaticStylePage */,
 				2354568E1EFE4BB600FCF66B /* Common */,
@@ -231,6 +236,23 @@
 				2332FF271F59399D00E0EFFC /* SSPageScrollView */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		236B33A9200C49CF00EF673F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				236B33AA200C49E700EF673F /* SSNetwork */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		236B33AA200C49E700EF673F /* SSNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				236B33AB200C4A1F00EF673F /* BaseRequest.swift */,
+				236B33AD200C574600EF673F /* ReuqestCtrl.swift */,
+			);
+			path = SSNetwork;
 			sourceTree = "<group>";
 		};
 		23903EA91F46D83000633FB2 /* UserInfoCenter */ = {
@@ -564,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236B33AC200C4A1F00EF673F /* BaseRequest.swift in Sources */,
 				237EDF4F1F7898A600A98EBB /* CommonViewController.swift in Sources */,
 				237EDF501F7898A600A98EBB /* SSNavigationController.swift in Sources */,
 				237EDF511F7898A600A98EBB /* SSTabBarPage.swift in Sources */,
@@ -590,6 +613,7 @@
 				237EDF661F7898A600A98EBB /* NewFeaturePage.swift in Sources */,
 				237EDF671F7898A600A98EBB /* SettingPage.swift in Sources */,
 				237EDF681F7898A600A98EBB /* ShoppingCartPage.swift in Sources */,
+				236B33AE200C574600EF673F /* ReuqestCtrl.swift in Sources */,
 				237EDF691F7898A600A98EBB /* SortPage.swift in Sources */,
 				237EDF6A1F7898A600A98EBB /* PandaNavigationController.swift in Sources */,
 				237EDF6B1F7898A600A98EBB /* PD_Dictionary.swift in Sources */,

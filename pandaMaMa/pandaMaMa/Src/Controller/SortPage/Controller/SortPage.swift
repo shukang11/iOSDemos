@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 //
 //  IndustryPage.swift
 //  pandaMaMa
@@ -26,12 +27,10 @@ class SortPage: CommonViewController {
         self.view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = false
         super.viewDidLoad()
-        self.createUI()
     }
     //MARK:delegate&dataSource
     
     //MARK:customMethod
-    private func createUI() {
-        
-    }
+    
+   
 }
