@@ -42,6 +42,7 @@ class MinePage: CommonViewController {
             self.navigationController?.pushViewController(SettingPage(), animated: true)
         }
         view.addSubview(button)
+        
     }
     
     private func prepareTableData() {
@@ -54,9 +55,11 @@ class MinePage: CommonViewController {
                 let cellDict: [String: Any] = [kTableViewCellTypeKey:"User_", kTableViewCellHeightKey: HomeBannerCell.cellHeight()]
                 return cellDict
                 }())
-            sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+            sectionDict[kTableViewNumberOfRowsKey] = cellList.count
             sectionDict[kTableViewCellListKey] = cellList
             return sectionDict
             }())
     }
 }
+
+

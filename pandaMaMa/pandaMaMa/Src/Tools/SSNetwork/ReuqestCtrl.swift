@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class RequestCtrl: NSObject {
+    
     static let `shared` = RequestCtrl()
     
     let manager = { () -> SessionManager in
@@ -26,12 +27,14 @@ class RequestCtrl: NSObject {
     //MARK:-
     //MARK:Public
     public func push(request: BaseRequest) -> Void {
-        var cusRequest: URLRequest? = request.buildCustomRequest()
-        if cusRequest != nil {
-            
-        }else {
-            
+        if let cusRequest = request.buildCustomRequest() {
+            manager.request(cusRequest)
+                .response(completionHandler: { (response) in
+                print(response)
+            })
+            return
         }
+        
     }
     
     public func cancel(request: BaseRequest) -> Void {

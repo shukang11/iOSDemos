@@ -50,9 +50,16 @@
 		237EDF731F7898A600A98EBB /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235456931EFE50E500FCF66B /* DataService.swift */; };
 		237EDF8B1F7898A600A98EBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A3CC1ECC3ECF00298EB7 /* AppDelegate.swift */; };
 		237EDF8C1F7898A600A98EBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A3CE1ECC3ECF00298EB7 /* ViewController.swift */; };
+		239191422019CD0F00D55398 /* WebTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239191412019CD0F00D55398 /* WebTest.swift */; };
+		23ACB1FF201EB7EF009CBA71 /* hookModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACB1FE201EB7EF009CBA71 /* hookModule.swift */; };
+		23ACB201201ECDED009CBA71 /* ModuleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACB200201ECDED009CBA71 /* ModuleProtocols.swift */; };
+		23B248B22021A36B0077390B /* TableViewConver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B248B12021A36B0077390B /* TableViewConver.swift */; };
+		23B248B42021A3790077390B /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B248B32021A3790077390B /* TableViewExt.swift */; };
 		23BF795A1F45841600C2A51C /* tab_resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23BF79591F45841600C2A51C /* tab_resource.bundle */; };
 		23D38A3C1F492CFF0066EBB5 /* HomeModuleLogo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23D38A3B1F492CFF0066EBB5 /* HomeModuleLogo.bundle */; };
 		23D38A3E1F492D070066EBB5 /* PaymentIcon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23D38A3D1F492D070066EBB5 /* PaymentIcon.bundle */; };
+		23ECC247201D9A9B009BA67B /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ECC246201D9A9B009BA67B /* ModuleManager.swift */; };
+		23ECC249201DA6FB009BA67B /* module.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23ECC248201DA6FB009BA67B /* module.plist */; };
 		E08372A05FF9437C7BD804D2 /* Pods_pandaMaMa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B9852B7DD0C1CF7BBC5743 /* Pods_pandaMaMa.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,12 +90,19 @@
 		238C6DD11F6376A500F5AD14 /* PD_Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Style.swift; sourceTree = "<group>"; };
 		23903EAA1F46D83000633FB2 /* UserInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCenter.swift; sourceTree = "<group>"; };
 		23903EAC1F471F7E00633FB2 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = "Pods/AMapLocation-NO-IDFA/AMapLocationKit.framework"; sourceTree = "<group>"; };
+		239191412019CD0F00D55398 /* WebTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTest.swift; sourceTree = "<group>"; };
 		23A98DD31F4DA989007208C8 /* PD_Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Dictionary.swift; sourceTree = "<group>"; };
 		23A98DD71F4DB9E8007208C8 /* PD_Kingfresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Kingfresh.swift; sourceTree = "<group>"; };
+		23ACB1FE201EB7EF009CBA71 /* hookModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hookModule.swift; sourceTree = "<group>"; };
+		23ACB200201ECDED009CBA71 /* ModuleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProtocols.swift; sourceTree = "<group>"; };
+		23B248B12021A36B0077390B /* TableViewConver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewConver.swift; sourceTree = "<group>"; };
+		23B248B32021A3790077390B /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		23BF79591F45841600C2A51C /* tab_resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = tab_resource.bundle; sourceTree = "<group>"; };
 		23CD54151F4A6BD5005DAA36 /* PandaNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandaNavigationController.swift; sourceTree = "<group>"; };
 		23D38A3B1F492CFF0066EBB5 /* HomeModuleLogo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HomeModuleLogo.bundle; sourceTree = "<group>"; };
 		23D38A3D1F492D070066EBB5 /* PaymentIcon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PaymentIcon.bundle; sourceTree = "<group>"; };
+		23ECC246201D9A9B009BA67B /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
+		23ECC248201DA6FB009BA67B /* module.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = module.plist; sourceTree = "<group>"; };
 		23F8E8CA1F428384001018E8 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		23F8E8CC1F428395001018E8 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		23FDBF6B1F789781001A1C69 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -155,6 +169,7 @@
 		2313A3DE1ECC3FD400298EB7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				239191402019CD0300D55398 /* WebTest */,
 				236B33A9200C49CF00EF673F /* Tools */,
 				23BF79581F4583DE00C2A51C /* Resource */,
 				2313A4361ECC3FD400298EB7 /* StaticStylePage */,
@@ -230,6 +245,7 @@
 		2354568E1EFE4BB600FCF66B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				23B248B02021A3550077390B /* TableViewExt */,
 				23FCF3F61FB59B5100CE852F /* DAO */,
 				23903EA91F46D83000633FB2 /* UserInfoCenter */,
 				23F8E8C91F42837B001018E8 /* Command */,
@@ -241,6 +257,8 @@
 		236B33A9200C49CF00EF673F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				23ACB202201EF761009CBA71 /* RouterMananger */,
+				23D81C30201C58530061C32B /* ModuleManager */,
 				236B33AA200C49E700EF673F /* SSNetwork */,
 			);
 			path = Tools;
@@ -263,6 +281,31 @@
 			path = UserInfoCenter;
 			sourceTree = "<group>";
 		};
+		239191402019CD0300D55398 /* WebTest */ = {
+			isa = PBXGroup;
+			children = (
+				239191412019CD0F00D55398 /* WebTest.swift */,
+				23ACB1FE201EB7EF009CBA71 /* hookModule.swift */,
+			);
+			path = WebTest;
+			sourceTree = "<group>";
+		};
+		23ACB202201EF761009CBA71 /* RouterMananger */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RouterMananger;
+			sourceTree = "<group>";
+		};
+		23B248B02021A3550077390B /* TableViewExt */ = {
+			isa = PBXGroup;
+			children = (
+				23B248B12021A36B0077390B /* TableViewConver.swift */,
+				23B248B32021A3790077390B /* TableViewExt.swift */,
+			);
+			path = TableViewExt;
+			sourceTree = "<group>";
+		};
 		23BF79581F4583DE00C2A51C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +325,16 @@
 				238C6DD11F6376A500F5AD14 /* PD_Style.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		23D81C30201C58530061C32B /* ModuleManager */ = {
+			isa = PBXGroup;
+			children = (
+				23ECC246201D9A9B009BA67B /* ModuleManager.swift */,
+				23ACB200201ECDED009CBA71 /* ModuleProtocols.swift */,
+				23ECC248201DA6FB009BA67B /* module.plist */,
+			);
+			path = ModuleManager;
 			sourceTree = "<group>";
 		};
 		23F8E8C91F42837B001018E8 /* Command */ = {
@@ -525,6 +578,7 @@
 			files = (
 				23D38A3C1F492CFF0066EBB5 /* HomeModuleLogo.bundle in Resources */,
 				23D38A3E1F492D070066EBB5 /* PaymentIcon.bundle in Resources */,
+				23ECC249201DA6FB009BA67B /* module.plist in Resources */,
 				2313A3D41ECC3ECF00298EB7 /* Assets.xcassets in Resources */,
 				236EB0481F629CB300C1B358 /* FontConfig.plist in Resources */,
 				23BF795A1F45841600C2A51C /* tab_resource.bundle in Resources */,
@@ -587,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				236B33AC200C4A1F00EF673F /* BaseRequest.swift in Sources */,
+				23B248B42021A3790077390B /* TableViewExt.swift in Sources */,
 				237EDF4F1F7898A600A98EBB /* CommonViewController.swift in Sources */,
 				237EDF501F7898A600A98EBB /* SSNavigationController.swift in Sources */,
 				237EDF511F7898A600A98EBB /* SSTabBarPage.swift in Sources */,
@@ -596,6 +651,7 @@
 				237EDF551F7898A600A98EBB /* SSPageScrollView.swift in Sources */,
 				237EDF561F7898A600A98EBB /* SSPageScrollCell.swift in Sources */,
 				237EDF571F7898A600A98EBB /* SSPageScrollModel.swift in Sources */,
+				23ACB1FF201EB7EF009CBA71 /* hookModule.swift in Sources */,
 				237EDF581F7898A600A98EBB /* APPConstant.swift in Sources */,
 				237EDF591F7898A600A98EBB /* Config.swift in Sources */,
 				237EDF5A1F7898A600A98EBB /* pandaMaMa-Bridging-Header.h in Sources */,
@@ -620,10 +676,14 @@
 				237EDF6C1F7898A600A98EBB /* PD_Kingfresh.swift in Sources */,
 				237EDF6D1F7898A600A98EBB /* PD_Style.swift in Sources */,
 				237EDF6E1F7898A600A98EBB /* NVAHubView.swift in Sources */,
+				23ACB201201ECDED009CBA71 /* ModuleProtocols.swift in Sources */,
 				237EDF6F1F7898A600A98EBB /* HttpMessage.swift in Sources */,
 				237EDF701F7898A600A98EBB /* HttpConstant.swift in Sources */,
 				237EDF711F7898A600A98EBB /* HttpManager.swift in Sources */,
 				237EDF721F7898A600A98EBB /* HttpMsgCtrl.swift in Sources */,
+				23B248B22021A36B0077390B /* TableViewConver.swift in Sources */,
+				23ECC247201D9A9B009BA67B /* ModuleManager.swift in Sources */,
+				239191422019CD0F00D55398 /* WebTest.swift in Sources */,
 				237EDF731F7898A600A98EBB /* DataService.swift in Sources */,
 				237EDF8B1F7898A600A98EBB /* AppDelegate.swift in Sources */,
 				237EDF8C1F7898A600A98EBB /* ViewController.swift in Sources */,

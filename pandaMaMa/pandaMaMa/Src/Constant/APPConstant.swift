@@ -55,15 +55,5 @@ public func DLog<T>(_ message:T, file: String = #file, method: String = #functio
 }
 
 
-//MARK:-
-//MARK:tableview相关
-public let kTableViewSectionHeaderHeightKey = "sectionHeaderHeight"//区头高
-public let kTableViewSectionHeaderStyleKey = "sectionHeaderStyle"//区头高
-public let kTableViewSectionFooterHeightKey = "sectionFooterHeight"//区尾高
-public let kTableViewSectionFooterStyleKey = "sectionFooterStyle"//区尾样式
-public let kTableVIewNumberOfRowsKey = "numberOfRows"//行数
-public let kTableViewCellListKey = "cellList"//行集合
-public let kTableViewCellDataKey = "cellData"//行数据
-public let kTableViewCellTypeKey = "cellStyle"//行样式
-public let kTableViewCellHeightKey = "cellHeight"//行高
+
 

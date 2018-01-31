@@ -23,7 +23,7 @@ public class HomeService: DataService {
         var params = appendParams()
         params["username"] = "18356289815"
         params["password"] = "123456"
-        let msg = HttpMessage.init(cmdCode: .CC_login, postDic: nil, delegate: self)
+        let msg = HttpMessage.init(cmdCode: .CC_index_banner, postDic: nil, delegate: self)
         msg.requestMethod = .get
         self.httpMsgCtrl.sendMessage(message: msg)
     }
@@ -32,7 +32,7 @@ public class HomeService: DataService {
     override func receiveDidFinished(receiveMsg: HttpMessage) {
         super.receiveDidFinished(receiveMsg: receiveMsg)
         var success = false
-        if receiveMsg.cmdCode == .CC_login {
+        if receiveMsg.cmdCode == .CC_index_banner {
             if receiveMsg.responseStatusCode == 1 { success = true }
             self.delegate?.didGetBannerInfo?(dictionary: receiveMsg.bodyObject, isSuccess: success, responseObject: receiveMsg.json)
         }

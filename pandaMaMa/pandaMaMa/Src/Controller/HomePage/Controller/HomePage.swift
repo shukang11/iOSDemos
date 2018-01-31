@@ -42,8 +42,8 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.showDefaultHub(self.view, message: kHttp_Notice_LoadingText)
-        self.service.getBannerInfo()
+//        self.showDefaultHub(self.view, message: kHttp_Notice_LoadingText)
+//        self.service.getBannerInfo()
     }
     //MARK:HTTP
     /// 获得首页轮播图信息
@@ -98,7 +98,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionDict = self.tableData[section]
-        if let num: Int = sectionDict[kTableVIewNumberOfRowsKey] as? Int { return num } else { return 0 }
+        if let num: Int = sectionDict[kTableViewNumberOfRowsKey] as? Int { return num } else { return 0 }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionDict = self.tableData[indexPath.section]
@@ -155,7 +155,8 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
             make.top.equalTo(64.0)
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
-            make.bottom.equalTo(self.view.snp.bottom).offset(-44.0)
+            make.bottom.equalTo(self.view.snp.bottom)
+                .offset(-44.0)
         }
         
         let command: AutoLoginCommand = AutoLoginCommand.init()
@@ -172,7 +173,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                 let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeBanner_Cell", kTableViewCellHeightKey: HomeBannerCell.cellHeight()]
                 return cellDict
                 }())
-            sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+            sectionDict[kTableViewNumberOfRowsKey] = cellList.count
             sectionDict[kTableViewCellListKey] = cellList
             return sectionDict
             }())
@@ -185,7 +186,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                 let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeModule_Cell", kTableViewCellHeightKey: HomeModuleCell.cellHeight(modules: self.moduleArray)]
                 return cellDict
                 }())
-            sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+            sectionDict[kTableViewNumberOfRowsKey] = cellList.count
             sectionDict[kTableViewCellListKey] = cellList
             return sectionDict
             }())
@@ -197,7 +198,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                 let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeCenterTitle_Cell", kTableViewCellHeightKey: HomeCenterTitleCell.cellHeight(), kTableViewCellDataKey: ["img": "HomeModuleLogo.bundle/logo_cheeper", "title": "优惠多多", "titleColor": "#23ead3"]]
                 return cellDict
                 }())
-            sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+            sectionDict[kTableViewNumberOfRowsKey] = cellList.count
             sectionDict[kTableViewCellListKey] = cellList
             return sectionDict
             }())
@@ -211,7 +212,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                     return cellDict
                     }())
                 
-                sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+                sectionDict[kTableViewNumberOfRowsKey] = cellList.count
                 sectionDict[kTableViewCellListKey] = cellList
                 return sectionDict
                 }())
@@ -225,7 +226,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                     let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeCenterTitle_Cell", kTableViewCellHeightKey: HomeCenterTitleCell.cellHeight(), kTableViewCellDataKey: ["img": "HomeModuleLogo.bundle/logo_hotsail", "title": "爆款热卖", "titleColor":"#e93421"]]
                     return cellDict
                     }())
-                sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+                sectionDict[kTableViewNumberOfRowsKey] = cellList.count
                 sectionDict[kTableViewCellListKey] = cellList
                 return sectionDict
                 }())
@@ -239,7 +240,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                     let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeCenterTitle_Cell", kTableViewCellHeightKey: HomeCenterTitleCell.cellHeight(), kTableViewCellDataKey: ["img": "HomeModuleLogo.bundle/logo_newgoods", "title": "新品发布", "titleColor": "#990a89"]]
                     return cellDict
                     }())
-                sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+                sectionDict[kTableViewNumberOfRowsKey] = cellList.count
                 sectionDict[kTableViewCellListKey] = cellList
                 return sectionDict
                 }())
@@ -253,7 +254,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                     let cellDict: [String: Any] = [kTableViewCellTypeKey:"HomeCenterTitle_Cell", kTableViewCellHeightKey: HomeCenterTitleCell.cellHeight(), kTableViewCellDataKey: ["img": "HomeModuleLogo.bundle/logo_recommend", "title": "为您推荐", "titleColor": "#e93421"]]
                     return cellDict
                     }())
-                sectionDict[kTableVIewNumberOfRowsKey] = cellList.count
+                sectionDict[kTableViewNumberOfRowsKey] = cellList.count
                 sectionDict[kTableViewCellListKey] = cellList
                 return sectionDict
                 }())

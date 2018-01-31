@@ -12,34 +12,36 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        if let path = Bundle.main.path(forResource: "module", ofType: "plist") {
+            ModuleManager.sharedManager.register(contentPath: path)
+        }
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
+        _ = ModuleManager.sharedManager.application(application, didFinishLaunchingWithOptions: launchOptions)
         self.window?.backgroundColor = UIColor.white
         chooseInterPage()
         self.window?.makeKeyAndVisible()
         return true
     }
-
     func applicationWillResignActive(_ application: UIApplication) {
-        
+        ModuleManager.sharedManager.applicationWillResignActive(application)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-       
+       ModuleManager.sharedManager.applicationDidEnterBackground(application)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
+        ModuleManager.sharedManager.applicationWillEnterForeground(application)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        
+        ModuleManager.sharedManager.applicationWillTerminate(application)
     }
 
     //MARK:控制器的选择
@@ -52,6 +54,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = SSTabBarPage()
         }
     }
-
 }
 
