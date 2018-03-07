@@ -3,5 +3,6 @@
 <plist version="1.0">
 <array>
 	<string>TestHttp</string>
+	<string>RouterTest</string>
 </array>
 </plist>

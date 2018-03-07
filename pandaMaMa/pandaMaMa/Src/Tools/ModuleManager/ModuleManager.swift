@@ -47,6 +47,7 @@ class ModuleManager: NSObject, HookModuleProtocol {
         guard let sourceArray: Array<String> = NSArray.init(contentsOfFile: contentPath) as? Array else { return }
         for mn: String in sourceArray {
             var m = mn
+            // 如果有.说明包含了scheme名
             if m.contains(".") == false { m = schemeName + "." + m }
             register(clazzName: m)
         }
@@ -90,7 +91,8 @@ class ModuleManager: NSObject, HookModuleProtocol {
         var result: Bool = false
         for (_ , module) in self.moduleMap {
             if let hookModule = module as? HookModuleProtocol {
-                result = result || (hookModule.application?(application, didFinishLaunchingWithOptions: launchOptions) ?? false)
+                let r = hookModule.application?(application, didFinishLaunchingWithOptions: launchOptions)
+                result = result || r ?? false
             }
         }
         return result
@@ -133,7 +135,8 @@ class ModuleManager: NSObject, HookModuleProtocol {
         var result: Bool = false
         for (_ , module) in self.moduleMap {
             if let hookModule = module as? HookModuleProtocol {
-                result = result || (hookModule.application?(app, open: url, options: options) ?? false)
+                let r = hookModule.application?(app, open: url, options: options)
+                result = result || r ?? false
             }
         }
         return result
@@ -143,7 +146,8 @@ class ModuleManager: NSObject, HookModuleProtocol {
         var result: Bool = false
         for (_ , module) in self.moduleMap {
             if let hookModule = module as? HookModuleProtocol {
-                result = result || (hookModule.application?(application, handleOpen: url) ?? false)
+                let r = hookModule.application?(application, handleOpen: url)
+                result = result || (r ?? false)
             }
         }
         return result
@@ -153,7 +157,8 @@ class ModuleManager: NSObject, HookModuleProtocol {
         var result: Bool = false
         for (_ , module) in self.moduleMap {
             if let hookModule = module as? HookModuleProtocol {
-                result = result || (hookModule.application?(application, open: url, sourceApplication: sourceApplication, annotation: annotation) ?? false)
+                let r = hookModule.application?(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+                result = result || (r ?? false)
             }
         }
         return result

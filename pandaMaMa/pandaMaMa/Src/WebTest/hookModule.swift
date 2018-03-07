@@ -16,12 +16,11 @@ class swiftObj: NSObject {
 class hookModule: NSObject, ModuleSingleton, HookModuleProtocol {
     static var singleton: ModuleSingleton = hookModule()
     
-    var templateName: String = "first inilizer"
+    
     private override init() {
         
     }
     public func call() -> Void {
-        print("\(templateName)")
     }
     
 }

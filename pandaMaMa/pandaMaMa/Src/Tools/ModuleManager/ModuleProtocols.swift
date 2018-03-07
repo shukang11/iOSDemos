@@ -10,9 +10,7 @@ import Foundation
 import UserNotifications
 import UIKit
 
-@objc public protocol HookModuleProtocol: UIApplicationDelegate, UNUserNotificationCenterDelegate where Self : NSObject {
-    
-}
+@objc public protocol HookModuleProtocol: UIApplicationDelegate, UNUserNotificationCenterDelegate where Self : NSObject {}
 
 @objc public protocol ModuleSingleton {
     static var singleton: ModuleSingleton { get }

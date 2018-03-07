@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2313A3D41ECC3ECF00298EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2313A3D31ECC3ECF00298EB7 /* Assets.xcassets */; };
+		235670B92047DA9600129CBD /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235670B62047DA9600129CBD /* Trie.swift */; };
+		235670BA2047DA9600129CBD /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235670B72047DA9600129CBD /* RouterManager.swift */; };
 		236B33AC200C4A1F00EF673F /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B33AB200C4A1F00EF673F /* BaseRequest.swift */; };
 		236B33AE200C574600EF673F /* ReuqestCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B33AD200C574600EF673F /* ReuqestCtrl.swift */; };
 		236EB0481F629CB300C1B358 /* FontConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236EB0471F629CB300C1B358 /* FontConfig.plist */; };
@@ -51,6 +53,8 @@
 		237EDF8B1F7898A600A98EBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A3CC1ECC3ECF00298EB7 /* AppDelegate.swift */; };
 		237EDF8C1F7898A600A98EBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313A3CE1ECC3ECF00298EB7 /* ViewController.swift */; };
 		239191422019CD0F00D55398 /* WebTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239191412019CD0F00D55398 /* WebTest.swift */; };
+		239460FD2043F6D60046EB2E /* RouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239460FC2043F6D60046EB2E /* RouterTest.swift */; };
+		239460FF2043F80A0046EB2E /* RouterMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 239460FE2043F80A0046EB2E /* RouterMap.plist */; };
 		23ACB1FF201EB7EF009CBA71 /* hookModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACB1FE201EB7EF009CBA71 /* hookModule.swift */; };
 		23ACB201201ECDED009CBA71 /* ModuleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACB200201ECDED009CBA71 /* ModuleProtocols.swift */; };
 		23B248B22021A36B0077390B /* TableViewConver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B248B12021A36B0077390B /* TableViewConver.swift */; };
@@ -84,6 +88,8 @@
 		235456911EFE50E500FCF66B /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		235456921EFE50E500FCF66B /* HttpMsgCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMsgCtrl.swift; sourceTree = "<group>"; };
 		235456931EFE50E500FCF66B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		235670B62047DA9600129CBD /* Trie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		235670B72047DA9600129CBD /* RouterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
 		236B33AB200C4A1F00EF673F /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		236B33AD200C574600EF673F /* ReuqestCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuqestCtrl.swift; sourceTree = "<group>"; };
 		236EB0471F629CB300C1B358 /* FontConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontConfig.plist; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		23903EAA1F46D83000633FB2 /* UserInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCenter.swift; sourceTree = "<group>"; };
 		23903EAC1F471F7E00633FB2 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = "Pods/AMapLocation-NO-IDFA/AMapLocationKit.framework"; sourceTree = "<group>"; };
 		239191412019CD0F00D55398 /* WebTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTest.swift; sourceTree = "<group>"; };
+		239460FC2043F6D60046EB2E /* RouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTest.swift; sourceTree = "<group>"; };
+		239460FE2043F80A0046EB2E /* RouterMap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RouterMap.plist; sourceTree = "<group>"; };
 		23A98DD31F4DA989007208C8 /* PD_Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Dictionary.swift; sourceTree = "<group>"; };
 		23A98DD71F4DB9E8007208C8 /* PD_Kingfresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PD_Kingfresh.swift; sourceTree = "<group>"; };
 		23ACB1FE201EB7EF009CBA71 /* hookModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hookModule.swift; sourceTree = "<group>"; };
@@ -254,6 +262,22 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		235670B52047DA9600129CBD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				235670B62047DA9600129CBD /* Trie.swift */,
+				235670B72047DA9600129CBD /* RouterManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		235670B82047DA9600129CBD /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
 		236B33A9200C49CF00EF673F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +317,10 @@
 		23ACB202201EF761009CBA71 /* RouterMananger */ = {
 			isa = PBXGroup;
 			children = (
+				235670B52047DA9600129CBD /* Core */,
+				235670B82047DA9600129CBD /* Intent */,
+				239460FC2043F6D60046EB2E /* RouterTest.swift */,
+				239460FE2043F80A0046EB2E /* RouterMap.plist */,
 			);
 			path = RouterMananger;
 			sourceTree = "<group>";
@@ -578,6 +606,7 @@
 			files = (
 				23D38A3C1F492CFF0066EBB5 /* HomeModuleLogo.bundle in Resources */,
 				23D38A3E1F492D070066EBB5 /* PaymentIcon.bundle in Resources */,
+				239460FF2043F80A0046EB2E /* RouterMap.plist in Resources */,
 				23ECC249201DA6FB009BA67B /* module.plist in Resources */,
 				2313A3D41ECC3ECF00298EB7 /* Assets.xcassets in Resources */,
 				236EB0481F629CB300C1B358 /* FontConfig.plist in Resources */,
@@ -650,6 +679,7 @@
 				237EDF541F7898A600A98EBB /* CommandManager.swift in Sources */,
 				237EDF551F7898A600A98EBB /* SSPageScrollView.swift in Sources */,
 				237EDF561F7898A600A98EBB /* SSPageScrollCell.swift in Sources */,
+				235670BA2047DA9600129CBD /* RouterManager.swift in Sources */,
 				237EDF571F7898A600A98EBB /* SSPageScrollModel.swift in Sources */,
 				23ACB1FF201EB7EF009CBA71 /* hookModule.swift in Sources */,
 				237EDF581F7898A600A98EBB /* APPConstant.swift in Sources */,
@@ -664,6 +694,7 @@
 				237EDF611F7898A600A98EBB /* HomeCheeperCell.swift in Sources */,
 				237EDF621F7898A600A98EBB /* HomeCrossCell.swift in Sources */,
 				237EDF631F7898A600A98EBB /* HomeModuleCell.swift in Sources */,
+				235670B92047DA9600129CBD /* Trie.swift in Sources */,
 				237EDF641F7898A600A98EBB /* IndustryPage.swift in Sources */,
 				237EDF651F7898A600A98EBB /* MinePage.swift in Sources */,
 				237EDF661F7898A600A98EBB /* NewFeaturePage.swift in Sources */,
@@ -683,6 +714,7 @@
 				237EDF721F7898A600A98EBB /* HttpMsgCtrl.swift in Sources */,
 				23B248B22021A36B0077390B /* TableViewConver.swift in Sources */,
 				23ECC247201D9A9B009BA67B /* ModuleManager.swift in Sources */,
+				239460FD2043F6D60046EB2E /* RouterTest.swift in Sources */,
 				239191422019CD0F00D55398 /* WebTest.swift in Sources */,
 				237EDF731F7898A600A98EBB /* DataService.swift in Sources */,
 				237EDF8B1F7898A600A98EBB /* AppDelegate.swift in Sources */,

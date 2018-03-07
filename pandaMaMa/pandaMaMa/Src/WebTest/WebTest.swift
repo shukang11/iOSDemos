@@ -105,7 +105,7 @@ class TestHttp: NSObject, TestWebServiceProtocol, HookModuleProtocol {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        self.test()
+//        self.test()
         return true
     }
 }
