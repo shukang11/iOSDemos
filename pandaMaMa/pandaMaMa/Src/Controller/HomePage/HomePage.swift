@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 import SnapKit
 
-class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,  HomeServiceDelegate {
+class HomePage: CommonViewController {
     //MARK:property
+    var tableArray: TableViewConvertTable = TableViewConvertTable()
+    
     var moduleArray: [[String: AnyObject]] = []
     var bannerArray: [[String: AnyObject]] = [
         ["pic":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505972754561&di=569f6163fc6f6d0121e9d3d8229c2946&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6d81800a19d8bc3e3bad2adf888ba61ea8d34579.jpg" as AnyObject],
@@ -26,16 +28,12 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     var newArray: [[String: AnyObject]] = []
     var recommandArray: [[String: AnyObject]] = []
     let commandManager: CommandManager = CommandManager.sharedInstance
-    let service: HomeService = {
-        return HomeService.init()
-    }()
     
     var tableData: [[String: Any]] = []
     //MARK:systemCycle
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.randomColor()
         super.viewDidLoad()
-        self.service.delegate = self
         self.title = "首页"
         self.tableData = prepareTableSource()
         self.createUI()
@@ -94,27 +92,18 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     }
     //MARK:delegate&dataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.tableData.count
+//        return self.tableData.count
+        return self.tableArray.numberOfSections(in: tableView)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionDict = self.tableData[section]
-        if let num: Int = sectionDict[kTableViewNumberOfRowsKey] as? Int { return num } else { return 0 }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableArray.tableView(tableView, numberOfRowsInSection:section)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let sectionDict = self.tableData[indexPath.section]
-        if let cellList: [[String: Any]] = sectionDict[kTableViewCellListKey] as? [[String : Any]] {
-            let cellDict = cellList[indexPath.row]
-            if let cellHeight: CGFloat = cellDict[kTableViewCellHeightKey] as? CGFloat {
-                return cellHeight
-            }
-        }
-        return 0.01
+        return self.tableArray.tableView(tableView, heightForRowAt: indexPath)
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionDict = self.tableData[indexPath.section]
-        guard let cellList: [[String: Any]] = sectionDict[kTableViewCellListKey] as? [[String : Any]] else { return UITableViewCell.init() }
-        let cellDict = cellList[indexPath.row]
-        guard let type: String = cellDict[kTableViewCellTypeKey] as? String else { return UITableViewCell.init() }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let row = self.tableArray[indexPath] else { return UITableViewCell.init() }
+        let type: String = row.cellType
         switch type {
         case "HomeBanner_Cell":
             let cell: HomeBannerCell = tableView.dequeueReusableCell(withIdentifier: "HomeBanner_Cell") as! HomeBannerCell
@@ -128,7 +117,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
             return cell
         case "HomeCenterTitle_Cell":
             let cell: HomeCenterTitleCell = tableView.dequeueReusableCell(withIdentifier: "HomeCenterTitle_Cell") as! HomeCenterTitleCell
-            if let cellData: [String: String] = cellDict[kTableViewCellDataKey] as? [String : String]  {
+            if let cellData: [String: String] = row.cellData as? [String : String]  {
                 cell.title = cellData["title"]
                 cell.titleImage = UIImage(named: cellData["img"] ?? "")
                 cell.titleColor = UIColor.color(cellData["titleColor"] ?? "")
@@ -140,7 +129,10 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let commonPage: CommonViewController = CommonViewController()
-        navigationController?.pushViewController(commonPage, animated: true)
+        commonPage.title = "下一页"
+        if let _ = self.tableArray[indexPath] {
+            navigationController?.pushViewController(commonPage, animated: true)
+        }
     }
     //MARK:customMethod
     private func createUI() {
@@ -152,20 +144,87 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         self.tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(64.0)
+            make.top.equalTo(self.navigationHeight)
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view.snp.bottom)
                 .offset(-44.0)
         }
-        
-        let command: AutoLoginCommand = AutoLoginCommand.init()
-        commandManager.executeCommand(command) { (cmd) in
-            print("\(cmd)")
-        }
     }
     private func prepareTableSource() -> [[String: Any]] {
-        var array: [Dictionary<String, Any>] = []
+        // 轮播图区
+        self.tableArray.append({
+            var sec: TableViewConvertSection = TableViewConvertSection()
+            sec.append({
+                return TableViewConvertCell(cellType: "HomeBanner_Cell", cellHeight: HomeBannerCell.cellHeight(), cellData: nil)
+            }())
+            return sec
+        }())
+        // 按钮模块
+        self.tableArray.append({
+            var sec: TableViewConvertSection = TableViewConvertSection()
+            sec.append({
+                return TableViewConvertCell(cellType: "HomeModule_Cell", cellHeight: HomeModuleCell.cellHeight(modules: self.moduleArray), cellData: nil)
+            }())
+            return sec
+        }())
+        
+        // 优惠多多
+        self.tableArray.append({
+            var sec: TableViewConvertSection = TableViewConvertSection()
+            sec.append({
+                return TableViewConvertCell(cellType: "HomeCenterTitle_Cell", cellHeight: HomeCenterTitleCell.cellHeight(), cellData: ["img": "HomeModuleLogo.bundle/logo_cheeper", "title": "优惠多多", "titleColor": "#23ead3"])
+            }())
+            return sec
+        }())
+        
+        // 跨境专区
+        if self.crossArray.count > 0 {
+            self.tableArray.append({
+                var sec: TableViewConvertSection = TableViewConvertSection()
+                sec.append({
+                    return TableViewConvertCell(cellType: "HomeCenterTitle_Cell", cellHeight: HomeCenterTitleCell.cellHeight(), cellData: ["img": "HomeModuleLogo.bundle/logo_crossborder", "title": "跨境专区", "titleColor": "#0fa9c0"])
+                }())
+                return sec
+            }())
+        }
+        
+        // 爆款专区
+        if self.hotArray.count > 0 {
+            self.tableArray.append({
+                var sec: TableViewConvertSection = TableViewConvertSection()
+                sec.append({
+                    return TableViewConvertCell(cellType: "HomeCenterTitle_Cell", cellHeight: HomeCenterTitleCell.cellHeight(), cellData: ["img": "HomeModuleLogo.bundle/logo_hotsail", "title": "爆款热卖", "titleColor":"#e93421"])
+                }())
+                return sec
+            }())
+        }
+        
+        // 新品推荐
+        if self.hotArray.count > 0 {
+            self.tableArray.append({
+                var sec: TableViewConvertSection = TableViewConvertSection()
+                sec.append({
+                    return TableViewConvertCell(cellType: "HomeCenterTitle_Cell", cellHeight: HomeCenterTitleCell.cellHeight(), cellData: ["img": "HomeModuleLogo.bundle/logo_newgoods", "title": "新品发布", "titleColor": "#990a89"])
+                }())
+                return sec
+            }())
+        }
+        
+        // 为你推荐
+        if self.hotArray.count > 0 {
+            self.tableArray.append({
+                var sec: TableViewConvertSection = TableViewConvertSection()
+                sec.append({
+                    return TableViewConvertCell(cellType: "HomeCenterTitle_Cell", cellHeight: HomeCenterTitleCell.cellHeight(), cellData: ["img": "HomeModuleLogo.bundle/logo_recommend", "title": "为您推荐", "titleColor": "#e93421"])
+                }())
+                return sec
+            }())
+        }
+        
+        
+        let array: [Dictionary<String, Any>] = []
+        /*
         array.append({//轮播图
             var sectionDict: [String: Any] = [:]
             var cellList:[Dictionary<String, Any>] = []
@@ -259,7 +318,7 @@ class HomePage: CommonViewController,UITableViewDelegate, UITableViewDataSource,
                 return sectionDict
                 }())
         }
-        
+        */
         return array
     }
 }

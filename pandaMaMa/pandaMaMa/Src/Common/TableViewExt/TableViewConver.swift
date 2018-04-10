@@ -29,13 +29,25 @@ protocol DictionaryConvertAble {
 protocol ArrayConvertAble {
     func asArray() -> [Any]
 }
-public struct TableViewConvertTable: ArrayConvertAble {
+
+fileprivate protocol TableResponseAble {
+    // delegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     
-    public var sectionList = [TableViewConvertSection]()
+    // DataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+}
+
+public struct TableViewConvertTable: ArrayConvertAble, TableResponseAble {
+    
+    private var sectionList: [TableViewConvertSection] = []
     
     var sectionCount: Int { return sectionList.count }
     
-    mutating func append(section: TableViewConvertSection) {
+    // 会改变属性的值
+    mutating func append(_ section: TableViewConvertSection) {
         self.sectionList.append(section)
     }
     
@@ -46,6 +58,30 @@ public struct TableViewConvertTable: ArrayConvertAble {
         }
         return o
     }
+    
+    public subscript(_ indexPath: IndexPath) -> TableViewConvertCell? {
+        let sect: TableViewConvertSection = self.sectionList[indexPath.section]
+        return sect[indexPath.row]
+    }
+    
+    /// TableResponseAble
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let sect: TableViewConvertSection = self.sectionList[indexPath.section]
+        if let row: TableViewConvertCell = sect[indexPath.row], let result = row.asDict()[kTableViewCellHeightKey] as? CGFloat {
+            return result
+        }
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sect: TableViewConvertSection = self.sectionList[section]
+        return sect.rowCount()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sectionList.count
+    }
+    
 }
 
 
@@ -74,14 +110,20 @@ public struct TableViewConvertSection: DictionaryConvertAble {
     //MARK:properties
     private var cellList: [TableViewConvertCell] = []
     
-    var  sectionHeader: TableViewConvertView? = nil
+    var sectionHeader: TableViewConvertView? = nil
     
     var sectionFooter: TableViewConvertView? = nil
     
-    public mutating func append(cell: TableViewConvertCell) { cellList.append(cell) }
+    public mutating func append(_ cell: TableViewConvertCell) { cellList.append(cell) }
     
     public mutating func pop() -> TableViewConvertCell? {
         return cellList.popLast()
+    }
+    
+    func rowCount() -> Int { return cellList.count }
+    
+    public subscript(_ row: Int) -> TableViewConvertCell? {
+        return cellList[row]
     }
     
     func asDict() -> [String : Any] {
@@ -107,9 +149,15 @@ public struct TableViewConvertCell: DictionaryConvertAble {
     //MARK:properties
     var cellType: String = "UITableViewCell"
     
-    var cellHeight: Float = 44.0
+    var cellHeight: CGFloat = 44.0
     
     var cellData: Any? = nil
+    
+    init(cellType: String, cellHeight: CGFloat, cellData: Any?) {
+        self.cellType = cellType
+        self.cellHeight = cellHeight
+        self.cellData = cellData
+    }
     
     func asDict() -> [String : Any] {
         var o = [String: Any]()
@@ -120,6 +168,7 @@ public struct TableViewConvertCell: DictionaryConvertAble {
         }
         return o
     }
+    
 }
 
 
@@ -128,11 +177,11 @@ class TableViewConvertModule: NSObject, HookModuleProtocol {
         
         var table = TableViewConvertTable()
         
-        let cell = TableViewConvertCell(cellType: "HomeType", cellHeight: Float(44.0), cellData: nil)
+        let cell = TableViewConvertCell(cellType: "HomeType", cellHeight: CGFloat(44.0), cellData: nil)
         var section = TableViewConvertSection.init()
-        section.append(cell: cell)
-        section.append(cell: cell)
-        table.append(section: section)
+        section.append(cell)
+        section.append(cell)
+        table.append(section)
         print(section.asDict())
         print(table.asArray())
         return true

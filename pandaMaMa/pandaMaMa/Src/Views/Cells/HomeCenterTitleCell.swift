@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class HomeCenterTitleCell: UITableViewCell {
-    
     var title: String? {
         get { return titleLabel.text }
         set { titleLabel.text = newValue }
     }
+    
     var titleImage: UIImage? {
         get { return titleImageView.image }
         set { titleImageView.image = newValue }

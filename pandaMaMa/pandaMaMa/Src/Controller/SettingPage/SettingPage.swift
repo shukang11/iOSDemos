@@ -21,7 +21,6 @@ class SettingPage: CommonViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationView?.removeFromSuperview()
     }
     //MARK:delegate&dataSource
     

@@ -4,5 +4,6 @@
 <array>
 	<string>TestHttp</string>
 	<string>RouterTest</string>
+	<string>TableViewConvertModule</string>
 </array>
 </plist>
